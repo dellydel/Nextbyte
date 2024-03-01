@@ -18,7 +18,7 @@ const pageLayout = {
 
 const UserInformationScreen = () => {
 	const { user } = useContext(AuthContext);
-	const [courses, setCourses] = useState(null);
+	const [courses, setCourses] = useState([]);
 
 	useEffect(() => {
 		const getRegisteredCourses = async (email) => {

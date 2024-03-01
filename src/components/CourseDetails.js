@@ -42,7 +42,7 @@ const CourseDetails = () => {
 			);
 
 			if (registrations && registrations.length > 0) {
-				setRegistered(registrations.includes(course?.id));
+				setRegistered(registrations.includes(id));
 			} else {
 				setRegistered(false);
 			}
