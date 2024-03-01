@@ -10,6 +10,7 @@ import {
 	confirmResetPassword,
 	getCurrentUser,
 	fetchUserAttributes,
+	fetchAuthSession,
 } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
 import config from "../amplifyconfiguration.json";
@@ -41,10 +42,9 @@ export const AuthProvider = ({ children }) => {
 
 	const getCurrentAuthenticatedUser = async () => {
 		try {
-			const currentUser = await getCurrentUser();
-			if (currentUser) {
-				const userAttributes = await fetchUserAttributes();
-				setUser(userAttributes.email);
+			const { idToken } = (await fetchAuthSession()).tokens ?? {};
+			if (idToken) {
+				setUser(idToken.payload.email);
 			} else {
 				setUser(null);
 			}
@@ -115,10 +115,6 @@ export const AuthProvider = ({ children }) => {
 		const { nextStep } = output;
 		switch (nextStep.resetPasswordStep) {
 			case "CONFIRM_RESET_PASSWORD_WITH_CODE":
-				const codeDeliveryDetails = nextStep.codeDeliveryDetails;
-				console.log(
-					`Confirmation code was sent to ${codeDeliveryDetails.deliveryMedium}`,
-				);
 				return { codeSent: true };
 			case "DONE":
 				return { complete: true };

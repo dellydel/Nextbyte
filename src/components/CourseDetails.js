@@ -70,7 +70,6 @@ const CourseDetails = () => {
 				minHeight: 1000,
 			}}
 		>
-			{/* {JSON.stringify(course)} */}
 			{isPending && <span>Loading...</span>}
 			{isError && <span>{error.message}</span>}
 			{isSuccess && course.data && (
