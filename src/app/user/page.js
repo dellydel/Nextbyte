@@ -33,7 +33,7 @@ const UserInformationScreen = () => {
 						courseIds: registrationProductIds,
 					},
 				);
-				setCourses(courses);
+				setCourses(courses.data);
 			}
 		};
 		getRegisteredCourses(user);
@@ -41,7 +41,7 @@ const UserInformationScreen = () => {
 
 	return (
 		<Box sx={pageLayout}>
-			{(!courses || courses.data.length === 0) && (
+			{courses && courses.length === 0 && (
 				<h3>You have not registered for any upcoming courses.</h3>
 			)}
 			<Box
@@ -53,7 +53,7 @@ const UserInformationScreen = () => {
 				}}
 			>
 				{courses &&
-					courses.data.map((course) => (
+					courses.map((course) => (
 						<Course registered={true} course={course} key={course.id} />
 					))}
 			</Box>
