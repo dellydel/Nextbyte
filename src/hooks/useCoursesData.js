@@ -31,7 +31,7 @@ export const useCourseByIdData = (courseId) => {
 		queryKey: ["courses", courseId],
 		queryFn: () => fetchCourseById(courseId),
 		enabled: courseId !== null,
-		initialData: {},
+		select: (course) => course.data,
 	});
 };
 

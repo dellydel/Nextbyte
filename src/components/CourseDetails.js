@@ -42,7 +42,7 @@ const CourseDetails = () => {
 			);
 
 			if (registrations && registrations.length > 0) {
-				setRegistered(registrations.includes(course?.data.id));
+				setRegistered(registrations.includes(course?.id));
 			} else {
 				setRegistered(false);
 			}
@@ -51,10 +51,10 @@ const CourseDetails = () => {
 	}, [user]);
 
 	const toCheckout = () => {
-		router.push(`/checkout?product_id=${course?.data.id}
-		&course_name=${course?.data.name}
-		&price=${course?.data.price}
-		&price_id=${course?.data.priceLink}`);
+		router.push(`/checkout?product_id=${course.id}
+		&course_name=${course.name}
+		&price=${course.price}
+		&price_id=${course.priceLink}`);
 	};
 
 	const toCourseMaterials = () => {
@@ -70,10 +70,9 @@ const CourseDetails = () => {
 				minHeight: 1000,
 			}}
 		>
-			{/* {JSON.stringify(course)} */}
 			{isPending && <span>Loading...</span>}
 			{isError && <span>{error.message}</span>}
-			{isSuccess && course.data && (
+			{isSuccess && course && (
 				<>
 					<Typography
 						variant="h4"
@@ -82,7 +81,7 @@ const CourseDetails = () => {
 							my: 5,
 						}}
 					>
-						{course.data.name}
+						{course.name}
 					</Typography>
 					<form>
 						<Grid container spacing={2}>
@@ -96,7 +95,7 @@ const CourseDetails = () => {
 										color: "grey",
 									}}
 								>
-									<b>Duration:</b> {course.data.duration}
+									<b>Duration:</b> {course.duration}
 								</span>
 							</Grid>
 							<Grid xs={12} item sx={{ mb: 5 }}>
@@ -111,7 +110,7 @@ const CourseDetails = () => {
 								>
 									<b>Description:</b>
 									<br />
-									{course.data.description}
+									{course.description}
 								</span>
 							</Grid>
 							<Grid xs={12} md={6} item>
@@ -129,7 +128,7 @@ const CourseDetails = () => {
 											paddingInlineStart: 0,
 										}}
 									>
-										{course.data.technologies.map((technology, index) => (
+										{course.technologies?.map((technology, index) => (
 											<li key={index}>{technology}</li>
 										))}
 									</ul>
@@ -151,7 +150,7 @@ const CourseDetails = () => {
 											paddingInlineStart: 0,
 										}}
 									>
-										{course.data.modules.map((outline, index) => (
+										{course.modules?.map((outline, index) => (
 											<li key={index}>{outline}</li>
 										))}
 									</ul>
@@ -165,7 +164,7 @@ const CourseDetails = () => {
 										color: "grey",
 									}}
 								>
-									<b>Price: {course.data.price}</b>
+									<b>Price: {course.price}</b>
 								</span>
 							</Grid>
 							{registered !== null && (
