@@ -64,7 +64,7 @@ const Login = () => {
 			}
 		} catch (error) {
 			console.log(error);
-			setError("Invalid code entered.");
+			setError("An error has occured when confirming code.");
 		}
 	};
 
