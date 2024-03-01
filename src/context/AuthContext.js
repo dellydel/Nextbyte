@@ -3,12 +3,13 @@
 import React, { createContext, useState, useEffect } from "react";
 import { Amplify } from "aws-amplify";
 import {
+	autoSignIn,
+	signUp,
 	signIn,
 	signOut,
 	confirmSignUp,
 	resetPassword,
 	confirmResetPassword,
-	getCurrentUser,
 	fetchUserAttributes,
 	fetchAuthSession,
 } from "aws-amplify/auth";
@@ -23,16 +24,18 @@ export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [showLogin, setShowLogin] = useState(false);
 
-	const listener = (data) => {
-		const event = data.payload.event;
+	const listener = ({ payload }) => {
+		const event = payload.event;
 		switch (event) {
 			case "signedIn":
-				const userEmail = data.payload.data.signInDetails?.loginId;
+				const userEmail = payload.data.signInDetails?.loginId;
 				setUser(userEmail);
 				break;
 			case "signedOut":
 				setUser(null);
 				break;
+			case "autoSignIn":
+				const data = payload.data;
 			default:
 				break;
 		}
@@ -64,10 +67,10 @@ export const AuthProvider = ({ children }) => {
 				username,
 				confirmationCode,
 			});
-			await getCurrentAuthenticatedUser();
+			await autoSignIn();
 			return result;
 		} catch (error) {
-			return error;
+			throw error(error);
 		}
 	};
 
@@ -139,6 +142,7 @@ export const AuthProvider = ({ children }) => {
 	return (
 		<AuthContext.Provider
 			value={{
+				signUp,
 				login,
 				logout,
 				user,

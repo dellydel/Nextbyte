@@ -15,15 +15,10 @@ import {
 	Box,
 } from "@mui/material";
 import { Snackbar, Alert } from "@mui/material";
-//import { Amplify } from "aws-amplify";
-import { signUp } from "aws-amplify/auth";
 import axios from "axios";
-import awsconfig from "../../aws-exports";
 import { AuthContext } from "../../context/AuthContext";
 import { registrationText } from "../../data/registrationContent";
 import { registrationSchema } from "../../schemas/registrationSchema";
-
-//Amplify.configure(awsconfig);
 
 const Register = () => {
 	const {
@@ -36,7 +31,7 @@ const Register = () => {
 		resolver: yupResolver(registrationSchema),
 	});
 
-	const { setShowLogin } = useContext(AuthContext);
+	const { setShowLogin, signUp } = useContext(AuthContext);
 	const [snackbarState, setSnackbarState] = useState({
 		isOpen: false,
 		message: "",
@@ -73,8 +68,8 @@ const Register = () => {
 						name: data.firstName + " " + data.lastName,
 						phone_number: "+" + data.phoneNumber,
 					},
+					autoSignIn: true,
 				},
-				autoSignIn: true,
 			});
 			delete data.password;
 			delete data.confirmPassword;

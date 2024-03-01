@@ -37,7 +37,7 @@ const UserInformationScreen = () => {
 			}
 		};
 		getRegisteredCourses(user);
-	}, []);
+	}, [user]);
 
 	return (
 		<Box sx={pageLayout}>
