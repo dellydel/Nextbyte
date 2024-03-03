@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
 	Toolbar,
@@ -121,7 +121,7 @@ const Navigation = () => {
 						}}
 					>
 						{pages.map((page) => (
-							<Link key={page.name} href={`${page.link}`} style={navLinkStyle}>
+							<Link href={`${page.link}`} style={navLinkStyle}>
 								{page.name}
 							</Link>
 						))}

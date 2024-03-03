@@ -1,14 +1,22 @@
 "use client";
 
 import { createTheme } from "@mui/material/styles";
-import { Rubik } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 
-const rubik = Rubik({ subsets: ["latin"] });
+const dnSans = DM_Sans({ subsets: ["latin"] });
 
 const theme = createTheme({
+	palette: {
+		primary: {
+			main: "#3A86FF",
+		},
+		secondary: {
+			main: "#58BEC6",
+		},
+	},
 	typography: {
 		allVariants: {
-			fontFamily: rubik.style.fontFamily,
+			fontFamily: dnSans.style.fontFamily,
 		},
 	},
 });

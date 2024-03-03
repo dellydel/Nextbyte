@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import NavigationBar from "../components/NavigationBar";
 import { AuthProvider } from "../context/AuthContext";
 import TanstackProvider from "../providers/TanstackProvider";
 import theme from "../theme";
@@ -27,8 +27,8 @@ const RootLayout = ({ children, pageProps }) => {
 									}}
 								>
 									<div style={{ flex: 1 }}>
-										<Navigation />
-										{children}
+										<NavigationBar>{children}</NavigationBar>
+										<Footer />
 									</div>
 									<Footer />
 								</Box>
