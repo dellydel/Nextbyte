@@ -1,17 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { set } from "react-hook-form";
-import MenuIcon from "@mui/icons-material/Menu";
-import {
-	Toolbar,
-	Box,
-	Modal,
-	Menu,
-	MenuItem,
-	Button,
-	Typography,
-	IconButton,
-	Link,
-} from "@mui/material";
+import { Toolbar, Box, Modal, Button, Typography, Link } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import RouterLink from "next/link";
 import { useRouter } from "next/navigation";
@@ -57,7 +45,7 @@ const NavigationBar = ({ children }) => {
 				</Box>
 			</Modal>
 			<Box position="sticky" zIndex="1100">
-				<Toolbar sx={{ width: { md: "80%" }, mx: "auto" }}>
+				<Toolbar sx={{ width: { md: "1200px" }, mx: "auto" }}>
 					<Typography sx={navLinkStyle}>NEXTBYTE</Typography>
 					<Box
 						sx={{
@@ -103,7 +91,7 @@ const NavigationBar = ({ children }) => {
 					</Box>
 					<LogoutDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
 				</Toolbar>
-				<Box marginTop="-127px">{children}</Box>
+				<Box sx={{ marginTop: "-247px" }}>{children}</Box>
 			</Box>
 		</>
 	);

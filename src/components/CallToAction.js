@@ -16,21 +16,21 @@ const CallToAction = () => {
 				color="white"
 				sx={{
 					display: "inline",
-					fontSize: 72,
+					fontSize: "72px",
 					mr: 3,
 				}}
 			>
-				{callToAction.text[0]}
+				<b>{callToAction.text[0]}</b>
 			</Typography>
 			<Typography
 				variant="h1"
 				color="secondary"
 				sx={{
 					display: "inline",
-					fontSize: 72,
+					fontSize: "72px",
 				}}
 			>
-				{callToAction.text[1]}
+				<b>{callToAction.text[1]}</b>
 			</Typography>
 
 			<Typography

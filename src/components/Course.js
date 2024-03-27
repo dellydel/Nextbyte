@@ -1,72 +1,76 @@
-import { Card, Typography, Box, Chip } from "@mui/material";
-import Link from "next/link";
+"use client";
+
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Card, Typography, Box, Button } from "@mui/material";
+import CardMedia from "@mui/material/CardMedia";
+import { useRouter } from "next/navigation";
+import CourseChips from "./CourseChips";
 
 const cardStyle = {
-	maxWidth: "450px",
-	p: 3,
-	mb: 3,
-	mr: 3,
 	backgroundColor: "#f5f5f5",
-	display: "flex",
-	flexDirection: "column",
-	height: "400px",
+	borderRadius: "15px",
 };
 const Course = ({ course }) => {
+	const router = useRouter();
+
+	const toCourseDetails = () => {
+		router.push(`/course-details?id=${course.id}`);
+	};
+
 	return (
 		<Card sx={cardStyle}>
-			<Box sx={{ flex: "1 0 auto" }}>
-				<Link
-					href={`/course-details?id=${course.id}`}
-					color="inherit"
-					underline="none"
-					style={{ cursor: "pointer" }}
-				>
-					<Typography
-						variant="h5"
-						color="primary"
-						sx={{ fontWeight: "bold", mb: 1 }}
-					>
-						{course.name}
-					</Typography>
-				</Link>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "start",
-						flexWrap: "wrap",
-						listStyle: "none",
-						p: 0.5,
-						m: 0,
-						ml: -1,
-					}}
-					component="ul"
-				>
-					{course.technologies.slice(0, 3).map((tech) => {
-						return (
-							<li key={tech} style={{ margin: "5px" }}>
-								<Chip
-									sx={{ p: 0.5 }}
-									label={tech}
-									style={{ backgroundColor: "light-grey" }}
-									size="small"
-								/>
-							</li>
-						);
-					})}
-					{course.technologies.length > 4 && (
-						<Chip
-							sx={{ p: 0.5 }}
-							label={"..."}
-							style={{ backgroundColor: "light-grey" }}
-							size="small"
-						/>
-					)}
-				</Box>
-				<Typography component="p" sx={{ mb: 1 }}>
-					{course.description}
+			<CardMedia
+				sx={{ height: 250 }}
+				image={`images/courses/${course?.imageFileName}`}
+				title="student"
+			/>
+			<CourseChips tech={course?.technologies} />
+			<Typography variant="h6" sx={{ mx: 3, mb: 1 }}>
+				<b>{course?.name}</b>
+			</Typography>
+			<Typography variant="body2" sx={{ mx: 3, mb: 2, height: 100 }}>
+				{course?.description}
+			</Typography>
+			<Box component={"hr"} sx={{ mx: 3, mb: 3 }} />
+			<Box
+				sx={{
+					display: "flex",
+					justifyContent: "space-between",
+					mx: 3,
+					mb: 3,
+				}}
+			>
+				<Typography>
+					<b>Pricing</b>
+				</Typography>
+				<Typography variant="h5">
+					<b>{course?.price}</b>
 				</Typography>
 			</Box>
-			<Link href={`/course-details?id=${course.id}`}>More details...</Link>
+			<Box component={"hr"} sx={{ mx: 3, mb: 4 }} />
+
+			<Box
+				sx={{
+					display: "flex",
+					justifyContent: "space-between",
+					mx: 3,
+					mb: 3,
+				}}
+			>
+				<Box>
+					<Typography>
+						<b>{"Duration:  "}</b>
+						{course?.duration}
+					</Typography>
+					<Typography>
+						<b>{"Start Date: "}</b>1/1/1111
+					</Typography>
+				</Box>
+
+				<Button variant="contained" onClick={toCourseDetails}>
+					<ArrowForwardIcon />
+				</Button>
+			</Box>
 		</Card>
 	);
 };

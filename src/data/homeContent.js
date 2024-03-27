@@ -12,3 +12,22 @@ export const heroCallToAction = [
 	},
 	{ id: 4, text: ["Web Development for Beginners.", "Enroll Today!"] },
 ];
+
+export const successChecklist = [
+	{
+		header: "Hands-on projects",
+		body: "Risus velit egestas pharetra magna eget et. Faucibus ut sem a cras accumsan diam erat. Amet gravida vel purus.",
+	},
+	{
+		header: "Industry-relevant curriculum",
+		body: "Risus velit egestas pharetra magna eget et. Faucibus ut sem a cras accumsan diam erat. Amet gravida vel purus.",
+	},
+	{
+		header: "Personalized feedback",
+		body: "Risus velit egestas pharetra magna eget et. Faucibus ut sem a cras accumsan diam erat. Amet gravida vel purus.",
+	},
+	{
+		header: "Lifetime access to resources",
+		body: "Risus velit egestas pharetra magna eget et. Faucibus ut sem a cras accumsan diam erat. Amet gravida vel purus.",
+	},
+];

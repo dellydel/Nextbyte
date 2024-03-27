@@ -7,11 +7,12 @@ const heroStyle = {
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",
-	height: "100vh",
+	height: "80vh",
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
 	textAlign: "center",
+	mt: 10,
 };
 
 const MainHero = () => {

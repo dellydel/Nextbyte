@@ -10,7 +10,13 @@ import { AuthProvider } from "../context/AuthContext";
 import TanstackProvider from "../providers/TanstackProvider";
 import theme from "../theme";
 
-const RootLayout = ({ children, pageProps }) => {
+const contentStyle = {
+	maxWidth: 1440,
+	margin: "0 auto",
+	backgroundColor: "white",
+};
+
+const RootLayout = ({ children }) => {
 	return (
 		<html lang="en">
 			<body>
@@ -21,16 +27,15 @@ const RootLayout = ({ children, pageProps }) => {
 								<CssBaseline />
 								<Box
 									sx={{
-										display: "flex",
-										flexDirection: "column",
+										backgroundColor: "#f6f6f6",
 										minHeight: "100vh",
 									}}
 								>
-									<div style={{ flex: 1 }}>
-										<NavigationBar>{children}</NavigationBar>
+									<Box sx={contentStyle}>
+										<NavigationBar />
+										{children}
 										<Footer />
-									</div>
-									<Footer />
+									</Box>
 								</Box>
 							</ThemeProvider>
 						</AuthProvider>

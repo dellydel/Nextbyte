@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
+import Courses from "../components/Courses";
 import Features from "../components/Features";
 import MainHero from "../components/MainHero";
 import SectionDivider from "../components/SectionDivider";
@@ -14,24 +15,14 @@ const Home = () => {
 		setHydrated(true);
 	}, []);
 
-	const container = {
-		maxWidth: "1050px",
-		px: { xs: 5, md: 15 },
-		pt: { xs: 0, md: 5 },
-		m: { xs: 0, md: "0 auto" },
-	};
-
 	return (
-		<>
+		<Box>
 			{hydrated && <MainHero />}
-			<Box sx={container}>
-				<SectionDivider SectionTitle="Why NextByte?" />
-				<Features />
-				<br />
-				{/* <SectionDivider SectionTitle="Testimonials" />
+			<Features />
+			<br />
+			{/* <SectionDivider SectionTitle="Testimonials" />
 				<Testimonials /> */}
-			</Box>
-		</>
+		</Box>
 	);
 };
 
