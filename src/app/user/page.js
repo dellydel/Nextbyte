@@ -9,7 +9,7 @@ import Course from "../../components/Course";
 import { AuthContext } from "../../context/AuthContext";
 
 const pageLayout = {
-	maxWidth: "1050px",
+	maxWidth: 1050,
 	margin: "0 auto",
 	padding: "0 20px",
 	minHeight: 1000,

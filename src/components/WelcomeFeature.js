@@ -1,27 +1,19 @@
 import React from "react";
 import { Box } from "@mui/material";
+import Welcome from "./Welcome";
 
-const featureContainer = {
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
-	mx: "200px",
-	mt: "140px",
-	maxWidth: "1440px",
-};
-
-const WelcomeFeature = ({ imageUrl, imageAlt, children }) => {
+const WelcomeFeature = () => {
 	return (
-		<Box sx={featureContainer}>
+		<>
 			<Box
 				width={"462px"}
 				height={"472px"}
 				component={"img"}
-				src={imageUrl}
-				alt={imageAlt}
+				src={"/images/sitting_with_laptop.png"}
+				alt={"woman sitting with laptop"}
 			/>
-			{children}
-		</Box>
+			<Welcome />
+		</>
 	);
 };
 

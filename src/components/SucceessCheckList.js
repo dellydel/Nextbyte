@@ -7,7 +7,7 @@ const container = {
 	alignItems: "flex-start",
 	display: "flex",
 	flexDirection: "column",
-	gap: "40px",
+	gap: 5,
 	position: "relative",
 	width: "462px",
 };
@@ -16,7 +16,9 @@ export const SuccessCheckList = () => {
 	return (
 		<Box component="div" sx={container}>
 			{successChecklist.map((item) => (
-				<CheckListItem item={item} />
+				<Box component="div" key={item.id}>
+					<CheckListItem item={item} />
+				</Box>
 			))}
 		</Box>
 	);
