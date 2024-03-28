@@ -1,5 +1,3 @@
-"use client";
-
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Card, Typography, Box, Button } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";

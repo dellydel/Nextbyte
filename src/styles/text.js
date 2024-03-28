@@ -20,7 +20,7 @@ export const header = {
 };
 
 export const headerHighlight = {
-	color: "#58bec6",
+	color: "secondary.main",
 	letterSpacing: "-0.92px",
 };
 

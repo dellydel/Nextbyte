@@ -19,7 +19,6 @@ const TrustedAvatars = () => {
 				gap: 0,
 				justifyContent: "center",
 				alignItems: "center",
-				mt: 20,
 			}}
 		>
 			<Stack direction="row" spacing={-2}>

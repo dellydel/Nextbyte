@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { header, headerText, headerHighlight, body } from "../styles/features";
+import { header, headerText, headerHighlight, body } from "../styles/text";
 
 const CustomSubheader = ({ textArray }) => {
 	return (

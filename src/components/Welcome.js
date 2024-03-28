@@ -2,7 +2,7 @@ import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Typography, Button } from "@mui/material";
 import { welcome } from "../data/homeContent";
-import { container, learnMore } from "../styles/features";
+import { container, learnMore } from "../styles/text";
 import CustomSubheader from "./CustomSubheader";
 
 const Welcome = () => {
@@ -12,7 +12,7 @@ const Welcome = () => {
 			<Box variant="div">
 				<Box sx={learnMore}>
 					Learn more about us{" "}
-					<Button sx={{ ml: 1 }} variant="contained">
+					<Button sx={{ ml: 1 }} variant="contained" size="small" title="go">
 						<ArrowForwardIcon />
 					</Button>
 				</Box>

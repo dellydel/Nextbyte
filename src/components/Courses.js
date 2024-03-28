@@ -12,7 +12,7 @@ const getCourses = async () => {
 	return res.json();
 };
 
-const Courses = async () => {
+const Courses = async ({ count }) => {
 	const data = await getCourses();
 	return (
 		<Box
@@ -24,10 +24,9 @@ const Courses = async () => {
 				rowGap: 3,
 				width: 996,
 				mx: "auto",
-				//justifyContent: "center",
 			}}
 		>
-			{data.map((course) => (
+			{data.slice(0, count).map((course) => (
 				<Box key={course.id} component={"div"} sx={{ width: 486 }}>
 					<Course course={course} />
 				</Box>

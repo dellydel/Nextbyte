@@ -2,12 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
-import Courses from "../components/Courses";
 import Features from "../components/Features";
 import MainHero from "../components/MainHero";
-import SectionDivider from "../components/SectionDivider";
+import OurClasses from "../components/OurClasses";
+import WhyNextByte from "../components/WhyNextByte";
 
-//import Testimonials from "../components/Testimonials";
+const darkBg = {
+	backgroundImage:
+		"radial-gradient(circle, rgba(0, 14, 29, 0.56), #000E1D), url('images/coursesBg.png')",
+	backgroundPosition: "center center",
+	backgroundSize: "cover",
+	backgroundRepeat: "no-repeat",
+	width: "100%",
+};
 
 const Home = () => {
 	const [hydrated, setHydrated] = useState(false);
@@ -19,9 +26,10 @@ const Home = () => {
 		<Box>
 			{hydrated && <MainHero />}
 			<Features />
-			<br />
-			{/* <SectionDivider SectionTitle="Testimonials" />
-				<Testimonials /> */}
+			<WhyNextByte />
+			<Box sx={darkBg}>
+				<OurClasses />
+			</Box>
 		</Box>
 	);
 };

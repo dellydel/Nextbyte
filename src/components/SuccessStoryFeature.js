@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { successStory } from "../data/homeContent";
-import { container } from "../styles/features";
+import { container } from "../styles/text";
 import CustomSubheader from "./CustomSubheader";
 
 const SuccessStoryFeature = () => {
