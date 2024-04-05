@@ -3,7 +3,7 @@ export const wrapper = {
 	alignItems: "center",
 	justifyContent: "space-between",
 	mx: "200px",
-	py: "200px",
+	pt: "250px",
 	mb: 5,
 	maxWidth: 1440,
 };
@@ -39,4 +39,30 @@ export const instructorsHeader = {
 	lineHeight: "normal",
 	marginTop: "-1px",
 	position: "relative",
+};
+
+export const viewAll = {
+	alignItems: "center",
+	backgroundColor: "#000e1d",
+	border: "1px solid",
+	borderColor: "#3a86ff",
+	borderRadius: "8px",
+	display: "flex",
+	gap: "10px",
+	height: "85px",
+	justifyContent: "center",
+	padding: "0px 32px",
+	position: "relative",
+	width: "996px",
+};
+
+export const viewAllText = {
+	color: "#ffffff",
+	fontSize: "18px",
+	fontWeight: 500,
+	letterSpacing: 0,
+	lineHeight: "normal",
+	position: "relative",
+	whiteSpace: "nowrap",
+	width: "fit-content",
 };

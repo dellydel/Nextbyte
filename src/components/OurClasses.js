@@ -7,6 +7,8 @@ import {
 	instructors,
 	instructorsHeader,
 	instructorsBody,
+	viewAll,
+	viewAllText,
 } from "../styles/ourClasses";
 import { header, headerText, body } from "../styles/text";
 import Courses from "./Courses";
@@ -36,7 +38,23 @@ const OurClasses = () => {
 					{ourClasses}
 				</Typography>
 			</Box>
-			{/* <Courses count={2} /> */}
+			<Courses count={2} />
+			<Box
+				component="div"
+				sx={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					maxWidth: 1440,
+					py: 5,
+				}}
+			>
+				<Box component="div" sx={viewAll}>
+					<Typography variant="span" sx={viewAllText}>
+						View all classes
+					</Typography>
+				</Box>
+			</Box>
 		</>
 	);
 };

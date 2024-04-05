@@ -1,13 +1,16 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Card, Typography, Box, Button } from "@mui/material";
+import { Card, Typography, Box, Button, Grid } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
+import Divider from "@mui/material/Divider";
 import { useRouter } from "next/navigation";
+import {
+	cardStyle,
+	cardImageStyle,
+	wrapper,
+	courseTitle,
+} from "../styles/course";
 import CourseChips from "./CourseChips";
 
-const cardStyle = {
-	backgroundColor: "#f5f5f5",
-	borderRadius: "15px",
-};
 const Course = ({ course }) => {
 	const router = useRouter();
 
@@ -18,58 +21,50 @@ const Course = ({ course }) => {
 	return (
 		<Card sx={cardStyle}>
 			<CardMedia
-				sx={{ height: 250 }}
+				sx={cardImageStyle}
 				image={`images/courses/${course?.imageFileName}`}
 				title="student"
 			/>
-			<CourseChips tech={course?.technologies} />
-			<Typography variant="h6" sx={{ mx: 3, mb: 1 }}>
-				<b>{course?.name}</b>
-			</Typography>
-			<Typography variant="body2" sx={{ mx: 3, mb: 2, height: 100 }}>
-				{course?.description}
-			</Typography>
-			<Box component={"hr"} sx={{ mx: 3, mb: 3 }} />
-			<Box
-				sx={{
-					display: "flex",
-					justifyContent: "space-between",
-					mx: 3,
-					mb: 3,
-				}}
-			>
-				<Typography>
-					<b>Pricing</b>
-				</Typography>
-				<Typography variant="h5">
-					<b>{course?.price}</b>
-				</Typography>
-			</Box>
-			<Box component={"hr"} sx={{ mx: 3, mb: 4 }} />
 
-			<Box
-				sx={{
-					display: "flex",
-					justifyContent: "space-between",
-					mx: 3,
-					mb: 3,
-				}}
-			>
-				<Box>
-					<Typography>
-						<b>{"Duration:  "}</b>
-						{course?.duration}
+			<Box component={"div"} sx={wrapper}>
+				<CourseChips tech={course?.technologies} />
+				<Typography variant="div" sx={courseTitle}>
+					<b>{course?.name}</b>
+				</Typography>
+				<Typography variant="p">{course?.description}</Typography>
+				<Divider sx={{ width: "100%" }} />
+				<Box sx={{}}>
+					<Typography component={"div"}>
+						<b>Pricing</b>
 					</Typography>
-					<Typography>
-						<b>{"Start Date: "}</b>1/1/1111
+					<Typography variant="h5">
+						<b>{course?.price}</b>
 					</Typography>
 				</Box>
-
-				<Button variant="contained" onClick={toCourseDetails}>
-					<ArrowForwardIcon />
-				</Button>
+				<Divider sx={{ width: "100%" }} />
+				<Grid
+					container
+					sx={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-between",
+					}}
+				>
+					<Grid item xs={6}>
+						<Typography>
+							<b>{"Duration:  "}</b>
+							{course?.duration}
+						</Typography>
+					</Grid>
+					<Grid item xs={6} style={{ textAlign: "right" }}>
+						<Button variant="contained" onClick={toCourseDetails}>
+							<ArrowForwardIcon />
+						</Button>
+					</Grid>
+				</Grid>
 			</Box>
 		</Card>
 	);
 };
+
 export default Course;

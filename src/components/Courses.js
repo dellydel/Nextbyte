@@ -1,36 +1,40 @@
 import React from "react";
 import { Box } from "@mui/material";
+import { useCoursesData } from "../hooks/useCoursesData";
 import Course from "./Course";
 
-const getCourses = async () => {
-	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
-	);
-	if (!res.ok) {
-		throw new Error("Failed to fetch data");
-	}
-	return res.json();
-};
+const Courses = ({ count }) => {
+	const {
+		data: courses,
+		isPending,
+		isError,
+		isSuccess,
+		error,
+	} = useCoursesData();
 
-const Courses = async ({ count }) => {
-	const data = await getCourses();
 	return (
 		<Box
 			component={"div"}
 			sx={{
-				display: "flex",
 				flexWrap: "wrap",
-				columnGap: 3,
-				rowGap: 3,
-				width: 996,
-				mx: "auto",
+				display: "flex",
+				gap: 3,
+				justifyContent: "center",
+				mx: "200px",
+				maxWidth: "1440px",
 			}}
 		>
-			{data.slice(0, count).map((course) => (
-				<Box key={course.id} component={"div"} sx={{ width: 486 }}>
-					<Course course={course} />
-				</Box>
-			))}
+			{isPending && <span>Loading...</span>}
+			{isError && <span>{error.message}</span>}
+			{isSuccess && courses && (
+				<>
+					{courses.slice(0, count).map((course) => (
+						<Box key={course.id} component={"div"} sx={{ width: 486 }}>
+							<Course course={course} />
+						</Box>
+					))}
+				</>
+			)}
 		</Box>
 	);
 };
