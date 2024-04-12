@@ -31,9 +31,11 @@ const Course = ({ course }) => {
 				<Typography variant="div" sx={courseTitle}>
 					<b>{course?.name}</b>
 				</Typography>
-				<Typography variant="p">{course?.description}</Typography>
+				<Typography variant="p" sx={{ height: 80 }}>
+					{course?.description}
+				</Typography>
 				<Divider sx={{ width: "100%" }} />
-				<Box sx={{}}>
+				<Box>
 					<Typography component={"div"}>
 						<b>Pricing</b>
 					</Typography>

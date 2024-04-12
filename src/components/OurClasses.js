@@ -46,7 +46,8 @@ const OurClasses = () => {
 					alignItems: "center",
 					justifyContent: "center",
 					maxWidth: 1440,
-					py: 5,
+					pt: 5,
+					pb: 10,
 				}}
 			>
 				<Box component="div" sx={viewAll}>

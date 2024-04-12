@@ -1,7 +1,5 @@
 export const wrapper = {
 	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
 	mx: "200px",
 	pt: "250px",
 	mb: 5,

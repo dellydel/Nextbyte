@@ -72,3 +72,6 @@ export const chooseUsCards = [
 
 export const ourClasses =
 	"Choosing our training company is the smartest decision you can make for your learning journey. What sets us apart is our unwavering commitment to providing an unparalleled educational experience. Our instructors, with a collective experience of over 30 years, bring a wealth of real-world scenarios to the classroom, ensuring that you not only grasp the theoretical knowledge but also understand its practical applications in the professional world.";
+
+export const testimonialText =
+	"Our customers are our greatest asset. We are committed to providing exceptional customer service and support to our customers, and we strive to exceed their expectations.";

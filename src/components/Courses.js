@@ -18,10 +18,10 @@ const Courses = ({ count }) => {
 			sx={{
 				flexWrap: "wrap",
 				display: "flex",
-				gap: 3,
-				justifyContent: "center",
-				mx: "200px",
+				gap: 5,
+				mx: "180px",
 				maxWidth: "1440px",
+				justifyContent: "center",
 			}}
 		>
 			{isPending && <span>Loading...</span>}

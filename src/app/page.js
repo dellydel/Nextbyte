@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import Features from "../components/Features";
 import MainHero from "../components/MainHero";
 import OurClasses from "../components/OurClasses";
+import Testimonials from "../components/Testimonials";
 import WhyNextByte from "../components/WhyNextByte";
 
 const darkBg = {
@@ -30,6 +31,7 @@ const Home = () => {
 			<Box sx={darkBg}>
 				<OurClasses />
 			</Box>
+			<Testimonials />
 		</Box>
 	);
 };
