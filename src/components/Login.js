@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { BorderAllRounded } from "@mui/icons-material";
 import {
 	Card,
 	CardContent,
@@ -10,12 +11,19 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "../context/AuthContext";
+import { header } from "../styles/text";
 
 const linkStyle = {
 	color: "blue",
-	backgroundColor: "white",
+	backgroundColor: "lightGrey",
 	cursor: "pointer",
 	margin: "0 10px",
+};
+
+const loginCardStyle = {
+	padding: 1,
+	backgroundColor: "lightGrey",
+	borderRadius: "10px",
 };
 
 const Login = () => {
@@ -105,10 +113,17 @@ const Login = () => {
 	};
 
 	return (
-		<Card sx={{ padding: 1 }}>
+		<Card sx={loginCardStyle}>
 			<CardContent>
 				<Typography gutterBottom variant="h6">
-					{!resetPassword && !awaitingNewPassword && "Log in"}
+					{!resetPassword && !awaitingNewPassword && (
+						<Typography
+							variant="span"
+							sx={{ ...header, color: "black", fontSize: "32px" }}
+						>
+							Login
+						</Typography>
+					)}
 					{resetPassword && "Forgot Password"}
 					{awaitingNewPassword && "Reset Password"}
 				</Typography>

@@ -30,10 +30,7 @@ const RootLayout = ({ children }) => {
 										minHeight: "100vh",
 									}}
 								>
-									<Box sx={contentStyle}>
-										{children}
-										<Footer />
-									</Box>
+									<Box sx={contentStyle}>{children}</Box>
 								</Box>
 							</ThemeProvider>
 						</AuthProvider>

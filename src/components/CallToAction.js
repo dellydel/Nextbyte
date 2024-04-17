@@ -5,24 +5,21 @@ import { heroText, heroCallToAction } from "../data/homeContent";
 import { scrollToFooter } from "../utils/uiUtils";
 import TrustedAvatars from "./TrustedAvatars";
 
-const wrapper = {
-	mb: 4,
-};
-
 const actionButton = {
 	py: 2,
 	px: 4,
 	borderRadius: 3,
 	color: "white",
+	textTransform: "none",
 };
 
-const CallToAction = () => {
+const CallToAction = ({ coursesRef }) => {
 	const random = Math.floor(Math.random() * heroCallToAction.length);
 	const callToAction = heroCallToAction[random];
 
 	return (
 		<Box component={"div"} sx={{ mt: 20 }}>
-			<Box component={"div"} sx={wrapper}>
+			<Box component={"div"} sx={{ mb: 4 }}>
 				<Typography
 					variant="h1"
 					color="white"
@@ -72,14 +69,18 @@ const CallToAction = () => {
 				</Button>
 				<Button
 					sx={actionButton}
-					component={Link}
+					onClick={() =>
+						coursesRef.current.scrollIntoView({
+							block: "center",
+							behavior: "smooth",
+						})
+					}
 					variant="outlined"
-					href="/courses"
 				>
 					Browse Courses
 				</Button>
 			</Box>
-			<TrustedAvatars />
+			<TrustedAvatars section={"callToAction"} />
 		</Box>
 	);
 };

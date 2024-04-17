@@ -12,14 +12,13 @@ import {
 } from "../styles/testimonial";
 
 const Testimonial = ({ testimonial }) => {
-	const testimonialData = testimonial.testimonial.split(".");
 	return (
 		<Box sx={wrapper}>
 			<FormatQuoteIcon sx={quoteIcon} color="secondary" />
 			<Box sx={container}>
-				<Typography sx={textWrapper}>{testimonialData[0]}.</Typography>
+				<Typography sx={textWrapper}>{testimonial.header}</Typography>
 				<Typography variant="p" sx={quote}>
-					{testimonialData[1]}
+					{testimonial.body}
 				</Typography>
 			</Box>
 			<Box style={avatarContainer}>
@@ -29,7 +28,7 @@ const Testimonial = ({ testimonial }) => {
 					alt="testimonial avatar"
 				></Avatar>
 				<Typography variant="span" sx={avatarText}>
-					{testimonial.FirstName} {testimonial.LastInitial}.
+					{testimonial.firstName} {testimonial.lastName}
 				</Typography>
 			</Box>
 		</Box>

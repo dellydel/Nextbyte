@@ -2,14 +2,19 @@ export const heroText =
 	"Welcome to the beginning of your web development journey!";
 
 export const heroCallToAction = [
-	{ id: 1, text: ["Start Your Web Journey.", "Enroll Now!"] },
-	{ id: 2, text: ["Begin Your Adventure.", "View Our Courses!"] },
+	{ id: 1, text: ["Start Your Web Journey", "Enroll Now!"] },
+	{ id: 2, text: ["Begin Your Adventure", "View Our Courses!"] },
 	{
 		id: 3,
 		text: ["No Experience? No Problem!", "Dive in Now!"],
 	},
 	{ id: 4, text: ["Web Development for", "Beginners"] },
-	{ id: 4, text: ["Learn Cybersecurity.", "Begin Today!"] },
+	{ id: 4, text: ["Learn Cybersecurity", "Begin Today!"] },
+];
+
+export const enrollToday = [
+	{ id: 1, text: ["web development"] },
+	{ id: 2, text: ["cybersecurity"] },
 ];
 
 export const successChecklist = [

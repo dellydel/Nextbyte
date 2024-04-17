@@ -13,5 +13,5 @@ export const testimonialsContainer = {
 	position: "relative",
 	width: 996,
 	mx: "200px",
-	mb: 15,
+	mb: 20,
 };

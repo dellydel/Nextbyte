@@ -2,18 +2,16 @@ export const wrapper = {
 	alignItems: "flex-start",
 	backgroundColor: "#ffffff",
 	borderRadius: "8px",
-	boxShadow:
-		"0px 2px 4px -2px rgba(0, 0, 0, 0.1), 0px 4px 8px -2px rgba(0, 0, 0, 0.1)",
 	display: "flex",
-	flex: 1,
 	flexDirection: "column",
+	flex: 1,
 	flexGrow: 1,
 	gap: 3,
 	justifyContent: "center",
 	overflow: "hidden",
-	padding: 3,
+	p: 3,
+	pb: 4,
 	position: "relative",
-	height: 350,
 };
 
 export const container = {
@@ -46,12 +44,13 @@ export const quote = {
 	letterSpacing: "-0.32px",
 	lineHeight: "140%",
 	position: "relative",
+	height: 100,
 };
 
 export const quoteIcon = {
-	height: "40px",
+	height: "55px",
 	position: "relative",
-	width: "40px",
+	width: "55px",
 	transform: "rotate(180deg)",
 };
 
@@ -60,6 +59,7 @@ export const avatar = {
 	objectFit: "cover",
 	position: "relative",
 	width: "32px",
+	marginRight: 1,
 };
 
 export const avatarText = {

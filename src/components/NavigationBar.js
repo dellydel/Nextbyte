@@ -1,92 +1,82 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Box, Modal, Button, Link } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import RouterLink from "next/link";
-import { useRouter } from "next/navigation";
 import { AuthContext } from "../context/AuthContext";
+import {
+	toolbar,
+	logo,
+	navBar,
+	navLinkStyle,
+	modalStyle,
+} from "../styles/navigationBar";
 import Login from "./Login";
 import LogoutDialog from "./LogoutDialog";
-
-const pages = [
-	{ name: "About", link: "/courses" },
-	{ name: "Courses", link: "/courses" },
-	{ name: "Pricing", link: "/courses" },
-	{ name: "Testimonials", link: "/courses" },
-];
 
 const StyledButton = styled(Button)(`
   text-transform: none;
 `);
 
-const navLinkStyle = {
-	color: "#ffffff",
-	fontSize: "16px",
-	fontWeight: 400,
-	letterSpacing: "-0.32px",
-	lineHeight: "24px",
-	position: "relative",
-	whiteSpace: "nowrap",
-	width: "fit-content",
-	textDecoration: "none",
-};
-
-const modalStyle = {
-	position: "absolute",
-	top: "50%",
-	left: "50%",
-	transform: "translate(-50%, -50%)",
-	width: 400,
-};
-
-const toolbar = {
-	mx: "auto",
-	alignItems: "flex-start",
-	display: "flex",
-	justifyContent: "space-between",
-	position: "relative",
-	width: 1200,
-};
-
-const logo = {
-	height: "29.76px",
-	objectFit: "cover",
-	position: "relative",
-	width: "173px",
-};
-
-const navBar = {
-	alignItems: "center",
-	display: "inline-flex",
-	flex: "0 0 auto",
-	gap: "24px",
-	justifyContent: "center",
-	position: "relative",
-};
-
-const NavigationBar = ({ children }) => {
+const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	const { showLogin, setShowLogin, user } = useContext(AuthContext);
 	const [dialogOpen, setDialogOpen] = useState(false);
 
 	return (
 		<>
 			<Box component="div" sx={toolbar}>
-				<Box
-					sx={logo}
-					component={"img"}
-					src={"/images/logo-white.png"}
-					alt={"NextByte Logo"}
-				/>
+				<Link
+					component={RouterLink}
+					href="/"
+					style={{
+						padding: "8px 0",
+						color: "white",
+					}}
+				>
+					<Box
+						sx={logo}
+						component={"img"}
+						src={"/images/logo-white.png"}
+						alt={"NextByte Logo"}
+					/>
+				</Link>
 				<Box sx={navBar}>
-					{pages.map((page) => (
-						<Link
-							key={page.name}
-							component={RouterLink}
-							href={`${page.link}`}
-							sx={navLinkStyle}
-						>
-							{page.name}
-						</Link>
-					))}
+					<Link
+						component={Button}
+						onClick={() =>
+							aboutRef.current.scrollIntoView({
+								block: "end",
+								behavior: "smooth",
+							})
+						}
+						sx={navLinkStyle}
+					>
+						About Us
+					</Link>
+					<Link
+						component={Button}
+						onClick={() =>
+							coursesRef.current.scrollIntoView({
+								block: "center",
+								behavior: "smooth",
+							})
+						}
+						sx={navLinkStyle}
+					>
+						Courses
+					</Link>
+					<Link
+						component={Button}
+						onClick={() =>
+							testimonialsRef.current.scrollIntoView({
+								block: "start",
+								behavior: "smooth",
+							})
+						}
+						sx={navLinkStyle}
+					>
+						Testimonials
+					</Link>
+
 					{user !== null ? (
 						<>
 							<Link
@@ -94,7 +84,7 @@ const NavigationBar = ({ children }) => {
 								href={"/user"}
 								sx={{ ...navLinkStyle, color: "secondary.main" }}
 							>
-								My Courses
+								<b>My Courses</b>
 							</Link>
 							<StyledButton
 								sx={navLinkStyle}

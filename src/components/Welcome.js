@@ -11,7 +11,7 @@ const Welcome = () => {
 			<CustomSubheader textArray={welcome} />
 			<Box variant="div">
 				<Box sx={learnMore}>
-					Learn more about us{" "}
+					Request more information{" "}
 					<Button sx={{ ml: 1 }} variant="contained" size="small" title="go">
 						<ArrowForwardIcon />
 					</Button>

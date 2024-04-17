@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { Box, Typography } from "@mui/material";
 import { ourClasses } from "../data/homeContent";
@@ -13,11 +13,11 @@ import {
 import { header, headerText, body } from "../styles/text";
 import Courses from "./Courses";
 
-const OurClasses = () => {
+const OurClasses = forwardRef((props, ref) => {
 	return (
 		<>
 			<Box component="div" sx={wrapper}>
-				<Box component={"div"} sx={{ ...header, width: 0.5 }}>
+				<Box component={"div"} sx={{ ...header, width: 0.5 }} ref={ref}>
 					<Typography variant="span" sx={{ ...headerText, color: "white" }}>
 						Upcomming Classes
 					</Typography>
@@ -52,12 +52,12 @@ const OurClasses = () => {
 			>
 				<Box component="div" sx={viewAll}>
 					<Typography variant="span" sx={viewAllText}>
-						View all classes
+						View all upcomming classes
 					</Typography>
 				</Box>
 			</Box>
 		</>
 	);
-};
+});
 
 export default OurClasses;

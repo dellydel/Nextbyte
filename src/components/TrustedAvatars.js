@@ -11,14 +11,15 @@ const avatarStyle = {
 	color: "white",
 };
 
-const TrustedAvatars = () => {
+const TrustedAvatars = ({ section }) => {
 	return (
 		<Box
 			sx={{
-				display: "flex",
+				display: section === "enroll" ? "block" : "flex",
 				gap: 0,
 				justifyContent: "center",
 				alignItems: "center",
+				my: section === "enroll" ? 5 : 0,
 			}}
 		>
 			<Stack direction="row" spacing={-2}>
@@ -46,15 +47,30 @@ const TrustedAvatars = () => {
 					<Typography sx={{ fontSize: 10 }}>100+</Typography>
 				</Avatar>
 			</Stack>
-			<Typography
-				sx={{
-					ml: 5,
-					fontSize: 18,
-					color: "white",
-				}}
-			>
-				Trusted by students worldwide.
-			</Typography>
+			{section === "callToAction" && (
+				<Typography
+					variant="span"
+					sx={{
+						ml: 5,
+						fontSize: 18,
+						color: "white",
+					}}
+				>
+					Trusted by students worldwide.
+				</Typography>
+			)}
+			{section === "enroll" && (
+				<Box
+					component="div"
+					sx={{
+						fontSize: 18,
+						color: "white",
+						mt: 2,
+					}}
+				>
+					Join our worldwide community of students.
+				</Box>
+			)}
 		</Box>
 	);
 };
