@@ -11,11 +11,18 @@ export const navLinkStyle = {
 	textTransform: "none",
 };
 
-export const modalStyle = {
+export const loginModalStyle = {
 	position: "absolute",
 	top: 95,
 	left: 1255,
 	width: 400,
+};
+
+export const modalStyle = {
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	height: "100vh",
 };
 
 export const toolbar = {

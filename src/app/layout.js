@@ -4,8 +4,9 @@ import { Box } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../components/Footer";
+import PopupMessage from "../components/PopupMessage";
 import { AuthProvider } from "../context/AuthContext";
+import { PopupProvider } from "../context/PopupContext";
 import TanstackProvider from "../providers/TanstackProvider";
 import theme from "../theme";
 
@@ -30,7 +31,10 @@ const RootLayout = ({ children }) => {
 										minHeight: "100vh",
 									}}
 								>
-									<Box sx={contentStyle}>{children}</Box>
+									<PopupProvider>
+										<PopupMessage />
+										<Box sx={contentStyle}>{children}</Box>
+									</PopupProvider>
 								</Box>
 							</ThemeProvider>
 						</AuthProvider>

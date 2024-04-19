@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Modal, Button, Link } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import RouterLink from "next/link";
@@ -8,10 +8,12 @@ import {
 	logo,
 	navBar,
 	navLinkStyle,
+	loginModalStyle,
 	modalStyle,
 } from "../styles/navigationBar";
 import Login from "./Login";
 import LogoutDialog from "./LogoutDialog";
+import Register from "./Register";
 
 const StyledButton = styled(Button)(`
   text-transform: none;
@@ -19,6 +21,7 @@ const StyledButton = styled(Button)(`
 
 const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	const { showLogin, setShowLogin, user } = useContext(AuthContext);
+	const [showRegister, setShowRegister] = useState(false);
 	const [dialogOpen, setDialogOpen] = useState(false);
 
 	return (
@@ -105,11 +108,15 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					)}
 				</Box>
 				<Modal open={showLogin} onClose={() => setShowLogin(false)}>
-					<Box sx={modalStyle}>
-						<Login setOpen={setShowLogin} />
+					<Box sx={loginModalStyle}>
+						<Login setShowRegister={setShowRegister} />
 					</Box>
 				</Modal>
-
+				<Modal open={showRegister} onClose={() => setShowRegister(false)}>
+					<Box sx={modalStyle}>
+						<Register setShowRegister={setShowRegister} />
+					</Box>
+				</Modal>
 				<LogoutDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
 			</Box>
 		</>

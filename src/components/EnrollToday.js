@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Modal } from "@mui/material";
 import { enrollToday } from "../data/homeContent";
 import {
 	subHeader,
@@ -9,6 +9,8 @@ import {
 	headerText,
 	headerTextAltColor,
 } from "../styles/enrollToday";
+import { modalStyle } from "../styles/navigationBar";
+import Register from "./Register";
 import TrustedAvatars from "./TrustedAvatars";
 
 const actionButton = {
@@ -22,6 +24,7 @@ const actionButton = {
 
 const EnrollToday = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [showRegister, setShowRegister] = useState(false);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -52,9 +55,19 @@ const EnrollToday = () => {
 				</Typography>
 			</Box>
 			<TrustedAvatars section={"enroll"} />
-			<Button sx={actionButton} variant="contained" size="large">
+			<Button
+				sx={actionButton}
+				variant="contained"
+				size="large"
+				onClick={() => setShowRegister(true)}
+			>
 				Get Started
 			</Button>
+			<Modal open={showRegister} onClose={() => setShowRegister(false)}>
+				<Box sx={modalStyle}>
+					<Register setShowRegister={setShowRegister} />
+				</Box>
+			</Modal>
 		</Box>
 	);
 };

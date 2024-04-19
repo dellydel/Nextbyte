@@ -1,8 +1,8 @@
-import React from "react";
-import { Box, Button, Typography } from "@mui/material";
-import { Link } from "next/navigation";
+import React, { useState } from "react";
+import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
 import { heroText, heroCallToAction } from "../data/homeContent";
-import { scrollToFooter } from "../utils/uiUtils";
+import { modalStyle } from "../styles/navigationBar";
+import Register from "./Register";
 import TrustedAvatars from "./TrustedAvatars";
 
 const actionButton = {
@@ -16,6 +16,7 @@ const actionButton = {
 const CallToAction = ({ coursesRef }) => {
 	const random = Math.floor(Math.random() * heroCallToAction.length);
 	const callToAction = heroCallToAction[random];
+	const [showRegister, setShowRegister] = useState(false);
 
 	return (
 		<Box component={"div"} sx={{ mt: 20 }}>
@@ -62,10 +63,10 @@ const CallToAction = ({ coursesRef }) => {
 				<Button
 					sx={actionButton}
 					variant="contained"
-					onClick={scrollToFooter}
+					onClick={() => setShowRegister(true)}
 					size="large"
 				>
-					Enroll Today!
+					Register Today!
 				</Button>
 				<Button
 					sx={actionButton}
@@ -81,6 +82,15 @@ const CallToAction = ({ coursesRef }) => {
 				</Button>
 			</Box>
 			<TrustedAvatars section={"callToAction"} />
+			<Modal
+				open={showRegister}
+				closeAfterTransition
+				onClose={() => setShowRegister(false)}
+			>
+				<Box sx={modalStyle}>
+					<Register setShowRegister={setShowRegister} />
+				</Box>
+			</Modal>
 		</Box>
 	);
 };

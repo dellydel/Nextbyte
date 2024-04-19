@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { BorderAllRounded } from "@mui/icons-material";
 import {
 	Card,
 	CardContent,
@@ -9,7 +8,6 @@ import {
 	Button,
 	Box,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { AuthContext } from "../context/AuthContext";
 import { header } from "../styles/text";
 
@@ -24,10 +22,12 @@ const loginCardStyle = {
 	padding: 1,
 	backgroundColor: "lightGrey",
 	borderRadius: "10px",
+	"& .MuiInputBase-root": {
+		backgroundColor: "white",
+	},
 };
 
-const Login = () => {
-	const router = useRouter();
+const Login = ({ setShowRegister }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [awaitingCode, setAwaitingCode] = useState(false);
@@ -68,7 +68,6 @@ const Login = () => {
 			const result = await handleConfirmation(email, code);
 			if (result.isSignUpComplete) {
 				setShowLogin(false);
-				router.push("/user");
 			}
 		} catch (error) {
 			console.log(error);
@@ -109,7 +108,7 @@ const Login = () => {
 
 	const toRegistration = () => {
 		setShowLogin(false);
-		router.push("/register");
+		setShowRegister(true);
 	};
 
 	return (
