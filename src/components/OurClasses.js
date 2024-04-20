@@ -1,6 +1,6 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { ourClasses } from "../data/homeContent";
 import {
 	wrapper,
@@ -14,6 +14,7 @@ import { header, headerText, body } from "../styles/text";
 import Courses from "./Courses";
 
 const OurClasses = forwardRef((props, ref) => {
+	const [coursesCount, setCoursesCount] = useState("2");
 	return (
 		<>
 			<Box component="div" sx={wrapper}>
@@ -38,23 +39,25 @@ const OurClasses = forwardRef((props, ref) => {
 					{ourClasses}
 				</Typography>
 			</Box>
-			<Courses count={2} />
+			<Courses count={coursesCount} />
 			<Box
 				component="div"
 				sx={{
 					display: "flex",
-					alignItems: "center",
 					justifyContent: "center",
-					maxWidth: 1440,
-					pt: 5,
+					pt: 2,
 					pb: 10,
 				}}
 			>
-				<Box component="div" sx={viewAll}>
+				<Button
+					sx={viewAll}
+					variant="outlined"
+					onClick={() => setCoursesCount("all")}
+				>
 					<Typography variant="span" sx={viewAllText}>
 						View all upcomming classes
 					</Typography>
-				</Box>
+				</Button>
 			</Box>
 		</>
 	);

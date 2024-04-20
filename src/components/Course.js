@@ -60,7 +60,7 @@ const Course = ({ course }) => {
 						</Grid>
 						<Grid item xs={6} style={{ textAlign: "right" }}>
 							<Button variant="contained" onClick={() => setShowDetails(true)}>
-								<ArrowForwardIcon />
+								<ArrowForwardIcon title="show details" />
 							</Button>
 						</Grid>
 					</Grid>

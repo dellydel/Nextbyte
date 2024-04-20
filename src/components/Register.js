@@ -1,58 +1,38 @@
-import React, { useState, useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import {
 	Card,
 	CardContent,
 	Box,
 	Typography,
 	Grid,
-	TextField,
-	InputAdornment,
-	Tooltip,
 	Button,
-	Avatar,
 	IconButton,
 } from "@mui/material";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { PopupContext } from "../context/PopupContext";
 import { registrationText } from "../data/registrationContent";
-import { registrationSchema } from "../schemas/registrationSchema";
+import {
+	registrationSchema,
+	defaultFormValues,
+} from "../schemas/registrationSchema";
+import { wrapper, close } from "../styles/register";
+import FormTextField from "./FormTextField";
 import PopupMessage from "./PopupMessage";
-
-const wrapper = {
-	padding: 3,
-	pb: 6,
-	borderRadius: 3,
-	boxShadow: 3,
-	height: 800,
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	"& .MuiInputBase-root": {
-		backgroundColor: "white",
-	},
-};
-
-const close = {
-	display: "flex",
-	justifyContent: "flex-end",
-	alignItems: "center",
-	flexDirection: "row",
-};
 
 const Register = ({ setShowRegister }) => {
 	const {
 		register,
 		handleSubmit,
 		reset,
-		formState: { errors },
+		formState: { errors, isSubmitSuccessful },
 	} = useForm({
 		mode: "onChange",
 		resolver: yupResolver(registrationSchema),
+		defaultValues: defaultFormValues,
 	});
 
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
@@ -144,171 +124,143 @@ const Register = ({ setShowRegister }) => {
 							<CloseIcon />
 						</IconButton>
 					</Box>
-					<Typography variant="h5" sx={{ my: 4 }}>
-						Register for your new NextByte Account
+					<Box
+						sx={{
+							height: 30,
+						}}
+						component={"img"}
+						src={"/images/logo-black.png"}
+						alt={"NextByte Logo"}
+					/>
+					<Typography variant="h5" sx={{ mb: 4, mt: 1 }}>
+						Register for your new account
 					</Typography>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<Grid container spacing={2}>
 							<Grid xs={12} sm={6} item>
-								<TextField
+								<FormTextField
 									label="First Name"
-									placeholder="Enter first name"
-									fullWidth
-									{...register("firstName")}
+									name="firstName"
+									register={register}
+									error={errors.firstName}
 								/>
-								<span style={{ color: "red" }}>
-									{errors.firstName?.message}
-								</span>
 							</Grid>
 							<Grid xs={12} sm={6} item>
-								<TextField
+								<FormTextField
 									label="Last Name"
-									placeholder="Enter last name"
-									variant="outlined"
-									fullWidth
-									{...register("lastName")}
+									name="lastName"
+									register={register}
+									error={errors.lastName}
 								/>
-								<span style={{ color: "red" }}>{errors.lastName?.message}</span>
 							</Grid>
 							<Grid xs={6} item>
-								<TextField
+								<FormTextField
 									type="number"
-									label="Phone"
-									placeholder="Enter phone number"
-									variant="outlined"
-									fullWidth
-									{...register("phoneNumber")}
+									label="Phone Number"
+									name="phoneNumber"
+									register={register}
+									error={errors.phoneNumber}
 								/>
-								<span style={{ color: "red" }}>
-									{errors.phoneNumber?.message}
-								</span>
 							</Grid>
 							<Grid xs={6} item>
-								<TextField
-									type="email"
+								<FormTextField
 									label="Email"
-									placeholder="Enter email"
-									variant="outlined"
-									fullWidth
-									{...register("email")}
+									name="email"
+									register={register}
+									error={errors.email}
+									type="email"
 								/>
-								<span style={{ color: "red" }}>{errors.email?.message}</span>
 							</Grid>
 							<Grid xs={12} item>
-								<TextField
+								<FormTextField
 									label="Street"
-									placeholder="Enter street"
-									variant="outlined"
-									fullWidth
-									{...register("street")}
+									name="street"
+									register={register}
+									error={errors.street}
 								/>
-								<span style={{ color: "red" }}>{errors.street?.message}</span>
 							</Grid>
 							<Grid xs={12} sm={4} item>
-								<TextField
+								<FormTextField
 									label="City"
-									placeholder="Enter city"
-									variant="outlined"
-									fullWidth
-									{...register("city")}
+									name="city"
+									register={register}
+									error={errors.city}
 								/>
-								<span style={{ color: "red" }}>{errors.city?.message}</span>
 							</Grid>
 							<Grid xs={12} sm={4} item>
-								<TextField
+								<FormTextField
 									label="State / Province"
-									placeholder="Enter state / province of residence"
-									variant="outlined"
-									fullWidth
-									{...register("state")}
+									name="state"
+									register={register}
+									error={errors.state}
 								/>
-								<span style={{ color: "red" }}>{errors.state?.message}</span>
 							</Grid>
-							<Grid type="number" xs={12} sm={4} item>
-								<TextField
+							<Grid xs={12} sm={4} item>
+								<FormTextField
 									label="Zip"
-									placeholder="Enter zip"
-									variant="outlined"
-									fullWidth
-									{...register("zip")}
+									name="zip"
+									register={register}
+									error={errors.zip}
+									type="number"
 								/>
-								<span style={{ color: "red" }}>{errors.zip?.message}</span>
 							</Grid>
 							<Grid xs={6} item>
-								<TextField
+								<FormTextField
 									label="Country"
-									placeholder="Enter Country"
-									variant="outlined"
-									fullWidth
-									{...register("country")}
+									name="country"
+									register={register}
+									error={errors.country}
 								/>
-								<span style={{ color: "red" }}>{errors.country?.message}</span>
 							</Grid>
 							<Grid xs={6} item>
-								<TextField
+								<FormTextField
+									label="Date of Birth"
+									name="dateOfBirth"
+									register={register}
+									error={errors.dateOfBirth}
 									type="Date"
-									label="Date of birth"
-									variant="outlined"
-									fullWidth
-									{...register("dateOfBirth")}
-									InputLabelProps={{
-										shrink: true,
-									}}
 								/>
-								<span style={{ color: "red" }}>
-									{errors.dateOfBirth?.message}
-								</span>
 							</Grid>
 							<Grid xs={6} item>
-								<TextField
+								<FormTextField
 									label="Password"
-									placeholder="Enter your password"
-									variant="outlined"
+									name="password"
 									type="password"
-									fullWidth
-									{...register("password")}
-									InputProps={{
-										endAdornment: (
-											<InputAdornment position="end">
-												<Tooltip
-													title="Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character."
-													placement="right"
-													arrow
-												>
-													<Avatar>
-														<HelpOutlineIcon />
-													</Avatar>
-												</Tooltip>
-											</InputAdornment>
-										),
-									}}
+									register={register}
+									error={errors.password}
 								/>
-								<span style={{ color: "red" }}>{errors.password?.message}</span>
 							</Grid>
 							<Grid xs={6} item>
-								<TextField
+								<FormTextField
 									label="Confirm Password"
+									name="confirmPassword"
 									type="password"
-									placeholder="Enter your password"
-									variant="outlined"
-									fullWidth
-									{...register("confirmPassword")}
+									register={register}
+									error={errors.confirmPassword}
 								/>
-								<span style={{ color: "red" }}>
-									{errors.confirmPassword?.message}
-								</span>
 							</Grid>
-							<Grid xs={12} item></Grid>
-							<Grid item>
-								<Button type="submit" variant="contained" color="success">
+							<Box
+								component={"div"}
+								sx={{
+									display: "flex",
+									alignItems: "flex-end",
+									justifyContent: "flex-end",
+									flexDirection: "row",
+									width: "100%",
+									mt: 3,
+								}}
+							>
+								<Button type="submit" variant="contained" color="primary">
 									Submit
 								</Button>
-							</Grid>
-							<Grid item>
-								<Button onClick={reset} variant="outlined">
+								<Button
+									sx={{ ml: 1 }}
+									onClick={() => reset()}
+									variant="outlined"
+								>
 									Reset
 								</Button>
-							</Grid>
+							</Box>
 						</Grid>
 					</form>
 

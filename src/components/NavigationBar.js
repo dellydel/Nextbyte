@@ -108,7 +108,7 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					)}
 				</Box>
 				<Modal open={showLogin} onClose={() => setShowLogin(false)}>
-					<Box sx={loginModalStyle}>
+					<Box sx={modalStyle}>
 						<Login setShowRegister={setShowRegister} />
 					</Box>
 				</Modal>

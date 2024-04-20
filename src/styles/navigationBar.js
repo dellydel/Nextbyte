@@ -11,13 +11,6 @@ export const navLinkStyle = {
 	textTransform: "none",
 };
 
-export const loginModalStyle = {
-	position: "absolute",
-	top: 95,
-	left: 1255,
-	width: 400,
-};
-
 export const modalStyle = {
 	display: "flex",
 	justifyContent: "center",

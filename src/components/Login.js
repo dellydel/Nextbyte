@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Widgets } from "@mui/icons-material";
 import {
 	Card,
 	CardContent,
@@ -19,6 +20,7 @@ const linkStyle = {
 };
 
 const loginCardStyle = {
+	width: 400,
 	padding: 1,
 	backgroundColor: "lightGrey",
 	borderRadius: "10px",

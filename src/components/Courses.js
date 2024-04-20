@@ -12,24 +12,31 @@ const Courses = ({ count }) => {
 		error,
 	} = useCoursesData();
 
+	const coursesCount = count === "all" ? courses.length : count;
 	return (
 		<Box
 			component={"div"}
 			sx={{
 				flexWrap: "wrap",
 				display: "flex",
-				gap: 5,
-				mx: "180px",
-				maxWidth: "1440px",
-				justifyContent: "center",
+				width: "1015px",
+				justifyContent: "flex-start",
+				alignItems: "center",
+				mx: "auto",
+				mt: 0,
+				mb: 0,
 			}}
 		>
 			{isPending && <span>Loading...</span>}
 			{isError && <span>{error.message}</span>}
 			{isSuccess && courses && (
 				<>
-					{courses.slice(0, count).map((course) => (
-						<Box key={course.id} component={"div"} sx={{ width: 486 }}>
+					{courses.slice(0, coursesCount).map((course) => (
+						<Box
+							key={course.id}
+							component={"div"}
+							sx={{ width: 486, margin: "10px" }}
+						>
 							<Course course={course} />
 						</Box>
 					))}

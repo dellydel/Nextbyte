@@ -1,37 +1,54 @@
 import * as yup from "yup";
 
 const registrationSchema = yup.object().shape({
-	firstName: yup.string().required("first name is required").min(2).max(30),
-	lastName: yup.string().required("last name is required").min(2).max(30),
+	firstName: yup.string().required("First name is required.").min(2).max(30),
+	lastName: yup.string().required("Last name is required.").min(2).max(30),
 	phoneNumber: yup
 		.string()
-		.required("phone number is required")
-		.matches(/^[0-9]+$/, "not a valid phone number"),
-	email: yup.string().email("not a valid email").required("email is required"),
-	street: yup.string().required("street address is required"),
-	city: yup.string().required("city is required"),
-	state: yup.string().required("state is required"),
+		.required("Phone number is required.")
+		.matches(/^[0-9]+$/, "Please enter a valid phone number."),
+	email: yup
+		.string()
+		.email("Please enter a valid email")
+		.required("Email is required."),
+	street: yup.string().required("Street address is required."),
+	city: yup.string().required("City is required."),
+	state: yup.string().required("State is required."),
 	zip: yup
 		.string()
-		.required("zip code is required")
-		.matches(/^[0-9]+$/, "only numeric digits are allowed"),
-	country: yup.string().required("country is required"),
+		.required("Zip code is required.")
+		.matches(/^[0-9]+$/, "Only numeric digits are allowed."),
+	country: yup.string().required("Country is required."),
 	dateOfBirth: yup
-		.date()
-		.typeError("invalid date of birth entered")
-		.required("date of birth is required")
-		.max(new Date(new Date().getFullYear() - 18, 0, 1), "must be 18 years old"),
+		.date("Please enter a valid date.")
+		.required("Date of birth is required.")
+		.max(new Date(), "Please enter a date in the past."),
 	password: yup
 		.string()
-		.min(7, "password should be at least 7 characters")
-		.required("password is required")
-		.matches(/[0-9]+/, "One numeric character required")
-		.matches(/[a-z]+/, "One lowercase character required")
-		.matches(/[A-Z]+/, "One uppercase character required")
-		.matches(/[@$!%*#?&]+/, "One special character required"),
+		.min(7, "Password should be at least 7 characters.")
+		.required("Password is required.")
+		.matches(
+			/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[0-9a-zA-Z!@#$%^&*(),.?":{}|<>]{8,}$/,
+			"Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+		),
 	confirmPassword: yup
 		.string()
-		.required("please confirm password")
-		.oneOf([yup.ref("password"), null], "passwords must match"),
+		.required("Please confirm password.")
+		.oneOf([yup.ref("password"), null], "Passwords must match."),
 });
-export { registrationSchema };
+
+const defaultFormValues = {
+	firstName: "",
+	lastName: "",
+	phoneNumber: "",
+	email: "",
+	street: "",
+	city: "",
+	state: "",
+	zip: "",
+	country: "",
+	dateOfBirth: "",
+	password: "",
+	confirmPassword: "",
+};
+export { registrationSchema, defaultFormValues };

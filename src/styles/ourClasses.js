@@ -40,18 +40,11 @@ export const instructorsHeader = {
 };
 
 export const viewAll = {
-	alignItems: "center",
-	backgroundColor: "#000e1d",
-	border: "1px solid",
-	borderColor: "#3a86ff",
-	borderRadius: "8px",
-	display: "flex",
-	gap: "10px",
-	height: "85px",
-	justifyContent: "center",
-	padding: "0px 32px",
-	position: "relative",
-	width: "996px",
+	width: 1000,
+	height: 85,
+	textTransform: "none",
+	borderWidth: 3,
+	borderRadius: 2,
 };
 
 export const viewAllText = {
