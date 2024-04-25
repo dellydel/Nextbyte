@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Widgets } from "@mui/icons-material";
 import {
 	Card,
 	CardContent,
@@ -8,18 +9,27 @@ import {
 	Button,
 	Box,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { AuthContext } from "../context/AuthContext";
+import { header } from "../styles/text";
 
 const linkStyle = {
 	color: "blue",
-	backgroundColor: "white",
+	backgroundColor: "lightGrey",
 	cursor: "pointer",
 	margin: "0 10px",
 };
 
-const Login = () => {
-	const router = useRouter();
+const loginCardStyle = {
+	width: 400,
+	padding: 1,
+	backgroundColor: "lightGrey",
+	borderRadius: "10px",
+	"& .MuiInputBase-root": {
+		backgroundColor: "white",
+	},
+};
+
+const Login = ({ setShowRegister }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [awaitingCode, setAwaitingCode] = useState(false);
@@ -60,7 +70,6 @@ const Login = () => {
 			const result = await handleConfirmation(email, code);
 			if (result.isSignUpComplete) {
 				setShowLogin(false);
-				router.push("/user");
 			}
 		} catch (error) {
 			console.log(error);
@@ -101,14 +110,21 @@ const Login = () => {
 
 	const toRegistration = () => {
 		setShowLogin(false);
-		router.push("/register");
+		setShowRegister(true);
 	};
 
 	return (
-		<Card sx={{ padding: 1 }}>
+		<Card sx={loginCardStyle}>
 			<CardContent>
 				<Typography gutterBottom variant="h6">
-					{!resetPassword && !awaitingNewPassword && "Log in"}
+					{!resetPassword && !awaitingNewPassword && (
+						<Typography
+							variant="span"
+							sx={{ ...header, color: "black", fontSize: "32px" }}
+						>
+							Login
+						</Typography>
+					)}
 					{resetPassword && "Forgot Password"}
 					{awaitingNewPassword && "Reset Password"}
 				</Typography>

@@ -4,13 +4,19 @@ import { Box } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import PopupMessage from "../components/PopupMessage";
 import { AuthProvider } from "../context/AuthContext";
+import { PopupProvider } from "../context/PopupContext";
 import TanstackProvider from "../providers/TanstackProvider";
 import theme from "../theme";
 
-const RootLayout = ({ children, pageProps }) => {
+const contentStyle = {
+	maxWidth: 1440,
+	margin: "0 auto",
+	backgroundColor: "#f8f9fa",
+};
+
+const RootLayout = ({ children }) => {
 	return (
 		<html lang="en">
 			<body>
@@ -21,16 +27,14 @@ const RootLayout = ({ children, pageProps }) => {
 								<CssBaseline />
 								<Box
 									sx={{
-										display: "flex",
-										flexDirection: "column",
+										backgroundColor: "lightGrey",
 										minHeight: "100vh",
 									}}
 								>
-									<div style={{ flex: 1 }}>
-										<Navigation />
-										{children}
-									</div>
-									<Footer />
+									<PopupProvider>
+										<PopupMessage />
+										<Box sx={contentStyle}>{children}</Box>
+									</PopupProvider>
 								</Box>
 							</ThemeProvider>
 						</AuthProvider>

@@ -1,15 +1,20 @@
-import React from "react";
-import { Box } from "@mui/material";
-import { ourTrainingContent, ourPricingContent } from "../data/featureContent";
+import React, { forwardRef } from "react";
+import Box from "@mui/material/Box";
 import Feature from "./Feature";
+import SuccessFeature from "./SuccessFeature";
+import WelcomeFeature from "./WelcomeFeature";
 
-const Features = () => {
+const Features = forwardRef((props, ref) => {
 	return (
-		<Box sx={{ mb: 10 }}>
-			<Feature textPosition="left" content={ourTrainingContent} />
-			<Feature textPosition="right" content={ourPricingContent} />
+		<Box component="div" ref={ref}>
+			<Feature>
+				<WelcomeFeature />
+			</Feature>
+			<Feature>
+				<SuccessFeature />
+			</Feature>
 		</Box>
 	);
-};
+});
 
 export default Features;
