@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import {
 	Button,
@@ -9,7 +9,9 @@ import {
 	IconButton,
 	Box,
 } from "@mui/material";
+import axios from "axios";
 import { PopupContext } from "../context/PopupContext";
+import PopupMessage from "./PopupMessage";
 
 const wrapper = {
 	padding: 2,
@@ -59,9 +61,11 @@ const ContactForm = ({ handleClose }) => {
 			.post(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/contact`, formData)
 			.then((res) => {
 				reset();
+				const parsedResponse = JSON.parse(res.data);
+				const message = parsedResponse.message;
 				setSnackbarState({
 					type: "success",
-					message: res.data,
+					message: message,
 					isOpen: true,
 				});
 			})
