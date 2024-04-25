@@ -9,6 +9,7 @@ import {
 	IconButton,
 	Box,
 } from "@mui/material";
+import { PopupContext } from "../context/PopupContext";
 
 const wrapper = {
 	padding: 2,
@@ -30,12 +31,19 @@ export const close = {
 	flexDirection: "row",
 };
 
+const defaultState = {
+	name: "",
+	email: "",
+	message: "",
+};
+
 const ContactForm = ({ handleClose }) => {
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		message: "",
-	});
+	const [formData, setFormData] = useState(defaultState);
+	const { snackbarState, setSnackbarState } = useContext(PopupContext);
+
+	const reset = () => {
+		setFormData(defaultState);
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -47,55 +55,81 @@ const ContactForm = ({ handleClose }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		axios
+			.post(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/contact`, formData)
+			.then((res) => {
+				reset();
+				setSnackbarState({
+					type: "success",
+					message: res.data,
+					isOpen: true,
+				});
+			})
+			.catch((err) => {
+				setSnackbarState({
+					type: "error",
+					message: err.message,
+					isOpen: true,
+				});
+			});
 	};
 
 	return (
-		<Card sx={wrapper}>
-			<CardContent>
-				<Box sx={close}>
-					<IconButton color="inherit" aria-label="close" onClick={handleClose}>
-						<CloseIcon />
-					</IconButton>
-				</Box>
-				<Typography variant="h6">Request More Information</Typography>
-				<form onSubmit={handleSubmit}>
-					<TextField
-						fullWidth
-						margin="normal"
-						label="Name"
-						name="name"
-						value={formData.name}
-						onChange={handleChange}
-						required
-					/>
-					<TextField
-						fullWidth
-						margin="normal"
-						label="Email"
-						name="email"
-						type="email"
-						value={formData.email}
-						onChange={handleChange}
-						required
-					/>
-					<TextField
-						fullWidth
-						margin="normal"
-						label="Message"
-						name="message"
-						multiline
-						rows={4}
-						value={formData.message}
-						onChange={handleChange}
-						required
-					/>
-					<Button type="submit" variant="contained" color="primary">
-						Submit
-					</Button>
-				</form>
-			</CardContent>
-		</Card>
+		<>
+			<PopupMessage
+				snackbarState={snackbarState}
+				setSnackbarState={setSnackbarState}
+			/>
+			<Card sx={wrapper}>
+				<CardContent>
+					<Box sx={close}>
+						<IconButton
+							color="inherit"
+							aria-label="close"
+							onClick={handleClose}
+						>
+							<CloseIcon />
+						</IconButton>
+					</Box>
+					<Typography variant="h6">Request More Information</Typography>
+					<form onSubmit={handleSubmit}>
+						<TextField
+							fullWidth
+							margin="normal"
+							label="Name"
+							name="name"
+							value={formData.name}
+							onChange={handleChange}
+							required
+						/>
+						<TextField
+							fullWidth
+							margin="normal"
+							label="Email"
+							name="email"
+							type="email"
+							value={formData.email}
+							onChange={handleChange}
+							required
+						/>
+						<TextField
+							fullWidth
+							margin="normal"
+							label="Message"
+							name="message"
+							multiline
+							rows={4}
+							value={formData.message}
+							onChange={handleChange}
+							required
+						/>
+						<Button type="submit" variant="contained" color="primary">
+							Submit
+						</Button>
+					</form>
+				</CardContent>
+			</Card>
+		</>
 	);
 };
 
