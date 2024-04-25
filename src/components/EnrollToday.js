@@ -9,7 +9,7 @@ import {
 	headerText,
 	headerTextAltColor,
 } from "../styles/enrollToday";
-import { modalStyle } from "../styles/navigationBar";
+import { modalStyle } from "../styles/modal";
 import Register from "./Register";
 import TrustedAvatars from "./TrustedAvatars";
 

@@ -86,7 +86,6 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 	}, [user]);
 
 	const toCheckout = () => {
-		setShowDetails(false);
 		setShowCheckout(true);
 	};
 
@@ -191,7 +190,7 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 						</Grid>
 					</>
 				)}
-				{isCourseMaterialsPending && <span>Loading course materials...</span>}
+				{isCourseMaterialsPending && <span>Loading course details...</span>}
 				{isCourseMaterialsError && <span>{courseMaterialsError.message}</span>}
 				{isCourseMaterialsSuccess && courseMaterials && registered && (
 					<CourseMaterials data={courseMaterials} />

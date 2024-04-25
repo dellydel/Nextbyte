@@ -9,7 +9,7 @@ import {
 	wrapper,
 	courseTitle,
 } from "../styles/course";
-import { modalStyle } from "../styles/navigationBar";
+import { modalStyle } from "../styles/modal";
 import Checkout from "./Checkout";
 import CourseChips from "./CourseChips";
 import CourseDetails from "./CourseDetails";
@@ -59,8 +59,12 @@ const Course = ({ course }) => {
 							</Typography>
 						</Grid>
 						<Grid item xs={6} style={{ textAlign: "right" }}>
-							<Button variant="contained" onClick={() => setShowDetails(true)}>
-								<ArrowForwardIcon title="show details" />
+							<Button
+								title="show details"
+								variant="contained"
+								onClick={() => setShowDetails(true)}
+							>
+								<ArrowForwardIcon />
 							</Button>
 						</Grid>
 					</Grid>
@@ -68,18 +72,18 @@ const Course = ({ course }) => {
 			</Card>
 			<Modal open={showDetails} onClose={() => setShowDetails(false)}>
 				<Box sx={modalStyle}>
-					<CourseDetails
-						courseId={course.id}
-						setShowDetails={setShowDetails}
-						setShowCheckout={setShowCheckout}
-					/>
+					{!showCheckout && (
+						<CourseDetails
+							courseId={course.id}
+							setShowDetails={setShowDetails}
+							setShowCheckout={setShowCheckout}
+						/>
+					)}
+					{showCheckout && (
+						<Checkout course={course} setShowCheckout={setShowCheckout} />
+					)}
 				</Box>
 			</Modal>
-			{/* <Modal open={showCheckout} onClose={() => setShowCheckout(false)}>
-				<Box sx={modalStyle}>
-					<Checkout course={course} />
-				</Box>
-			</Modal> */}
 		</>
 	);
 };

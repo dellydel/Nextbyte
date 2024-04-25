@@ -3,14 +3,8 @@ import { Box, Modal, Button, Link } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import RouterLink from "next/link";
 import { AuthContext } from "../context/AuthContext";
-import {
-	toolbar,
-	logo,
-	navBar,
-	navLinkStyle,
-	loginModalStyle,
-	modalStyle,
-} from "../styles/navigationBar";
+import { modalStyle } from "../styles/modal";
+import { toolbar, logo, navBar, navLinkStyle } from "../styles/navigationBar";
 import Login from "./Login";
 import LogoutDialog from "./LogoutDialog";
 import Register from "./Register";
