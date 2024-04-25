@@ -11,6 +11,6 @@ export const useStudentByIdData = (studentId) => {
 	return useQuery({
 		queryKey: ["student", studentId],
 		queryFn: () => fetchStudentById(studentId),
-		select: (data) => data.data.map((student) => student),
+		select: (data) => data.data.Item,
 	});
 };
