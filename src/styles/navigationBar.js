@@ -11,13 +11,6 @@ export const navLinkStyle = {
 	textTransform: "none",
 };
 
-export const modalStyle = {
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	height: "100vh",
-};
-
 export const toolbar = {
 	mx: "auto",
 	alignItems: "flex-start",

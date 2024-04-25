@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
 import { heroText, heroCallToAction } from "../data/homeContent";
-import { modalStyle } from "../styles/navigationBar";
+import { modalStyle } from "../styles/modal";
 import Register from "./Register";
 import TrustedAvatars from "./TrustedAvatars";
 

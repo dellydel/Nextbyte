@@ -1,11 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import { Box, Typography, Grid, Button } from "@mui/material";
+import {
+	Box,
+	Typography,
+	Grid,
+	Button,
+	Modal,
+	Card,
+	CardContent,
+	IconButton,
+} from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 import Link from "next/link";
 import { instagramURL } from "../data/constants";
+import { terms, privacy } from "../data/footerContent";
 import {
 	wrapper,
 	companyInfo,
@@ -19,9 +30,31 @@ import {
 	copyright,
 	copyrightText,
 	navLinkStyle,
+	policyText,
 } from "../styles/footer";
+import { close } from "../styles/modal";
 
+const modalStyle = {
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	height: "100vh",
+};
+
+const modalWrapper = {
+	padding: 1,
+	borderRadius: 3,
+	boxShadow: 3,
+	height: 500,
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "flex-start",
+	overflowY: "auto",
+};
 const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
+	const [showTerms, setShowTerms] = useState(false);
+	const [showPrivacy, setShowPrivacy] = useState(false);
+
 	return (
 		<>
 			<Box component={"div"} sx={wrapper}>
@@ -121,7 +154,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 						</Typography>
 						<Box component={"div"} sx={column}>
 							<Typography variant="div" sx={menuItem}>
-								admin@nextbyteweb.com
+								info@nextbyteweb.com
 							</Typography>
 							<Typography variant="div" sx={menuItem}>
 								(555) 555-5555
@@ -134,10 +167,22 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 						</Typography>
 						<Box component={"div"} sx={column}>
 							<Typography variant="div" sx={menuItem}>
-								Terms and Conditions
+								<MuiLink
+									component={Button}
+									onClick={() => setShowTerms(true)}
+									sx={navLinkStyle}
+								>
+									Terms and Conditions
+								</MuiLink>
 							</Typography>
 							<Typography variant="div" sx={menuItem}>
-								Privacy Policy
+								<MuiLink
+									component={Button}
+									onClick={() => setShowPrivacy(true)}
+									sx={navLinkStyle}
+								>
+									Privacy Policy
+								</MuiLink>
 							</Typography>
 						</Box>
 					</Box>
@@ -148,6 +193,55 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 					&copy;Copyright 2024 Nextbyte, LLC - All Rights Reserved
 				</Typography>
 			</Box>
+			<Modal open={showTerms} onClose={() => setShowTerms(false)}>
+				<Box sx={modalStyle}>
+					<Card sx={modalWrapper}>
+						<CardContent
+							sx={{
+								width: "500px",
+								whiteSpace: "normal",
+							}}
+						>
+							<Box sx={close}>
+								<IconButton
+									color="inherit"
+									aria-label="close"
+									onClick={() => setShowTerms(false)}
+								>
+									<CloseIcon />
+								</IconButton>
+							</Box>
+							<Typography variant="div" sx={policyText}>
+								{terms}
+							</Typography>
+						</CardContent>
+					</Card>
+				</Box>
+			</Modal>
+			<Modal open={showPrivacy} onClose={() => setShowPrivacy(false)}>
+				<Box sx={modalStyle}>
+					<Card sx={modalWrapper}>
+						<CardContent
+							sx={{
+								maxWidth: "850px",
+							}}
+						>
+							<Box sx={close}>
+								<IconButton
+									color="inherit"
+									aria-label="close"
+									onClick={() => setShowPrivacy(false)}
+								>
+									<CloseIcon />
+								</IconButton>
+							</Box>
+							<Typography variant="div" sx={policyText}>
+								{privacy}
+							</Typography>
+						</CardContent>
+					</Card>
+				</Box>
+			</Modal>
 		</>
 	);
 };

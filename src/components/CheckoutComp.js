@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import { Widgets } from "@mui/icons-material";
-import { Box } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { Box, IconButton } from "@mui/material";
 import {
 	EmbeddedCheckoutProvider,
 	EmbeddedCheckout,
@@ -14,7 +14,16 @@ const stripePromise = loadStripe(
 	`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`,
 );
 
-const CheckoutComp = ({ course }) => {
+export const close = {
+	display: "flex",
+	justifyContent: "flex-end",
+	alignItems: "center",
+	flexDirection: "row",
+	mr: 6,
+	mb: 2,
+};
+
+const CheckoutComp = ({ course, setShowCheckout }) => {
 	const [clientSecret, setClientSecret] = useState();
 
 	useEffect(() => {
@@ -34,7 +43,16 @@ const CheckoutComp = ({ course }) => {
 	}, []);
 
 	return (
-		<Box>
+		<Box sx={{ width: 1000 }}>
+			<Box sx={close}>
+				<IconButton
+					color="inherit"
+					aria-label="close"
+					onClick={() => setShowCheckout(false)}
+				>
+					<CloseIcon />
+				</IconButton>
+			</Box>
 			{clientSecret && (
 				<EmbeddedCheckoutProvider
 					stripe={stripePromise}

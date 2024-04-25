@@ -124,3 +124,13 @@ export const navLinkStyle = {
 	textTransform: "none",
 	p: 0,
 };
+
+export const policyText = {
+	color: "black",
+	fontSize: "14px",
+	fontWeight: 400,
+	letterSpacing: "0",
+	lineHeight: "21px",
+	position: "relative",
+	width: "fit-content",
+};
