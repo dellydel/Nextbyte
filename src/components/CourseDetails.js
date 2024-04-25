@@ -176,8 +176,6 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 								<Grid xs={12} item sx={{ mt: "10px" }}>
 									<Button
 										style={{
-											color: "white",
-											backgroundColor: "green",
 											mt: "150px",
 										}}
 										variant="contained"

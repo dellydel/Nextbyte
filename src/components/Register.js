@@ -28,7 +28,7 @@ const Register = ({ setShowRegister }) => {
 		register,
 		handleSubmit,
 		reset,
-		formState: { errors, isSubmitSuccessful },
+		formState: { errors },
 	} = useForm({
 		mode: "onChange",
 		resolver: yupResolver(registrationSchema),
@@ -124,6 +124,7 @@ const Register = ({ setShowRegister }) => {
 							<CloseIcon />
 						</IconButton>
 					</Box>
+
 					<Box
 						sx={{
 							height: 30,

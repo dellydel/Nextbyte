@@ -8,6 +8,7 @@ import { toolbar, logo, navBar, navLinkStyle } from "../styles/navigationBar";
 import Login from "./Login";
 import LogoutDialog from "./LogoutDialog";
 import Register from "./Register";
+import User from "./User";
 
 const StyledButton = styled(Button)(`
   text-transform: none;
@@ -16,6 +17,7 @@ const StyledButton = styled(Button)(`
 const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	const { showLogin, setShowLogin, user } = useContext(AuthContext);
 	const [showRegister, setShowRegister] = useState(false);
+	const [showUser, setShowUser] = useState(false);
 	const [dialogOpen, setDialogOpen] = useState(false);
 
 	return (
@@ -77,12 +79,18 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					{user !== null ? (
 						<>
 							<Link
-								component={RouterLink}
-								href={"/user"}
-								sx={{ ...navLinkStyle, color: "secondary.main" }}
+								component={Button}
+								onClick={() => setShowUser(true)}
+								sx={{
+									...navLinkStyle,
+									color: "secondary.main",
+									display: "flex",
+									alignItems: "center",
+								}}
 							>
-								<b>My Courses</b>
+								<b>My Account ({user})</b>
 							</Link>
+
 							<StyledButton
 								sx={navLinkStyle}
 								variant="contained"
@@ -109,6 +117,11 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 				<Modal open={showRegister} onClose={() => setShowRegister(false)}>
 					<Box sx={modalStyle}>
 						<Register setShowRegister={setShowRegister} />
+					</Box>
+				</Modal>
+				<Modal open={showUser} onClose={() => setShowUser(false)}>
+					<Box sx={modalStyle}>
+						<User setShowUser={setShowUser} />
 					</Box>
 				</Modal>
 				<LogoutDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />

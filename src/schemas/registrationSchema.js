@@ -37,6 +37,31 @@ const registrationSchema = yup.object().shape({
 		.oneOf([yup.ref("password"), null], "Passwords must match."),
 });
 
+const registrationSchemaEdit = yup.object().shape({
+	firstName: yup.string().required("First name is required.").min(2).max(30),
+	lastName: yup.string().required("Last name is required.").min(2).max(30),
+	phoneNumber: yup
+		.string()
+		.required("Phone number is required.")
+		.matches(/^[0-9]+$/, "Please enter a valid phone number."),
+	email: yup
+		.string()
+		.email("Please enter a valid email")
+		.required("Email is required."),
+	street: yup.string().required("Street address is required."),
+	city: yup.string().required("City is required."),
+	state: yup.string().required("State is required."),
+	zip: yup
+		.string()
+		.required("Zip code is required.")
+		.matches(/^[0-9]+$/, "Only numeric digits are allowed."),
+	country: yup.string().required("Country is required."),
+	dateOfBirth: yup
+		.date("Please enter a valid date.")
+		.required("Date of birth is required.")
+		.max(new Date(), "Please enter a date in the past."),
+});
+
 const defaultFormValues = {
 	firstName: "",
 	lastName: "",
@@ -51,4 +76,4 @@ const defaultFormValues = {
 	password: "",
 	confirmPassword: "",
 };
-export { registrationSchema, defaultFormValues };
+export { registrationSchema, defaultFormValues, registrationSchemaEdit };
