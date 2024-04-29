@@ -18,6 +18,13 @@ const fetchCoursesById = async (courseIds) => {
 	);
 };
 
+const fetchCoursesByRegistrationId = async (registrationIds) => {
+	return axios.post(
+		`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
+		registrationIds,
+	);
+};
+
 export const useCoursesData = () => {
 	return useQuery({
 		queryKey: ["courses"],
@@ -41,5 +48,14 @@ export const useCoursesByIdData = ({ courseIds }) => {
 		queryFn: () => fetchCoursesById(courseIds),
 		select: (data) => data.data.map((course) => course),
 		enabled: courseIds?.length,
+	});
+};
+
+export const useCoursesByRegistrationIdData = ({ registrationIds }) => {
+	return useQuery({
+		queryKey: ["courses", registrationIds],
+		queryFn: () => fetchCoursesByRegistrationId(registrationIds),
+		select: (data) => data.data.map((course) => course),
+		enabled: registrationIds?.length,
 	});
 };

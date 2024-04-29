@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
+import { getStudentByEmail } from "../api/studentsAPI";
 import { useStudentByIdData } from "../hooks/useStudentsData";
 import UserInfo from "./UserInfo";
 import UserInfoEdit from "./UserInfoEdit";
 
-const Personal = ({ user }) => {
+const Personal = async ({ user }) => {
 	const [editMode, setEditMode] = useState(false);
-	const studentId = "de0588aa-b26c-463c-ae44-30c281a7f8fc";
+	const studentId = await getStudentByEmail(user);
 	const {
 		data: student,
 		isPending,
@@ -18,7 +19,7 @@ const Personal = ({ user }) => {
 
 	return (
 		<Box>
-			{isPending && <span>Loading...</span>}
+			{isPending && <Box sx={{ p: 3 }}>Loading...</Box>}
 			{isError && <span>{error.message}</span>}
 			{isSuccess && student && (
 				<>

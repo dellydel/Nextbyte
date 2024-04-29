@@ -58,14 +58,6 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 		error: courseError,
 	} = useCourseByIdData(courseId);
 
-	const {
-		data: courseMaterials,
-		isPending: isCourseMaterialsPending,
-		isError: isCourseMaterialsError,
-		isSuccess: isCourseMaterialsSuccess,
-		error: courseMaterialsError,
-	} = useCourseMaterialsData();
-
 	useEffect(() => {
 		const fetchRegistrations = async () => {
 			if (user === null) {
@@ -188,11 +180,7 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 						</Grid>
 					</>
 				)}
-				{isCourseMaterialsPending && <span>Loading course details...</span>}
-				{isCourseMaterialsError && <span>{courseMaterialsError.message}</span>}
-				{isCourseMaterialsSuccess && courseMaterials && registered && (
-					<CourseMaterials data={courseMaterials} />
-				)}
+				{registered && <CourseMaterials />}
 			</CardContent>
 		</Card>
 	);

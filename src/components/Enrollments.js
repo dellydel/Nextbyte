@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
+import { ArrowBack } from "@mui/icons-material";
 import { Paper, Box, Button } from "@mui/material";
-import axios from "axios";
+import { getCoursesByRegistrationIds } from "../api/coursesAPI";
 import { getCourseRegistrationsByEmail } from "../api/registrationAPI";
-
-const close = {
-	display: "flex",
-	justifyContent: "flex-end",
-};
+import CourseMaterals from "./CourseMaterials";
+import Enrollment from "./Enrollment";
 
 const Enrollments = ({ user }) => {
-	const [courses, setCourses] = useState([]);
+	const [courses, setCourses] = useState(null);
+	const [materialsVisible, setMaterialsVisible] = useState(false);
+
 	useEffect(() => {
 		const getRegisteredCourses = async (email) => {
 			if (email === null) return [];
@@ -17,37 +17,46 @@ const Enrollments = ({ user }) => {
 			const registrationProductIds =
 				await getCourseRegistrationsByEmail(encodedEmail);
 			if (registrationProductIds?.length > 0) {
-				const courses = await axios.post(
-					`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
-					{
-						courseIds: registrationProductIds,
-					},
+				const courses = await getCoursesByRegistrationIds(
+					registrationProductIds,
 				);
-				setCourses(courses.data);
+				setCourses(courses);
 			}
 		};
 		getRegisteredCourses(user);
 	}, [user]);
+
 	return (
 		<div>
 			{courses && courses.length === 0 && (
 				<h3>You have not registered for any upcoming courses.</h3>
 			)}
-			{courses &&
+			{!materialsVisible &&
+				courses &&
 				courses.length !== 0 &&
 				courses.map((course) => (
-					<Paper sx={{ p: 3, m: 3 }}>
-						<div key={course.id}>
-							<h3>{course.name}</h3>
-							<p>{course.description}</p>
-						</div>
-						<Box sx={close}>
-							<Button variant="contained" aria-label="course materials">
-								Course Materials
-							</Button>
-						</Box>
-					</Paper>
+					<Enrollment
+						setMaterialsVisible={setMaterialsVisible}
+						course={course}
+						key={course.id}
+					/>
 				))}
+			{materialsVisible && (
+				<Paper sx={{ p: 3, m: 3 }}>
+					<Box>
+						<Button
+							onClick={() => setMaterialsVisible(false)}
+							variant="contained"
+							color="inherit"
+							aria-label="back"
+						>
+							<ArrowBack />
+							&nbsp; Courses
+						</Button>
+					</Box>
+					<CourseMaterals setMaterialsVisible={setMaterialsVisible} />
+				</Paper>
+			)}
 		</div>
 	);
 };
