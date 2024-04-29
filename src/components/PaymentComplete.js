@@ -2,15 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-const PaymentSuccessful = () => {
+const PaymentSuccessful = ({ sessionId }) => {
 	const router = useRouter();
 	const [status, setStatus] = useState(null);
 	const [customerEmail, setCustomerEmail] = useState("");
-	const searchParams = useSearchParams();
-
-	const sessionId = searchParams.get("session_id");
 
 	useEffect(() => {
 		fetch(
@@ -22,10 +19,6 @@ const PaymentSuccessful = () => {
 				setCustomerEmail(data.email);
 			});
 	}, [sessionId]);
-
-	if (status === "open") {
-		router.push("/checkout");
-	}
 
 	if (status === "complete") {
 		return (

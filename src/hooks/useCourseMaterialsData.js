@@ -8,6 +8,11 @@ export const useCourseMaterialsData = () => {
 	return useQuery({
 		queryKey: ["courseMaterials"],
 		queryFn: fetchCourseMaterials,
-		select: (data) => data.data.map((courseMaterial) => courseMaterial),
+		select: (data) =>
+			data.data.map((courseMaterial) => {
+				courseMaterial.name = courseMaterial.name.split("/").pop();
+				return courseMaterial;
+			}),
+		initialData: [],
 	});
 };

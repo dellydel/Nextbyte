@@ -28,7 +28,13 @@ const UserInformationScreen = ({ setShowUser }) => {
 					width: "1000px",
 				}}
 			>
-				<Box sx={{ ...close, justifyContent: "space-between", mb: 2 }}>
+				<Box
+					sx={{
+						...close,
+						justifyContent: "space-between",
+						mb: 2,
+					}}
+				>
 					<Typography variant="h5">Account Information</Typography>
 					<IconButton
 						color="inherit"
