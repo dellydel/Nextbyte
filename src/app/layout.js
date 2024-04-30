@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { Box } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -36,7 +37,9 @@ const RootLayout = ({ children }) => {
 								>
 									<PopupProvider>
 										<PopupMessage />
-										<Box sx={contentStyle}>{children}</Box>
+										<Suspense>
+											<Box sx={contentStyle}>{children}</Box>
+										</Suspense>
 									</PopupProvider>
 								</Box>
 							</ThemeProvider>
