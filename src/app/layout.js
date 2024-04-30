@@ -19,6 +19,9 @@ const contentStyle = {
 const RootLayout = ({ children }) => {
 	return (
 		<html lang="en">
+			<head>
+				<title>NextByte, LLC</title>
+			</head>
 			<body>
 				<TanstackProvider>
 					<AppRouterCacheProvider>

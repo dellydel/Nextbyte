@@ -1,9 +1,4 @@
-import axios from "axios";
-
-const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}`;
-const api = axios.create({
-	baseURL: `${API_BASE_URL}`,
-});
+import { api } from "./configs";
 
 export const getCoursesByRegistrationIds = async (registrationIds) => {
 	try {

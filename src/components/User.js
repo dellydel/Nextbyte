@@ -1,5 +1,3 @@
-"use client";
-
 import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
