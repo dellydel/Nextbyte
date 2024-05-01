@@ -5,7 +5,7 @@ export const container = {
 	gap: 4,
 	padding: "0px 24px 0px 0px",
 	position: "relative",
-	width: 486,
+	width: { xs: "100%", md: 486 },
 };
 
 export const header = {

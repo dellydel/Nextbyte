@@ -16,7 +16,7 @@ const heroStyle = {
 	justifyContent: "flex-start",
 	textAlign: "center",
 	pt: 5,
-	px: { xs: 2, md: 0 },
+	px: { xs: 4, md: 0 },
 };
 
 const MainHero = ({ testimonialsRef, aboutRef, coursesRef }) => {

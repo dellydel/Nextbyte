@@ -5,7 +5,10 @@ import { header, headerText, headerHighlight, body } from "../styles/text";
 const CustomSubheader = ({ textArray }) => {
 	return (
 		<>
-			<Box variant={"div"} sx={header}>
+			<Box
+				variant={"div"}
+				sx={{ ...header, fontSize: { xs: "40px", md: "48px" } }}
+			>
 				<Typography variant="span" sx={headerText}>
 					{textArray[0]}
 				</Typography>

@@ -56,7 +56,7 @@ const CallToAction = ({ coursesRef }) => {
 					display: "flex",
 					justifyContent: "center",
 					gap: 2,
-					mb: { xs: 7, md: 16 },
+					mb: { xs: 7, md: 12 },
 				}}
 			>
 				<Button
