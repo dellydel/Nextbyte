@@ -1,13 +1,26 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { successStory } from "../data/homeContent";
-import { container } from "../styles/text";
 import CustomSubheader from "./CustomSubheader";
+
+export const container = {
+	alignItems: "flex-start",
+	display: "flex",
+	flexDirection: "column",
+	gap: 4,
+	padding: "0px 24px 0px 0px",
+	position: "relative",
+	width: { xs: 1, md: 486 },
+	mb: { xs: 2, md: 0 },
+};
 
 const SuccessStoryFeature = () => {
 	return (
 		<Box sx={container}>
-			<CustomSubheader textArray={successStory} />
+			<CustomSubheader
+				textArray={successStory}
+				alignment={{ xs: "left", md: "right" }}
+			/>
 			<Box
 				width={1}
 				height={"253px"}

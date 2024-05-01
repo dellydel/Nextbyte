@@ -1,28 +1,30 @@
 import React, { forwardRef } from "react";
-import { Typography, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { testimonialText } from "../data/homeContent";
 import testimonials from "../data/testimonialsContent";
-import { wrapper, testimonialsContainer } from "../styles/testimonials";
-import { header, headerText, body } from "../styles/text";
+import HeaderAndText from "./HeaderAndText";
 import Testimonial from "./Testimonial";
 
 const Testimonials = forwardRef((props, ref) => {
 	return (
 		<>
-			<Box component="div" sx={wrapper} ref={ref}>
-				<Box component={"div"} sx={{ ...header, width: 0.5 }}>
-					<Typography variant="span" sx={{ ...headerText }}>
-						What our students are saying.
-					</Typography>
-				</Box>
-				<Typography variant="span" sx={{ ...body, width: 0.5, ml: "115px" }}>
-					{testimonialText}
-				</Typography>
-			</Box>
-			<Box sx={testimonialsContainer}>
-				{testimonials.map((testimonial) => {
-					return <Testimonial testimonial={testimonial} key={testimonial.id} />;
-				})}
+			<HeaderAndText
+				headerContent={
+					<span>
+						What our students <br />
+						are saying.
+					</span>
+				}
+				bodyContent={testimonialText}
+			/>
+			<Box sx={{ mx: { xs: 4, md: 25 }, mb: { xs: 8, md: 15 } }}>
+				<Grid container spacing={{ xs: 4, md: 2 }} justifyContent="center">
+					{testimonials.map((testimonial) => {
+						return (
+							<Testimonial testimonial={testimonial} key={testimonial.id} />
+						);
+					})}
+				</Grid>
 			</Box>
 		</>
 	);

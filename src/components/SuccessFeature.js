@@ -5,16 +5,14 @@ import SuccessStoryFeature from "./SuccessStoryFeature";
 
 const SuccessFeature = () => {
 	return (
-		<>
-			{/* <Grid container> */}
-			{/* <Grid item xs={12} md={6}> */}
-			<SuccessStoryFeature />
-			{/* </Grid>
-			<Grid item xs={12} md={6}> */}
-			<SuccessCheckList />
-			{/* </Grid>
-		</Grid> */}
-		</>
+		<Grid container spacing={10} align="center">
+			<Grid item xs={12} md={6} align="right">
+				<SuccessStoryFeature />
+			</Grid>
+			<Grid item xs={12} md={6} align="left">
+				<SuccessCheckList />
+			</Grid>
+		</Grid>
 	);
 };
 

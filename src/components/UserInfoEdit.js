@@ -132,7 +132,7 @@ const UserInfoEdit = ({ student, setEditMode, refetch }) => {
 							alignItems: "flex-end",
 							justifyContent: "flex-end",
 							flexDirection: "row",
-							width: "100%",
+							width: 1,
 							mt: 3,
 						}}
 					>

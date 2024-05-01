@@ -1,23 +1,25 @@
 import React from "react";
-import { Box } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { Box, Grid } from "@mui/material";
 import Welcome from "./Welcome";
 
 const WelcomeFeature = () => {
-	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 	return (
-		<>
-			{!isMobile && (
+		<Grid container spacing={10} align="center">
+			<Grid item xs={12} md={6} align="right">
 				<Box
-					width={"462px"}
-					height={"472px"}
+					sx={{
+						width: { xs: 1, md: "462px" },
+						height: { xs: "405px", md: "472px" },
+					}}
 					component={"img"}
 					src={"/images/sitting_with_laptop.png"}
 					alt={"woman sitting with laptop"}
 				/>
-			)}
-			<Welcome />
-		</>
+			</Grid>
+			<Grid item xs={12} md={6} align="left">
+				<Welcome />
+			</Grid>
+		</Grid>
 	);
 };
 

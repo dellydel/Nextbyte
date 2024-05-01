@@ -2,12 +2,15 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { header, headerText, headerHighlight, body } from "../styles/text";
 
-const CustomSubheader = ({ textArray }) => {
+const CustomSubheader = ({ textArray, alignment }) => {
 	return (
 		<>
 			<Box
 				variant={"div"}
-				sx={{ ...header, fontSize: { xs: "40px", md: "48px" } }}
+				sx={{
+					...header,
+					textAlign: alignment,
+				}}
 			>
 				<Typography variant="span" sx={headerText}>
 					{textArray[0]}
@@ -19,7 +22,7 @@ const CustomSubheader = ({ textArray }) => {
 					{textArray[2]}
 				</Typography>
 			</Box>
-			<Typography variant={"p"} sx={body}>
+			<Typography variant={"div"} sx={{ ...body, textAlign: alignment }}>
 				{textArray[3]}
 			</Typography>
 		</>

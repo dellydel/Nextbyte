@@ -4,7 +4,7 @@ export const wrapper = {
 	justifyContent: "space-between",
 	position: "relative",
 	width: "996px",
-	mx: "200px",
+	mx: 25,
 	py: 8,
 };
 
@@ -89,12 +89,12 @@ export const column = {
 	flex: "0 0 auto",
 	flexDirection: "column",
 	position: "relative",
-	width: "100%",
+	width: 1,
 };
 
 export const copyright = {
 	borderTop: "1px solid rgba(255, 255, 255, 0.19)",
-	mx: "200px",
+	mx: 25,
 	py: 2,
 };
 

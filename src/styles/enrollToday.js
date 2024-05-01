@@ -6,7 +6,7 @@ export const wrapper = {
 	justifyContent: "center",
 	position: "relative",
 	width: "855px",
-	mx: "200px",
+	mx: 25,
 	py: "150px",
 };
 

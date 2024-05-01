@@ -44,7 +44,7 @@ const CallToAction = ({ coursesRef }) => {
 				sx={{
 					fontSize: { xs: "15px", md: "18px" },
 					color: "white",
-					width: "100%",
+					width: 1,
 					mb: 4,
 				}}
 			>

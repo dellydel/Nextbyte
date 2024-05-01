@@ -8,8 +8,8 @@ const container = {
 	justifyContent: "center",
 	mx: { xs: 0, md: "auto" },
 	px: { xs: 5, md: 0 },
-	mt: { xs: 5, md: "140px" },
-	maxWidth: { xs: "100%", md: 1440 },
+	mt: { xs: 10, md: "140px" },
+	width: { xs: 1, md: 1440 },
 };
 
 const Feature = ({ children }) => {

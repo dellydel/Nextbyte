@@ -40,5 +40,5 @@ export const bodyWrapper = {
 	flex: "0 0 auto",
 	gap: "8px",
 	position: "relative",
-	width: "100%",
+	width: 1,
 };

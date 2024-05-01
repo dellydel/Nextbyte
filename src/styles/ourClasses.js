@@ -1,9 +1,9 @@
 export const wrapper = {
 	display: "flex",
-	mx: "200px",
-	pt: "250px",
+	px: { xs: 4, md: 25 },
+	pt: { xs: 5, md: "250px" },
 	mb: 5,
-	maxWidth: 1440,
+	width: { xs: 1, md: 1440 },
 };
 
 export const instructors = {
@@ -13,7 +13,7 @@ export const instructors = {
 	flex: "0 0 auto",
 	gap: 1,
 	position: "relative",
-	width: "100%",
+	width: 1,
 	color: "white",
 	mt: 5,
 };
@@ -40,11 +40,12 @@ export const instructorsHeader = {
 };
 
 export const viewAll = {
-	width: 1000,
+	width: 1440,
 	height: 85,
 	textTransform: "none",
 	borderWidth: 3,
 	borderRadius: 2,
+	mx: { xs: 0, md: 25 },
 };
 
 export const viewAllText = {
