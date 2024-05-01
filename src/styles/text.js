@@ -5,17 +5,16 @@ export const container = {
 	gap: 4,
 	padding: "0px 24px 0px 0px",
 	position: "relative",
-	width: 486,
+	width: { xs: 1, md: 486 },
 };
 
 export const header = {
 	alignSelf: "stretch",
 	color: "transparent",
-	fontSize: "48px",
+	fontSize: { xs: "40px", md: "48px" },
 	fontWeight: "600",
 	letterSpacing: "-1.92px",
 	lineHeight: "normal",
-	mt: "-1px",
 	position: "relative",
 };
 
@@ -36,7 +35,7 @@ export const body = {
 	letterSpacing: "-0.32px",
 	lineHeight: "22.4px",
 	position: "relative",
-	width: "344px",
+	width: 1,
 };
 
 export const learnMore = {

@@ -18,7 +18,7 @@ const PopupMessage = () => {
 			<Alert
 				onClose={() => setSnackbarState({ ...snackbarState, isOpen: false })}
 				severity={snackbarState.type}
-				sx={{ width: "100%" }}
+				sx={{ width: 1 }}
 			>
 				<>{snackbarState.message}</>
 			</Alert>

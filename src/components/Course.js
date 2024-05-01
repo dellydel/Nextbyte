@@ -34,7 +34,7 @@ const Course = ({ course }) => {
 					<Typography variant="p" sx={{ height: 80 }}>
 						{course?.description}
 					</Typography>
-					<Divider sx={{ width: "100%" }} />
+					<Divider sx={{ width: 1 }} />
 					<Box>
 						<Typography component={"div"}>
 							<b>Pricing</b>
@@ -43,7 +43,7 @@ const Course = ({ course }) => {
 							<b>{course?.price}</b>
 						</Typography>
 					</Box>
-					<Divider sx={{ width: "100%" }} />
+					<Divider sx={{ width: 1 }} />
 					<Grid
 						container
 						sx={{

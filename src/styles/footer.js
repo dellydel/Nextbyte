@@ -1,20 +1,22 @@
 export const wrapper = {
+	display: "flex",
+	px: { xs: 4, md: 25 },
+	pt: { xs: 5, md: 8 },
+	mb: 5,
+	width: { xs: 1, md: 1440 },
 	alignItems: "flex-start",
 	display: "flex",
 	justifyContent: "space-between",
 	position: "relative",
-	width: "996px",
-	mx: "200px",
-	py: 8,
 };
 
 export const companyInfo = {
 	alignItems: "flex-start",
 	display: "flex",
 	flexDirection: "column",
-	gap: "25px",
+	gap: { xs: 0, md: "25px" },
 	position: "relative",
-	width: "299px",
+	width: { xs: 1, md: "299px" },
 };
 
 export const companyInfoText = {
@@ -27,6 +29,7 @@ export const companyInfoText = {
 	lineHeight: "19.6px",
 	opacity: 0.6,
 	position: "relative",
+	mb: { xs: 4, md: 0 },
 };
 
 export const aboutUsText = {
@@ -37,7 +40,6 @@ export const aboutUsText = {
 	lineHeight: "normal",
 	position: "relative",
 	whiteSpace: "nowrap",
-	width: "fit-content",
 };
 
 export const footerNavigation = {
@@ -89,12 +91,12 @@ export const column = {
 	flex: "0 0 auto",
 	flexDirection: "column",
 	position: "relative",
-	width: "100%",
+	width: 1,
 };
 
 export const copyright = {
 	borderTop: "1px solid rgba(255, 255, 255, 0.19)",
-	mx: "200px",
+	mx: { xs: 4, md: 25 },
 	py: 2,
 };
 

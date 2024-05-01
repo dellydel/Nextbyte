@@ -133,7 +133,7 @@ const Login = ({ setShowRegister }) => {
 						<h5
 							style={{
 								textAlign: "left",
-								marginBottom: "0px",
+								marginBottom: 0,
 								color: "grey",
 							}}
 						>
@@ -156,9 +156,9 @@ const Login = ({ setShowRegister }) => {
 							<h5
 								style={{
 									textAlign: "left",
-									padding: "0px",
-									marginTop: "0px",
-									marginBottom: "0px",
+									padding: 0,
+									marginTop: 0,
+									marginBottom: 0,
 									color: "grey",
 								}}
 							>
@@ -238,9 +238,9 @@ const Login = ({ setShowRegister }) => {
 								<h5
 									style={{
 										textAlign: "left",
-										padding: "0px",
-										marginTop: "0px",
-										marginBottom: "0px",
+										padding: 0,
+										marginTop: 0,
+										marginBottom: 0,
 										color: "grey",
 									}}
 								>

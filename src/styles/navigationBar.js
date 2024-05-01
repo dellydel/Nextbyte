@@ -12,12 +12,12 @@ export const navLinkStyle = {
 };
 
 export const toolbar = {
-	mx: "auto",
+	mx: { xs: 0, md: "auto" },
 	alignItems: "flex-start",
 	display: "flex",
 	justifyContent: "space-between",
 	position: "relative",
-	width: 1200,
+	width: { xs: 1, md: 1200 },
 };
 
 export const logo = {

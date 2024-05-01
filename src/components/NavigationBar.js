@@ -1,6 +1,17 @@
 import React, { useContext, useState } from "react";
-import { Box, Modal, Button, Link } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Menu as MenuIcon } from "@mui/icons-material";
+import {
+	Box,
+	Modal,
+	Button,
+	Link,
+	IconButton,
+	Drawer,
+	List,
+	ListItem,
+	ListItemText,
+} from "@mui/material";
+import { styled, useMediaQuery } from "@mui/material/";
 import RouterLink from "next/link";
 import { AuthContext } from "../context/AuthContext";
 import { modalStyle } from "../styles/modal";
@@ -19,6 +30,13 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	const [showRegister, setShowRegister] = useState(false);
 	const [showUser, setShowUser] = useState(false);
 	const [dialogOpen, setDialogOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
 
 	return (
 		<>
@@ -38,94 +56,147 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 						alt={"NextByte Logo"}
 					/>
 				</Link>
-				<Box sx={navBar}>
-					<Link
-						component={Button}
-						onClick={() =>
-							aboutRef.current.scrollIntoView({
-								block: "end",
-								behavior: "smooth",
-							})
-						}
-						sx={navLinkStyle}
+				{isMobile ? (
+					<IconButton
+						color="inherit"
+						aria-label="menu"
+						edge="end"
+						onClick={toggleMenu}
 					>
-						About Us
-					</Link>
-					<Link
-						component={Button}
-						onClick={() =>
-							coursesRef.current.scrollIntoView({
-								block: "center",
-								behavior: "smooth",
-							})
-						}
-						sx={navLinkStyle}
-					>
-						Courses
-					</Link>
-					<Link
-						component={Button}
-						onClick={() =>
-							testimonialsRef.current.scrollIntoView({
-								block: "start",
-								behavior: "smooth",
-							})
-						}
-						sx={navLinkStyle}
-					>
-						Testimonials
-					</Link>
+						<MenuIcon sx={{ color: "white" }} />
+					</IconButton>
+				) : (
+					<Box sx={navBar}>
+						<Link
+							component={Button}
+							onClick={() =>
+								aboutRef.current.scrollIntoView({
+									block: "end",
+									behavior: "smooth",
+								})
+							}
+							sx={navLinkStyle}
+						>
+							About Us
+						</Link>
+						<Link
+							component={Button}
+							onClick={() =>
+								coursesRef.current.scrollIntoView({
+									block: "center",
+									behavior: "smooth",
+								})
+							}
+							sx={navLinkStyle}
+						>
+							Courses
+						</Link>
+						<Link
+							component={Button}
+							onClick={() =>
+								testimonialsRef.current.scrollIntoView({
+									block: "start",
+									behavior: "smooth",
+								})
+							}
+							sx={navLinkStyle}
+						>
+							Testimonials
+						</Link>
 
-					{user !== null ? (
-						<>
-							<Link
-								component={Button}
-								onClick={() => setShowUser(true)}
-								sx={{
-									...navLinkStyle,
-									color: "secondary.main",
-									display: "flex",
-									alignItems: "center",
-								}}
-							>
-								<b>My Account ({user})</b>
-							</Link>
+						{user !== null ? (
+							<>
+								<Link
+									component={Button}
+									onClick={() => setShowUser(true)}
+									sx={{
+										...navLinkStyle,
+										color: "secondary.main",
+										display: "flex",
+										alignItems: "center",
+									}}
+								>
+									<b>My Account ({user})</b>
+								</Link>
 
+								<StyledButton
+									sx={navLinkStyle}
+									variant="contained"
+									onClick={() => setDialogOpen(true)}
+								>
+									Logout
+								</StyledButton>
+							</>
+						) : (
 							<StyledButton
 								sx={navLinkStyle}
 								variant="contained"
-								onClick={() => setDialogOpen(true)}
+								onClick={() => setShowLogin(true)}
 							>
-								Logout
+								Login or Register
 							</StyledButton>
-						</>
-					) : (
-						<StyledButton
-							sx={navLinkStyle}
-							variant="contained"
-							onClick={() => setShowLogin(true)}
-						>
-							Login or Register
-						</StyledButton>
-					)}
-				</Box>
-				<Modal open={showLogin} onClose={() => setShowLogin(false)}>
-					<Box sx={modalStyle}>
-						<Login setShowRegister={setShowRegister} />
+						)}
 					</Box>
-				</Modal>
-				<Modal open={showRegister} onClose={() => setShowRegister(false)}>
-					<Box sx={modalStyle}>
-						<Register setShowRegister={setShowRegister} />
-					</Box>
-				</Modal>
-				<Modal open={showUser} onClose={() => setShowUser(false)}>
-					<Box sx={modalStyle}>
-						<User setShowUser={setShowUser} />
-					</Box>
-				</Modal>
-				<LogoutDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
+				)}
 			</Box>
+			{isMobile && (
+				<Drawer
+					anchor="right"
+					open={isMenuOpen}
+					onClose={toggleMenu}
+					sx={{ backgroundColor: "#f8f9fa" }}
+				>
+					<Box
+						sx={{
+							width: 250,
+						}}
+						role="presentation"
+						onClick={toggleMenu}
+						onKeyDown={toggleMenu}
+					>
+						<List>
+							{user !== null ? (
+								<>
+									<ListItem onClick={() => setShowUser(true)}>
+										<ListItemText
+											sx={{ color: "secondary.main" }}
+											primary={`My Account (${user})`}
+										/>
+									</ListItem>
+									<ListItem onClick={() => setDialogOpen(true)}>
+										<ListItemText primary="Logout" />
+									</ListItem>
+								</>
+							) : (
+								<>
+									<ListItem onClick={() => setShowLogin(true)}>
+										<ListItemText primary="Login" />
+									</ListItem>
+									<ListItem onClick={() => setShowLogin(true)}>
+										<ListItemText primary="Register" />
+									</ListItem>
+								</>
+							)}
+						</List>
+					</Box>
+				</Drawer>
+			)}
+			<Modal open={showLogin} onClose={() => setShowLogin(false)}>
+				<Box sx={modalStyle}>
+					<Login setShowRegister={setShowRegister} />
+				</Box>
+			</Modal>
+			<Modal open={showRegister} onClose={() => setShowRegister(false)}>
+				<Box sx={modalStyle}>
+					<Register setShowRegister={setShowRegister} />
+				</Box>
+			</Modal>
+			<Modal open={showUser} onClose={() => setShowUser(false)}>
+				<Box sx={modalStyle}>
+					<User setShowUser={setShowUser} />
+				</Box>
+			</Modal>
+			<LogoutDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
 		</>
 	);
 };

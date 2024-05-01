@@ -15,7 +15,10 @@ const Welcome = () => {
 	};
 	return (
 		<Box sx={container}>
-			<CustomSubheader textArray={welcome} />
+			<CustomSubheader
+				textArray={welcome}
+				alignment={{ xs: "left", md: "left" }}
+			/>
 			<Box variant="div">
 				<Box sx={learnMore}>
 					Request more information{" "}

@@ -1,8 +1,12 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useCoursesData } from "../hooks/useCoursesData";
 import Course from "./Course";
 
+const gridContainer = {
+	px: { xs: 0, md: 25 },
+	width: { xs: 1, md: 1440 },
+};
 const Courses = ({ count }) => {
 	const {
 		data: courses,
@@ -14,35 +18,21 @@ const Courses = ({ count }) => {
 
 	const coursesCount = count === "all" ? courses.length : count;
 	return (
-		<Box
-			component={"div"}
-			sx={{
-				flexWrap: "wrap",
-				display: "flex",
-				width: "1015px",
-				justifyContent: "flex-start",
-				alignItems: "center",
-				mx: "auto",
-				mt: 0,
-				mb: 0,
-			}}
-		>
+		<Grid container sx={gridContainer}>
 			{isPending && <span>Loading...</span>}
 			{isError && <span>{error.message}</span>}
 			{isSuccess && courses && (
 				<>
 					{courses.slice(0, coursesCount).map((course) => (
-						<Box
-							key={course.id}
-							component={"div"}
-							sx={{ width: 486, margin: "10px" }}
-						>
-							<Course course={course} />
-						</Box>
+						<Grid item xs={12} md={6} key={course.id}>
+							<Box component={"div"}>
+								<Course course={course} />
+							</Box>
+						</Grid>
 					))}
 				</>
 			)}
-		</Box>
+		</Grid>
 	);
 };
 

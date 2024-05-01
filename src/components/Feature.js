@@ -4,10 +4,12 @@ import { Box } from "@mui/material";
 const container = {
 	display: "flex",
 	alignItems: "center",
-	justifyContent: "space-between",
-	mx: "200px",
-	mt: "140px",
-	maxWidth: 1440,
+	gap: 10,
+	justifyContent: "center",
+	mx: { xs: 0, md: "auto" },
+	px: { xs: 5, md: 0 },
+	mt: { xs: 10, md: "140px" },
+	width: { xs: 1, md: 1440 },
 };
 
 const Feature = ({ children }) => {

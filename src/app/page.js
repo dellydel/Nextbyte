@@ -19,7 +19,7 @@ const darkBg = {
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",
-	width: "100%",
+	width: 1,
 };
 
 const laptopBg = {
@@ -27,12 +27,12 @@ const laptopBg = {
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",
-	width: "100%",
+	width: 1,
 };
 
 const footerBg = {
 	backgroundColor: "#000e1d",
-	width: "100%",
+	width: 1,
 };
 
 const Home = () => {

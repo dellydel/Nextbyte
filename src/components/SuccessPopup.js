@@ -58,7 +58,7 @@ const SuccessPopup = () => {
 					horizontal: "right",
 				}}
 			>
-				<Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+				<Alert onClose={handleClose} severity="success" sx={{ width: 1 }}>
 					Your registration has been successfully submitted.
 				</Alert>
 			</Snackbar>

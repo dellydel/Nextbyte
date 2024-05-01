@@ -2,7 +2,7 @@ import React from "react";
 import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import VerifiedUserOutlined from "@mui/icons-material/VerifiedUserOutlined";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Grid, Card, CardContent } from "@mui/material";
 import { chooseUsCards } from "../data/homeContent";
 
 const icons = {
@@ -11,29 +11,19 @@ const icons = {
 	AutoStoriesOutlined: <AutoStoriesOutlined color="secondary" />,
 };
 
-const container = {
-	mx: "auto",
-	alignItems: "flex-start",
-	display: "flex",
-	gap: 2,
-	position: "relative",
-	width: 1040,
-};
-
 const cardStyle = {
 	alignItems: "flex-start",
 	backgroundColor: "#ffffff",
 	borderRadius: "8px",
 	boxShadow: "0px 2px 4px -2px #0000000f, 0px 4px 8px -2px #0000001a",
 	display: "flex",
-	flex: 1,
 	flexDirection: "column",
-	flexGrow: 1,
 	gap: 3,
 	justifyContent: "center",
 	overflow: "hidden",
-	padding: 3,
+	padding: { xs: 5, md: 3 },
 	position: "relative",
+	mx: { xs: 4, md: 0 },
 };
 const header = {
 	alignSelf: "stretch",
@@ -64,26 +54,30 @@ const textDiv = {
 	flexDirection: "column",
 	gap: "13px",
 	position: "relative",
-	width: "100%",
+	width: 1,
 };
 
 const ChooseUsCards = () => {
 	return (
-		<Box sx={container}>
+		<Grid container spacing={{ xs: 4, md: 2 }} justifyContent="center">
 			{chooseUsCards.map((card) => {
 				return (
-					<Box sx={cardStyle} component={"div"} key={card.id}>
-						{icons[card.icon]}
-						<Box component={"div"} sx={textDiv}>
-							<Typography variant="span" sx={header}>
-								{card.header}
-							</Typography>
-							<Typography variant="p">{card.body}</Typography>
+					<Grid item xs={12} md={4} key={card.id}>
+						<Box sx={cardStyle} component={"div"}>
+							{icons[card.icon]}
+							<Box component={"div"} sx={textDiv}>
+								<Typography variant="span" sx={header}>
+									{card.header}
+								</Typography>
+								<Typography sx={body} variant="p">
+									{card.body}
+								</Typography>
+							</Box>
 						</Box>
-					</Box>
+					</Grid>
 				);
 			})}
-		</Box>
+		</Grid>
 	);
 };
 

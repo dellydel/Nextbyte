@@ -2,16 +2,15 @@ export const wrapper = {
 	alignItems: "flex-start",
 	backgroundColor: "#ffffff",
 	borderRadius: "8px",
+	boxShadow: "0px 2px 4px -2px #0000000f, 0px 4px 8px -2px #0000001a",
 	display: "flex",
 	flexDirection: "column",
-	flex: 1,
-	flexGrow: 1,
 	gap: 3,
 	justifyContent: "center",
 	overflow: "hidden",
-	p: 3,
-	pb: 4,
+	padding: { xs: 4, md: 3 },
 	position: "relative",
+	mx: { xs: 4, md: 0 },
 };
 
 export const container = {
@@ -22,7 +21,7 @@ export const container = {
 	flexDirection: "column",
 	gap: 2,
 	position: "relative",
-	width: "100%",
+	width: 1,
 };
 
 export const textWrapper = {

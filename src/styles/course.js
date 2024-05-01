@@ -7,7 +7,7 @@ export const cardStyle = {
 	justifyContent: "flex-end",
 	overflow: "hidden",
 	position: "relative",
-	width: 486,
+	m: { xs: 4, md: 2 },
 };
 
 export const cardImageStyle = {
@@ -15,7 +15,7 @@ export const cardImageStyle = {
 	height: 267,
 	objectFit: "cover",
 	position: "relative",
-	width: "100%",
+	width: 1,
 };
 
 export const wrapper = {
@@ -27,7 +27,7 @@ export const wrapper = {
 	gap: "17px",
 	padding: "24px",
 	position: "relative",
-	width: "100%",
+	width: 1,
 };
 
 export const chipsWrapper = {
