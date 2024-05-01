@@ -5,9 +5,9 @@ export const wrapper = {
 	gap: 2,
 	justifyContent: "center",
 	position: "relative",
-	width: "855px",
-	mx: 25,
-	py: "150px",
+	width: { xs: 1, md: 1440 },
+	px: { xs: 4, md: 25 },
+	py: { xs: 7, md: "150px" },
 };
 
 export const subHeader = {
@@ -32,13 +32,12 @@ export const subHeaderText = {
 	lineHeight: "normal",
 	position: "relative",
 	whiteSpace: "nowrap",
-	width: "fit-content",
 };
 
 export const header = {
 	alignSelf: "stretch",
 	color: "transparent",
-	fontSize: "72px",
+	fontSize: { xs: "40px", md: "72px" },
 	fontStyle: "normal",
 	fontWeight: 600,
 	letterSpacing: "-2.88px",
@@ -49,7 +48,6 @@ export const header = {
 
 export const headerText = {
 	color: "#ffffff",
-	fontSize: "72px",
 	fontStyle: "normal",
 	fontWeight: 600,
 	letterSpacing: "-2.88px",
@@ -58,7 +56,6 @@ export const headerText = {
 
 export const headerTextAltColor = {
 	color: "#58bec6",
-	fontSize: "72px",
 	fontStyle: "normal",
 	fontWeight: 600,
 	letterSpacing: "-2.88px",

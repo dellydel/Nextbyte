@@ -14,6 +14,7 @@ import {
 	IconButton,
 } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
+import { useMediaQuery } from "@mui/material/";
 import Link from "next/link";
 import { instagramURL } from "../data/constants";
 import { terms, privacy } from "../data/footerContent";
@@ -54,6 +55,7 @@ const modalWrapper = {
 const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 	const [showTerms, setShowTerms] = useState(false);
 	const [showPrivacy, setShowPrivacy] = useState(false);
+	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
 	return (
 		<>
@@ -80,8 +82,21 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 						dedicated to helping you unlock your full potential in today's
 						ever-evolving technology industry.
 					</Typography>
+					<Box component={"div"} sx={{ mb: 4 }}>
+						<Typography variant="div" sx={header}>
+							Contact
+						</Typography>
+						<Box component={"div"} sx={column}>
+							<Typography variant="div" sx={menuItem}>
+								info@nextbyteweb.com
+							</Typography>
+							<Typography variant="div" sx={menuItem}>
+								(555) 555-5555
+							</Typography>
+						</Box>
+					</Box>
 					<Grid container>
-						<Grid item xs={4}>
+						<Grid item xs={3} md={4}>
 							<Typography variant="span" sx={aboutUsText}>
 								Follow Us
 							</Typography>
@@ -98,150 +113,157 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 						</Grid>
 					</Grid>
 				</Box>
-				<Box component={"div"} sx={footerNavigation}>
-					<Box component={"div"} sx={navContainer}>
-						<Typography variant="div" sx={header}>
-							Menu
-						</Typography>
-						<Box component={"div"} sx={column}>
-							<Typography variant="div" sx={menuItem}>
-								<MuiLink
-									component={Button}
-									onClick={() =>
-										coursesRef.current.scrollIntoView({
-											block: "center",
-											behavior: "smooth",
-										})
-									}
-									sx={navLinkStyle}
-								>
-									Courses
-								</MuiLink>
+				{!isMobile && (
+					<Box component={"div"} sx={footerNavigation}>
+						<Box component={"div"} sx={navContainer}>
+							<Typography variant="div" sx={header}>
+								Menu
 							</Typography>
-							<Typography variant="div" sx={menuItem}>
-								<MuiLink
-									component={Button}
-									onClick={() =>
-										aboutRef.current.scrollIntoView({
-											block: "center",
-											behavior: "smooth",
-										})
-									}
-									sx={navLinkStyle}
-								>
-									About Us
-								</MuiLink>
+							<Box component={"div"} sx={column}>
+								<Typography variant="div" sx={menuItem}>
+									<MuiLink
+										component={Button}
+										onClick={() =>
+											coursesRef.current.scrollIntoView({
+												block: "center",
+												behavior: "smooth",
+											})
+										}
+										sx={navLinkStyle}
+									>
+										Courses
+									</MuiLink>
+								</Typography>
+								<Typography variant="div" sx={menuItem}>
+									<MuiLink
+										component={Button}
+										onClick={() =>
+											aboutRef.current.scrollIntoView({
+												block: "center",
+												behavior: "smooth",
+											})
+										}
+										sx={navLinkStyle}
+									>
+										About Us
+									</MuiLink>
+								</Typography>
+								<Typography variant="div" sx={menuItem}>
+									<MuiLink
+										component={Button}
+										onClick={() =>
+											testimonialsRef.current.scrollIntoView({
+												block: "start",
+												behavior: "smooth",
+											})
+										}
+										sx={navLinkStyle}
+									>
+										Testimonials
+									</MuiLink>
+								</Typography>
+							</Box>
+						</Box>
+						<Box component={"div"} sx={navContainer}>
+							<Typography variant="div" sx={header}>
+								Contact
 							</Typography>
-							<Typography variant="div" sx={menuItem}>
-								<MuiLink
-									component={Button}
-									onClick={() =>
-										testimonialsRef.current.scrollIntoView({
-											block: "start",
-											behavior: "smooth",
-										})
-									}
-									sx={navLinkStyle}
-								>
-									Testimonials
-								</MuiLink>
+							<Box component={"div"} sx={column}>
+								<Typography variant="div" sx={menuItem}>
+									info@nextbyteweb.com
+								</Typography>
+								<Typography variant="div" sx={menuItem}>
+									(555) 555-5555
+								</Typography>
+							</Box>
+						</Box>
+						<Box component={"div"} sx={navContainer}>
+							<Typography variant="div" sx={header}>
+								Legal
 							</Typography>
+							<Box component={"div"} sx={column}>
+								<Typography variant="div" sx={menuItem}>
+									<MuiLink
+										component={Button}
+										onClick={() => setShowTerms(true)}
+										sx={navLinkStyle}
+									>
+										Terms and Conditions
+									</MuiLink>
+								</Typography>
+								<Typography variant="div" sx={menuItem}>
+									<MuiLink
+										component={Button}
+										onClick={() => setShowPrivacy(true)}
+										sx={navLinkStyle}
+									>
+										Privacy Policy
+									</MuiLink>
+								</Typography>
+							</Box>
 						</Box>
 					</Box>
-					<Box component={"div"} sx={navContainer}>
-						<Typography variant="div" sx={header}>
-							Contact
-						</Typography>
-						<Box component={"div"} sx={column}>
-							<Typography variant="div" sx={menuItem}>
-								info@nextbyteweb.com
-							</Typography>
-							<Typography variant="div" sx={menuItem}>
-								(555) 555-5555
-							</Typography>
-						</Box>
-					</Box>
-					<Box component={"div"} sx={navContainer}>
-						<Typography variant="div" sx={header}>
-							Legal
-						</Typography>
-						<Box component={"div"} sx={column}>
-							<Typography variant="div" sx={menuItem}>
-								<MuiLink
-									component={Button}
-									onClick={() => setShowTerms(true)}
-									sx={navLinkStyle}
-								>
-									Terms and Conditions
-								</MuiLink>
-							</Typography>
-							<Typography variant="div" sx={menuItem}>
-								<MuiLink
-									component={Button}
-									onClick={() => setShowPrivacy(true)}
-									sx={navLinkStyle}
-								>
-									Privacy Policy
-								</MuiLink>
-							</Typography>
-						</Box>
-					</Box>
-				</Box>
+				)}
 			</Box>
+
 			<Box component={"div"} sx={copyright}>
 				<Typography variant="div" sx={copyrightText}>
-					&copy;Copyright 2024 Nextbyte, LLC - All Rights Reserved
+					&copy; Copyright 2024 Nextbyte, LLC - All Rights Reserved
 				</Typography>
 			</Box>
-			<Modal open={showTerms} onClose={() => setShowTerms(false)}>
-				<Box sx={modalStyle}>
-					<Card sx={modalWrapper}>
-						<CardContent
-							sx={{
-								width: "500px",
-								whiteSpace: "normal",
-							}}
-						>
-							<Box sx={close}>
-								<IconButton
-									color="inherit"
-									aria-label="close"
-									onClick={() => setShowTerms(false)}
+			{!isMobile && (
+				<>
+					<Modal open={showTerms} onClose={() => setShowTerms(false)}>
+						<Box sx={modalStyle}>
+							<Card sx={modalWrapper}>
+								<CardContent
+									sx={{
+										width: "500px",
+										whiteSpace: "normal",
+									}}
 								>
-									<CloseIcon />
-								</IconButton>
-							</Box>
-							<Typography variant="div" sx={policyText}>
-								{terms}
-							</Typography>
-						</CardContent>
-					</Card>
-				</Box>
-			</Modal>
-			<Modal open={showPrivacy} onClose={() => setShowPrivacy(false)}>
-				<Box sx={modalStyle}>
-					<Card sx={modalWrapper}>
-						<CardContent
-							sx={{
-								maxWidth: "850px",
-							}}
-						>
-							<Box sx={close}>
-								<IconButton
-									color="inherit"
-									aria-label="close"
-									onClick={() => setShowPrivacy(false)}
+									<Box sx={close}>
+										<IconButton
+											color="inherit"
+											aria-label="close"
+											onClick={() => setShowTerms(false)}
+										>
+											<CloseIcon />
+										</IconButton>
+									</Box>
+									<Typography variant="div" sx={policyText}>
+										{terms}
+									</Typography>
+								</CardContent>
+							</Card>
+						</Box>
+					</Modal>
+					<Modal open={showPrivacy} onClose={() => setShowPrivacy(false)}>
+						<Box sx={modalStyle}>
+							<Card sx={modalWrapper}>
+								<CardContent
+									sx={{
+										maxWidth: "850px",
+									}}
 								>
-									<CloseIcon />
-								</IconButton>
-							</Box>
-							<Typography variant="div" sx={policyText}>
-								{privacy}
-							</Typography>
-						</CardContent>
-					</Card>
-				</Box>
-			</Modal>
+									<Box sx={close}>
+										<IconButton
+											color="inherit"
+											aria-label="close"
+											onClick={() => setShowPrivacy(false)}
+										>
+											<CloseIcon />
+										</IconButton>
+									</Box>
+									<Typography variant="div" sx={policyText}>
+										{privacy}
+									</Typography>
+								</CardContent>
+							</Card>
+						</Box>
+					</Modal>
+				</>
+			)}
 		</>
 	);
 };
