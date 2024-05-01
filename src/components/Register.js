@@ -138,7 +138,7 @@ const Register = ({ setShowRegister }) => {
 					</Typography>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<Grid container spacing={2}>
-							<Grid xs={12} sm={6} item>
+							<Grid xs={12} md={6} item>
 								<FormTextField
 									label="First Name"
 									name="firstName"
@@ -146,7 +146,7 @@ const Register = ({ setShowRegister }) => {
 									error={errors.firstName}
 								/>
 							</Grid>
-							<Grid xs={12} sm={6} item>
+							<Grid xs={12} md={6} item>
 								<FormTextField
 									label="Last Name"
 									name="lastName"
@@ -154,7 +154,7 @@ const Register = ({ setShowRegister }) => {
 									error={errors.lastName}
 								/>
 							</Grid>
-							<Grid xs={6} item>
+							<Grid xs={6} md={4} item>
 								<FormTextField
 									type="number"
 									label="Phone Number"

@@ -5,7 +5,8 @@ const container = {
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "space-between",
-	mx: "200px",
+	mx: { xs: 0, md: "200px" },
+	px: { xs: 3, md: 0 },
 	mt: "140px",
 	maxWidth: 1440,
 };

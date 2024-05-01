@@ -19,14 +19,13 @@ const CallToAction = ({ coursesRef }) => {
 	const [showRegister, setShowRegister] = useState(false);
 
 	return (
-		<Box component={"div"} sx={{ mt: 20 }}>
+		<Box component={"div"} sx={{ mt: { xs: 8, md: 20 } }}>
 			<Box component={"div"} sx={{ mb: 4 }}>
 				<Typography
 					variant="h1"
 					color="white"
 					sx={{
-						fontSize: "65px",
-						mr: 3,
+						fontSize: { xs: "40px", md: "70px" },
 					}}
 				>
 					<b>{callToAction.text[0]}</b>
@@ -35,7 +34,7 @@ const CallToAction = ({ coursesRef }) => {
 					variant="h1"
 					color="secondary"
 					sx={{
-						fontSize: "70px",
+						fontSize: { xs: "40px", md: "70px" },
 					}}
 				>
 					<b>{callToAction.text[1]}</b>
@@ -43,7 +42,7 @@ const CallToAction = ({ coursesRef }) => {
 			</Box>
 			<Typography
 				sx={{
-					fontSize: "18px",
+					fontSize: { xs: "15px", md: "18px" },
 					color: "white",
 					width: "100%",
 					mb: 4,
@@ -57,14 +56,14 @@ const CallToAction = ({ coursesRef }) => {
 					display: "flex",
 					justifyContent: "center",
 					gap: 2,
-					mb: 16,
+					mb: { xs: 7, md: 16 },
 				}}
 			>
 				<Button
 					sx={actionButton}
 					variant="contained"
 					onClick={() => setShowRegister(true)}
-					size="large"
+					size={"large"}
 				>
 					Register Today!
 				</Button>

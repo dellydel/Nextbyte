@@ -9,13 +9,14 @@ const heroStyle = {
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",
-	height: 800,
+	height: { xs: 600, md: 800 },
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
 	justifyContent: "flex-start",
 	textAlign: "center",
 	pt: 5,
+	px: { xs: 2, md: 0 },
 };
 
 const MainHero = ({ testimonialsRef, aboutRef, coursesRef }) => {
@@ -27,7 +28,7 @@ const MainHero = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					aboutRef={aboutRef}
 					coursesRef={coursesRef}
 				/>
-				<Box sx={{ width: 900 }}>
+				<Box sx={{ width: { xs: "100%", md: 900 } }}>
 					<CallToAction coursesRef={coursesRef} />
 				</Box>
 			</Box>

@@ -3,7 +3,7 @@ export const wrapper = {
 	pb: 6,
 	borderRadius: 3,
 	boxShadow: 3,
-	height: 800,
+	height: { xs: 1100, md: 800 },
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
