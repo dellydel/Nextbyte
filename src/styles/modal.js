@@ -3,6 +3,7 @@ export const modalStyle = {
 	justifyContent: "center",
 	alignItems: "center",
 	height: "100vh",
+	overflowY: "auto",
 };
 
 export const close = {

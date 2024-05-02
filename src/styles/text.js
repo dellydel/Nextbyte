@@ -3,7 +3,9 @@ export const container = {
 	display: "flex",
 	flexDirection: "column",
 	gap: 4,
-	padding: "0px 24px 0px 0px",
+	px: 0,
+	pt: { xs: 0, md: 3 },
+	pb: 0,
 	position: "relative",
 	width: { xs: 1, md: 486 },
 };

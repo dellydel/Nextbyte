@@ -3,10 +3,10 @@ export const wrapper = {
 	pb: 6,
 	borderRadius: 3,
 	boxShadow: 3,
-	height: { xs: 1100, md: 800 },
+	height: { xs: 1200, md: 800 },
 	display: "flex",
 	justifyContent: "center",
-	alignItems: "center",
+	alignItems: { xs: "flex-start", md: "center" },
 	"& .MuiInputBase-root": {
 		backgroundColor: "white",
 	},

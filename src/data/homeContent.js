@@ -3,7 +3,7 @@ export const heroText =
 
 export const heroCallToAction = [
 	{ id: 1, text: ["Start Your Web Journey", "Enroll Now!"] },
-	{ id: 2, text: ["Begin Your Adventure", "View Our Courses!"] },
+	{ id: 2, text: ["Begin Your Adventure", "View Courses!"] },
 	{
 		id: 3,
 		text: ["No Experience? No Problem!", "Dive in Now!"],

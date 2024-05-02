@@ -27,7 +27,9 @@ const Course = ({ course }) => {
 				/>
 
 				<Box component={"div"} sx={wrapper}>
-					<CourseChips tech={course?.technologies} />
+					<Box sx={{ mb: { xs: 4, md: 1 } }}>
+						<CourseChips tech={course?.technologies} />
+					</Box>
 					<Typography variant="div" sx={courseTitle}>
 						<b>{course?.name}</b>
 					</Typography>

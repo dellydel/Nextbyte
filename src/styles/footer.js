@@ -45,7 +45,7 @@ export const aboutUsText = {
 export const footerNavigation = {
 	alignItems: "flex-start",
 	display: "inline-flex",
-	gap: "31px",
+	gap: 4,
 	justifyContent: "center",
 	position: "relative",
 };
@@ -55,8 +55,9 @@ export const navContainer = {
 	display: "inline-flex",
 	flex: "0 0 auto",
 	flexDirection: "column",
-	gap: "6px",
-	padding: "0px 8px",
+	gap: 1,
+	px: 1,
+	py: 0,
 	position: "relative",
 	mt: 2,
 };

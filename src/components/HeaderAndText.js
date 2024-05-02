@@ -8,7 +8,7 @@ const wrapper = {
 	flexDirection: { xs: "column", md: "row" },
 	alignItems: "center",
 	px: { xs: 4, md: 25 },
-	mt: { xs: 6, md: "120px" },
+	mt: { xs: 6, md: 15 },
 	mb: 5,
 };
 
