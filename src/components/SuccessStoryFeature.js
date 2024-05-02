@@ -21,12 +21,13 @@ const SuccessStoryFeature = () => {
 				alignment={{ xs: "left", md: "right" }}
 			/>
 			<Box
-				width={1}
+				width={{ xs: 1, md: "462px" }}
 				height={{ xs: "215px", md: "253px" }}
 				component={"img"}
-				src={"/images/working_on_laptop.png"}
+				src={"/images/working_on_laptop.webp"}
 				alt={"working on laptop"}
 				position={"relative"}
+				alignSelf={"flex-end"}
 			/>
 		</Box>
 	);

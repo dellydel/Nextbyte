@@ -5,7 +5,7 @@ import CallToAction from "./CallToAction";
 
 const heroStyle = {
 	backgroundImage:
-		"linear-gradient(#000E1D, rgba(0, 14, 29, 0.69)), url('images/laptop.png')",
+		"linear-gradient(#000E1D, rgba(0, 14, 29, 0.69)), url('images/laptop.webp')",
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",

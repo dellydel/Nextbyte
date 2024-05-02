@@ -72,7 +72,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 					>
 						<Box
 							component="img"
-							src={"images/logo-white.png"}
+							src={"images/logo-white.webp"}
 							alt={"NextByte Logo"}
 							sx={{ height: 50, width: "auto" }}
 						/>
@@ -90,9 +90,9 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 							<Typography variant="div" sx={menuItem}>
 								info@nextbyteweb.com
 							</Typography>
-							<Typography variant="div" sx={menuItem}>
+							{/* <Typography variant="div" sx={menuItem}>
 								(555) 555-5555
-							</Typography>
+							</Typography> */}
 						</Box>
 					</Box>
 					<Grid container>
@@ -164,7 +164,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 								</Typography>
 							</Box>
 						</Box>
-						<Box component={"div"} sx={navContainer}>
+						{/* <Box component={"div"} sx={navContainer}>
 							<Typography variant="div" sx={header}>
 								Contact
 							</Typography>
@@ -176,7 +176,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 									(555) 555-5555
 								</Typography>
 							</Box>
-						</Box>
+						</Box> */}
 						<Box component={"div"} sx={navContainer}>
 							<Typography variant="div" sx={header}>
 								Legal

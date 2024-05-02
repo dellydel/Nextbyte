@@ -67,7 +67,7 @@ const AccountNavigation = ({ user }) => {
 								component={"button"}
 								onClick={() => setSelectedLink("courses")}
 							>
-								Courses
+								My Courses
 							</Link>
 						</li>
 						<li>
