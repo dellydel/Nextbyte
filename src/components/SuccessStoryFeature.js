@@ -8,10 +8,9 @@ export const container = {
 	display: "flex",
 	flexDirection: "column",
 	gap: 4,
-	padding: "0px 24px 0px 0px",
 	position: "relative",
 	width: { xs: 1, md: 486 },
-	mb: { xs: 2, md: 0 },
+	mb: { xs: 1, md: 0 },
 };
 
 const SuccessStoryFeature = () => {
@@ -23,7 +22,7 @@ const SuccessStoryFeature = () => {
 			/>
 			<Box
 				width={1}
-				height={"253px"}
+				height={{ xs: "215px", md: "253px" }}
 				component={"img"}
 				src={"/images/working_on_laptop.png"}
 				alt={"working on laptop"}

@@ -24,8 +24,8 @@ export const wrapper = {
 	display: "flex",
 	flex: "0 0 auto",
 	flexDirection: "column",
-	gap: "17px",
-	padding: "24px",
+	gap: 3,
+	padding: 3,
 	position: "relative",
 	width: 1,
 };

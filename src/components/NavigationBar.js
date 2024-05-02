@@ -187,7 +187,7 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 				</Box>
 			</Modal>
 			<Modal open={showRegister} onClose={() => setShowRegister(false)}>
-				<Box sx={modalStyle}>
+				<Box sx={{ ...modalStyle, height: 1200 }}>
 					<Register setShowRegister={setShowRegister} />
 				</Box>
 			</Modal>

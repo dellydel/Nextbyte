@@ -74,7 +74,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 							component="img"
 							src={"images/logo-white.png"}
 							alt={"NextByte Logo"}
-							sx={{ height: "40px", width: "auto" }}
+							sx={{ height: 50, width: "auto" }}
 						/>
 					</Link>
 					<Typography variant="p" sx={companyInfoText}>

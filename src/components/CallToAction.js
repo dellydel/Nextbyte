@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
+import { useMediaQuery } from "@mui/material/";
 import { heroText, heroCallToAction } from "../data/homeContent";
 import { modalStyle } from "../styles/modal";
 import Register from "./Register";
 import TrustedAvatars from "./TrustedAvatars";
 
 const actionButton = {
-	py: 2,
-	px: 4,
+	py: { xs: 1, md: 2 },
+	px: { xs: 2, md: 4 },
 	borderRadius: 3,
 	color: "white",
 	textTransform: "none",
@@ -17,6 +18,7 @@ const CallToAction = ({ coursesRef }) => {
 	const random = Math.floor(Math.random() * heroCallToAction.length);
 	const callToAction = heroCallToAction[random];
 	const [showRegister, setShowRegister] = useState(false);
+	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
 	return (
 		<Box component={"div"} sx={{ mt: { xs: 8, md: 20 } }}>
@@ -63,24 +65,25 @@ const CallToAction = ({ coursesRef }) => {
 					sx={actionButton}
 					variant="contained"
 					onClick={() => setShowRegister(true)}
-					size={"large"}
+					size={isMobile ? "small" : "large"}
 				>
 					Register Today!
 				</Button>
 				<Button
 					sx={actionButton}
+					variant="outlined"
 					onClick={() =>
 						coursesRef.current.scrollIntoView({
 							block: "center",
 							behavior: "smooth",
 						})
 					}
-					variant="outlined"
+					size={isMobile ? "small" : "large"}
 				>
 					Browse Courses
 				</Button>
 			</Box>
-			<TrustedAvatars section={"callToAction"} />
+			{!isMobile && <TrustedAvatars section={"callToAction"} />}
 			<Modal
 				open={showRegister}
 				closeAfterTransition

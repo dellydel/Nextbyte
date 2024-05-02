@@ -16,7 +16,7 @@ export const subHeader = {
 	borderBottomWidth: "5px",
 	borderColor: "#3a86ff",
 	display: "inline-flex",
-	gap: "8px",
+	gap: 1,
 	height: "31px",
 	justifyContent: "center",
 	marginLeft: "-5px",

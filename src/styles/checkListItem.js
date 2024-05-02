@@ -38,7 +38,7 @@ export const bodyWrapper = {
 	alignSelf: "stretch",
 	display: "flex",
 	flex: "0 0 auto",
-	gap: "8px",
+	gap: 1,
 	position: "relative",
 	width: 1,
 };

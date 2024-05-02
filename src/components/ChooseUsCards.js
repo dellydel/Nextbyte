@@ -14,7 +14,7 @@ const icons = {
 const cardStyle = {
 	alignItems: "flex-start",
 	backgroundColor: "#ffffff",
-	borderRadius: "8px",
+	borderRadius: 1,
 	boxShadow: "0px 2px 4px -2px #0000000f, 0px 4px 8px -2px #0000001a",
 	display: "flex",
 	flexDirection: "column",

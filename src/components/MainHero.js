@@ -9,7 +9,7 @@ const heroStyle = {
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",
-	height: { xs: 600, md: 900 },
+	height: { xs: 500, md: 900 },
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
@@ -28,7 +28,7 @@ const MainHero = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					aboutRef={aboutRef}
 					coursesRef={coursesRef}
 				/>
-				<Box sx={{ width: { xs: 1, md: 900 } }}>
+				<Box sx={{ width: { xs: 1, md: 900 }, mb: 5 }}>
 					<CallToAction coursesRef={coursesRef} />
 				</Box>
 			</Box>
