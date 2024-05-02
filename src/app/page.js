@@ -15,7 +15,7 @@ import { modalStyle } from "../styles/modal";
 
 const darkBg = {
 	backgroundImage:
-		"radial-gradient(circle, rgba(0, 14, 29, 0.56), #000E1D), url('images/coursesBg.png')",
+		"radial-gradient(circle, rgba(0, 14, 29, 0.56), #000E1D), url('images/coursesBg.webp')",
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",
@@ -23,7 +23,7 @@ const darkBg = {
 };
 
 const laptopBg = {
-	backgroundImage: "url('images/books_laptop.png')",
+	backgroundImage: "url('images/books_laptop.webp')",
 	backgroundPosition: "center center",
 	backgroundSize: "cover",
 	backgroundRepeat: "no-repeat",

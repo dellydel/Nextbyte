@@ -130,7 +130,7 @@ const Register = ({ setShowRegister }) => {
 							height: 30,
 						}}
 						component={"img"}
-						src={"/images/logo-black.png"}
+						src={"/images/logo-black.webp"}
 						alt={"NextByte Logo"}
 					/>
 					<Typography variant="h5" sx={{ mb: 4, mt: 1 }}>

@@ -12,7 +12,7 @@ const WelcomeFeature = () => {
 						height: { xs: "350px", md: "472px" },
 					}}
 					component={"img"}
-					src={"/images/sitting_with_laptop.png"}
+					src={"/images/sitting_with_laptop.webp"}
 					alt={"woman sitting with laptop"}
 				/>
 			</Grid>

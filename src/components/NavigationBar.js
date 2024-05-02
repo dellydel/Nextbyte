@@ -52,7 +52,7 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					<Box
 						sx={logo}
 						component={"img"}
-						src={"/images/logo-white.png"}
+						src={"/images/logo-white.webp"}
 						alt={"NextByte Logo"}
 					/>
 				</Link>
