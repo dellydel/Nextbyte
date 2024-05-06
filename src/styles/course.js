@@ -33,7 +33,6 @@ export const wrapper = {
 export const chipsWrapper = {
 	alignItems: "center",
 	display: "inline-flex",
-	height: "24px",
 	justifyContent: "start",
 	position: "relative",
 	display: "flex",
