@@ -2,34 +2,38 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { Box, IconButton } from "@mui/material";
 import {
 	EmbeddedCheckoutProvider,
 	EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useSearchParams } from "next/navigation";
 
 const stripePromise = loadStripe(
 	`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`,
 );
 
-const CheckoutComp = () => {
-	const searchParams = useSearchParams();
+export const close = {
+	display: "flex",
+	justifyContent: "flex-end",
+	alignItems: "center",
+	flexDirection: "row",
+	mr: 6,
+	mb: 2,
+};
+
+const CheckoutComp = ({ course, setShowCheckout }) => {
 	const [clientSecret, setClientSecret] = useState();
 
 	useEffect(() => {
-		const product_id = searchParams.get("product_id");
-		const course_name = searchParams.get("course_name");
-		const price = searchParams.get("price");
-		const price_id = searchParams.get("price_id");
 		fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/pay`, {
 			method: "POST",
 			body: JSON.stringify({
-				product_id,
-				course_name,
-				price,
-				price_id,
+				product_id: course.id,
+				course_name: course.name,
+				price: course.price,
+				price_id: course.priceLink,
 			}),
 		})
 			.then((res) => res.json())
@@ -39,7 +43,16 @@ const CheckoutComp = () => {
 	}, []);
 
 	return (
-		<Box sx={{ m: 5, minHeight: 1000 }}>
+		<Box sx={{ width: 1000 }}>
+			<Box sx={close}>
+				<IconButton
+					color="inherit"
+					aria-label="close"
+					onClick={() => setShowCheckout(false)}
+				>
+					<CloseIcon />
+				</IconButton>
+			</Box>
 			{clientSecret && (
 				<EmbeddedCheckoutProvider
 					stripe={stripePromise}

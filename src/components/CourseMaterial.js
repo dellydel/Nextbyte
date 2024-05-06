@@ -1,4 +1,5 @@
 import React from "react";
+import { Download } from "@mui/icons-material";
 import { Button, ListItem, ListItemText, Paper } from "@mui/material";
 
 const CourseMaterial = ({ file }) => {
@@ -28,7 +29,7 @@ const CourseMaterial = ({ file }) => {
 					download
 					target="_blank"
 				>
-					Download
+					<Download />
 				</Button>
 			</ListItem>
 		</Paper>
