@@ -8,7 +8,7 @@ import Testimonial from "./Testimonial";
 const Testimonials = forwardRef((props, ref) => {
 	return (
 		<>
-			<HeaderAndText
+			{/* <HeaderAndText
 				headerContent={
 					<span>
 						What our students <br />
@@ -25,7 +25,7 @@ const Testimonials = forwardRef((props, ref) => {
 						);
 					})}
 				</Grid>
-			</Box>
+			</Box> */}
 		</>
 	);
 });
