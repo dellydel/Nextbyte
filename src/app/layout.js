@@ -22,6 +22,10 @@ const RootLayout = ({ children }) => {
 		<html lang="en">
 			<head>
 				<title>NextByte, LLC</title>
+				<meta
+					name="description"
+					content="Next Byte LLC Training and Consulting"
+				/>
 			</head>
 			<body>
 				<TanstackProvider>
