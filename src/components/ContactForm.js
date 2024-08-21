@@ -61,8 +61,7 @@ const ContactForm = ({ handleClose }) => {
 			.post(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/contact`, formData)
 			.then((res) => {
 				reset();
-				const parsedResponse = JSON.parse(res.data);
-				const message = parsedResponse.message;
+				const message = res.data.message;
 				setSnackbarState({
 					type: "success",
 					message: message,
@@ -75,7 +74,8 @@ const ContactForm = ({ handleClose }) => {
 					message: err.message,
 					isOpen: true,
 				});
-			});
+			})
+			.finally(() => handleClose());
 	};
 
 	return (
