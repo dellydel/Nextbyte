@@ -4,10 +4,11 @@ export const cardStyle = {
 	borderRadius: "8px",
 	display: "flex",
 	flexDirection: "column",
-	justifyContent: "flex-end",
+	justifyContent: "flex-start",
 	overflow: "hidden",
 	position: "relative",
 	m: { xs: 4, md: 2 },
+	height: 800,
 };
 
 export const cardImageStyle = {
@@ -29,6 +30,8 @@ export const wrapper = {
 	position: "relative",
 	width: 1,
 };
+
+export const chipStyle = { backgroundColor: "#2b2d423b", p: 1 };
 
 export const chipsWrapper = {
 	alignItems: "center",

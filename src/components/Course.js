@@ -27,7 +27,7 @@ const Course = ({ course }) => {
 				/>
 
 				<Box component={"div"} sx={wrapper}>
-					<Box sx={{ mb: { xs: 4, md: 1 } }}>
+					<Box sx={{ mb: { xs: 4, md: 1 }, height: 50 }}>
 						<CourseChips tech={course?.technologies} />
 					</Box>
 					<Typography variant="div" sx={courseTitle}>
@@ -36,6 +36,14 @@ const Course = ({ course }) => {
 					<Typography variant="p" sx={{ height: 80 }}>
 						{course?.description}
 					</Typography>
+				</Box>
+				<Box
+					sx={{
+						...wrapper,
+						justifyContent: "flex-end",
+						flexGrow: 1,
+					}}
+				>
 					<Divider sx={{ width: 1 }} />
 					<Box>
 						<Typography component={"div"}>

@@ -12,6 +12,6 @@ export const useRegistrationData = (email) => {
 	return useQuery({
 		queryKey: ["registrations"],
 		queryFn: () => fetchRegistrations(email),
-		select: (data) => data.data.map((registration) => registration.product_id),
+		select: (data) => data.data.map((registration) => registration),
 	});
 };
