@@ -1,5 +1,3 @@
-"use client";
-
 import { createTheme } from "@mui/material/styles";
 import { DM_Sans } from "next/font/google";
 

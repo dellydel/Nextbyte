@@ -1,22 +1,6 @@
 "use client";
 
 import React, { createContext, useState, useEffect } from "react";
-import { Amplify } from "aws-amplify";
-import {
-	autoSignIn,
-	signUp,
-	signIn,
-	signOut,
-	confirmSignUp,
-	resetPassword,
-	confirmResetPassword,
-	fetchUserAttributes,
-	fetchAuthSession,
-} from "aws-amplify/auth";
-import { Hub } from "aws-amplify/utils";
-import config from "../amplifyconfiguration.json";
-
-Amplify.configure(config);
 
 export const AuthContext = createContext();
 

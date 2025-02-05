@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import PaymentComplete from "../../components/PaymentComplete";
+import PaymentComplete from "./components/PaymentComplete";
 
 const Page = () => {
 	return (

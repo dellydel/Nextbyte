@@ -1,15 +1,12 @@
-"use client";
-
 import { Suspense } from "react";
 import { Box } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import PopupMessage from "../components/PopupMessage";
-import { AuthProvider } from "../context/AuthContext";
-import { PopupProvider } from "../context/PopupContext";
-import TanstackProvider from "../providers/TanstackProvider";
-import theme from "../theme";
+import PopupMessage from "./components/PopupMessage";
+import { AuthProvider } from "./context/AuthContext";
+import { PopupProvider } from "./context/PopupContext";
+import { TanstackProvider } from "./providers/TanstackProvider";
+import theme from "./theme";
 
 const contentStyle = {
 	maxWidth: 1440,
@@ -17,7 +14,7 @@ const contentStyle = {
 	backgroundColor: "#f8f9fa",
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout = () => {
 	return (
 		<html lang="en">
 			<head>
@@ -42,7 +39,7 @@ const RootLayout = ({ children }) => {
 									<PopupProvider>
 										<PopupMessage />
 										<Suspense>
-											<Box sx={contentStyle}>{children}</Box>
+											<Box sx={contentStyle}></Box>
 										</Suspense>
 									</PopupProvider>
 								</Box>
