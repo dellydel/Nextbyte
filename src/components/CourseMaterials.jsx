@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { List, Box } from "@mui/material";
-import { useCourseMaterialsData } from "../hooks/useCourseMaterialsData";
+import { useCourseMaterialsData } from "../queries/useCourseMaterialsData";
 import CourseMaterial from "./CourseMaterial";
 
 const pageLayout = {

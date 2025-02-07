@@ -12,7 +12,6 @@ import {
 	IconButton,
 } from "@mui/material";
 import axios from "axios";
-import { AuthContext } from "../context/AuthContext";
 import { PopupContext } from "../context/PopupContext";
 import { registrationText } from "../data/registrationContent";
 import {
@@ -36,7 +35,6 @@ const Register = ({ setShowRegister }) => {
 	});
 
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
-	const { signUp } = useContext(AuthContext);
 
 	const onSubmit = async (data, event) => {
 		event.preventDefault();
@@ -74,7 +72,7 @@ const Register = ({ setShowRegister }) => {
 			delete data.password;
 			delete data.confirmPassword;
 			axios
-				.post(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/students`, {
+				.post(`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/students`, {
 					...data,
 					id: userId.toString(),
 				})
@@ -272,7 +270,7 @@ const Register = ({ setShowRegister }) => {
 							textAlign: "center",
 						}}
 					>
-						{registrationText}
+						<span>{registrationText}</span>
 					</Typography>
 				</CardContent>
 			</Card>

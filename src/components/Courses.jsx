@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import { useCoursesData } from "../hooks/useCoursesData";
+import { useCoursesData } from "../queries/useCoursesData";
 import Course from "./Course";
 
 const gridContainer = {

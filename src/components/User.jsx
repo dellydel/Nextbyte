@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
-import { AuthContext } from "../context/AuthContext";
 import { close } from "../styles/modal";
 import AccountNavigation from "./AccountNavigation";
 
@@ -17,8 +16,6 @@ export const wrapper = {
 };
 
 const UserInformationScreen = ({ setShowUser }) => {
-	const { user } = useContext(AuthContext);
-
 	return (
 		<Card sx={wrapper}>
 			<CardContent

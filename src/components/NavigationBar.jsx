@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import {
 	Box,
@@ -12,8 +13,6 @@ import {
 	ListItemText,
 } from "@mui/material";
 import { styled, useMediaQuery } from "@mui/material/";
-import RouterLink from "next/link";
-import { AuthContext } from "../context/AuthContext";
 import { modalStyle } from "../styles/modal";
 import { toolbar, logo, navBar, navLinkStyle } from "../styles/navigationBar";
 import Login from "./Login";
@@ -26,7 +25,6 @@ const StyledButton = styled(Button)(`
 `);
 
 const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
-	const { showLogin, setShowLogin, user } = useContext(AuthContext);
 	const [showRegister, setShowRegister] = useState(false);
 	const [showUser, setShowUser] = useState(false);
 	const [dialogOpen, setDialogOpen] = useState(false);
@@ -38,11 +36,14 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
+	//TODO: implement Auth
+	const user = "Not Implemented";
+	const showLogin = false;
 	return (
 		<>
 			<Box component="div" sx={toolbar}>
 				<Link
-					component={RouterLink}
+					component={NavLink}
 					href="/"
 					style={{
 						padding: "8px 0",

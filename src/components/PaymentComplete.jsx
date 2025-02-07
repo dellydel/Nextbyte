@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { useRouter } from "next/navigation";
 
 const PaymentSuccessful = ({ sessionId }) => {
-	const router = useRouter();
 	const [status, setStatus] = useState(null);
 	const [customerEmail, setCustomerEmail] = useState("");
 
 	useEffect(() => {
 		fetch(
-			`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/pay?session_id=${sessionId}`,
+			`${
+				import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL
+			}/pay?session_id=${sessionId}`,
 		)
 			.then((res) => res.json())
 			.then((data) => {

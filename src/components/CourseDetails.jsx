@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import {
 	Typography,
@@ -10,11 +11,8 @@ import {
 	Box,
 	IconButton,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { getCourseRegistrationsByEmail } from "../api/registrationAPI";
-import { AuthContext } from "../context/AuthContext";
-import { useCourseMaterialsData } from "../hooks/useCourseMaterialsData";
-import { useCourseByIdData } from "../hooks/useCoursesData";
+import { useCourseByIdData } from "../queries/useCoursesData";
 import { headerText, header } from "../styles/text";
 import { encodeEmail } from "../utils/emailUtils";
 import CourseMaterials from "./CourseMaterials";
@@ -39,13 +37,12 @@ const close = {
 };
 
 const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
-	const router = useRouter();
-	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 	const [registered, setRegistered] = useState(null);
 
 	if (!courseId || courseId === "undefined") {
 		useEffect(() => {
-			router.push("/error?type=not_found");
+			navigate("/error?type=not_found");
 		}, []);
 		return null;
 	}

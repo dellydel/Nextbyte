@@ -4,7 +4,9 @@ import axios from "axios";
 const fetchRegistrations = async (email) => {
 	const encodedEmail = encodeURIComponent(email);
 	return axios.get(
-		`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/registration?email=${encodedEmail}`,
+		`${
+			import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL
+		}/registration?email=${encodedEmail}`,
 	);
 };
 

@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useNavigate } from "react-router";
 import {
 	Button,
 	Dialog,
@@ -8,21 +9,18 @@ import {
 	DialogActions,
 } from "@mui/material";
 import Slide from "@mui/material/Slide";
-import { useRouter } from "next/navigation";
-import { AuthContext } from "../context/AuthContext";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
 });
 
 const LogoutDialog = ({ dialogOpen, setDialogOpen }) => {
-	const { logout } = useContext(AuthContext);
-	const router = useRouter();
+	const navigate = useNavigate();
 
 	const handleLogout = () => {
 		logout();
 		setDialogOpen(false);
-		router.push("/");
+		navigate("/");
 	};
 
 	return (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import {
@@ -13,7 +14,6 @@ import {
 } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 import { useMediaQuery } from "@mui/material/";
-import Link from "next/link";
 import { instagramURL } from "../data/constants";
 import { terms, privacy } from "../data/footerContent";
 import {
@@ -59,8 +59,8 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 		<>
 			<Box component={"div"} sx={wrapper}>
 				<Box component={"div"} sx={companyInfo}>
-					<Link
-						href="/"
+					<NavLink
+						to="/"
 						style={{
 							margin: "8px 0",
 							padding: "8px 0",
@@ -74,7 +74,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 							alt={"NextByte Logo"}
 							sx={{ height: 50, width: "auto" }}
 						/>
-					</Link>
+					</NavLink>
 					<Typography variant="p" sx={companyInfoText}>
 						With expert-led instruction and hands-on learning experiences, we're
 						dedicated to helping you unlock your full potential in today's
@@ -230,7 +230,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 										</IconButton>
 									</Box>
 									<Typography variant="div" sx={policyText}>
-										{terms}
+										<p>{terms}</p>
 									</Typography>
 								</CardContent>
 							</Card>
@@ -254,7 +254,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 										</IconButton>
 									</Box>
 									<Typography variant="div" sx={policyText}>
-										{privacy}
+										<p>{privacy}</p>
 									</Typography>
 								</CardContent>
 							</Card>

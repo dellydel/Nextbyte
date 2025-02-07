@@ -9,7 +9,6 @@ import {
 	Button,
 	Box,
 } from "@mui/material";
-import { AuthContext } from "../context/AuthContext";
 import { header } from "../styles/text";
 
 const linkStyle = {
@@ -35,13 +34,7 @@ const Login = ({ setShowRegister }) => {
 	const [awaitingCode, setAwaitingCode] = useState(false);
 	const [awaitingNewPassword, setAwaitingNewPassword] = useState(false);
 	const [code, setCode] = useState("");
-	const {
-		login,
-		handleConfirmation,
-		setShowLogin,
-		forgotPassword,
-		handleConfirmResetPassword,
-	} = useContext(AuthContext);
+
 	const [error, setError] = useState(null);
 	const [resetPassword, setResetpassword] = useState(false);
 

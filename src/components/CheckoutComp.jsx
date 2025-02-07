@@ -9,7 +9,7 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(
-	`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`,
+	`${import.meta.env.VITE_PUBLIC_STRIPE_PUBLISHABLE_KEY}`,
 );
 
 export const close = {
@@ -25,7 +25,7 @@ const CheckoutComp = ({ course, setShowCheckout }) => {
 	const [clientSecret, setClientSecret] = useState();
 
 	useEffect(() => {
-		fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/pay`, {
+		fetch(`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/pay`, {
 			method: "POST",
 			body: JSON.stringify({
 				product_id: course.id,

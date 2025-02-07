@@ -3,14 +3,16 @@ import axios from "axios";
 
 const fetchStudentById = async (studentId) => {
 	return axios.get(
-		`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/students/${studentId}`,
+		`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/students/${studentId}`,
 	);
 };
 
 const getStudentByEmail = async (email) => {
 	const encodedEmail = encodeURIComponent(email);
 	return axios.get(
-		`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/students?email=${encodedEmail}`,
+		`${
+			import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL
+		}/students?email=${encodedEmail}`,
 	);
 };
 

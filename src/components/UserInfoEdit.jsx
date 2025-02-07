@@ -27,7 +27,7 @@ const UserInfoEdit = ({ student, setEditMode, refetch }) => {
 	const onSubmit = async (data, event) => {
 		event.preventDefault();
 		await axios.post(
-			`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/students`,
+			`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/students`,
 			{
 				...data,
 				id: student.id,

@@ -58,7 +58,10 @@ const ContactForm = ({ handleClose }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.post(`${process.env.NEXT_PUBLIC_API_GATEWAY_BASE_URL}/contact`, formData)
+			.post(
+				`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/contact`,
+				formData,
+			)
 			.then((res) => {
 				reset();
 				const message = res.data.message;

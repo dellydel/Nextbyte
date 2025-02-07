@@ -10,11 +10,9 @@ import {
 	Paper,
 	CircularProgress,
 } from "@mui/material";
-import { AuthContext } from "../context/AuthContext";
-import { useRegistrationData } from "../hooks/useRegistrationData";
+import { useRegistrationData } from "../queries/useRegistrationData";
 
 const Payments = () => {
-	const { user } = useContext(AuthContext);
 	const {
 		data: payments,
 		isPending,

@@ -1,6 +1,4 @@
-export const terms = (
-	<p>
-		Terms and Conditions Welcome to NextByte! These terms and conditions outline
+export const terms = `Terms and Conditions Welcome to NextByte! These terms and conditions outline
 		the rules and regulations for the use of our website and services. By
 		accessing this website and using our services, you accept these terms and
 		conditions in full. Do not continue to use NextByte if you do not accept all
@@ -28,13 +26,9 @@ export const terms = (
 		with the laws of The United States, and you submit to the non-exclusive
 		jurisdiction of the state and federal courts located in Texas for the
 		resolution of any disputes. 6. Contact Us If you have any questions about
-		these terms and conditions, please contact us.
-	</p>
-);
+		these terms and conditions, please contact us.`;
 
-export const privacy = (
-	<p>
-		Privacy Policy NextByte is committed to protecting your privacy. This
+export const privacy = `Privacy Policy NextByte is committed to protecting your privacy. This
 		Privacy Policy outlines the types of personal information we collect, how we
 		use it, and how we safeguard your information. Information We Collect When
 		you visit our website, we may collect certain information automatically,
@@ -67,6 +61,4 @@ export const privacy = (
 		info@nextbyteweb.com. --- Feel free to customize this text to fit the
 		specific privacy practices and policies of your IT training website. Make
 		sure to review it with legal counsel to ensure it complies with all relevant
-		laws and regulations.
-	</p>
-);
+		laws and regulations.`;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import { useStudentByEmailData } from "../hooks/useStudentsData";
+import { useStudentByEmailData } from "../queries/useStudentsData";
 import UserInfo from "./UserInfo";
 import UserInfoEdit from "./UserInfoEdit";
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Box, Modal } from "@mui/material";
-import { useSearchParams } from "next/navigation";
-import EnrollToday from "./components/EnrollToday";
-import Features from "./components/Features";
-import Footer from "./components/Footer";
-import MainHero from "./components/MainHero";
-import OurClasses from "./components/OurClasses";
-import PaymentSuccessful from "./components/PaymentComplete";
-import Testimonials from "./components/Testimonials";
-import WhyNextByte from "./components/WhyNextByte";
-import { modalStyle } from "./styles/modal";
+import EnrollToday from "../components/EnrollToday";
+import Features from "../components/Features";
+import Footer from "../components/Footer";
+import MainHero from "../components/MainHero";
+import OurClasses from "../components/OurClasses";
+import PaymentSuccessful from "../components/PaymentComplete";
+import Testimonials from "../components/Testimonials";
+import WhyNextByte from "../components/WhyNextByte";
+import { modalStyle } from "../styles/modal";
 
 const darkBg = {
 	backgroundImage:
@@ -42,7 +42,7 @@ const Home = () => {
 		setHydrated(true);
 	}, []);
 
-	const searchParams = useSearchParams();
+	const [searchParams] = useSearchParams();
 	const session_id = searchParams.get("session_id");
 	const hasQueryString = session_id !== null;
 	const [showModal, setShowModal] = useState(hasQueryString);

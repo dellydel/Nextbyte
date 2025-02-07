@@ -1,7 +1,5 @@
+import "@fontsource/dm-sans/latin.css";
 import { createTheme } from "@mui/material/styles";
-import { DM_Sans } from "next/font/google";
-
-const dnSans = DM_Sans({ subsets: ["latin"] });
 
 const theme = createTheme({
 	palette: {
@@ -14,7 +12,7 @@ const theme = createTheme({
 	},
 	typography: {
 		allVariants: {
-			fontFamily: dnSans.style.fontFamily,
+			fontFamily: "DM Sans",
 		},
 	},
 });
