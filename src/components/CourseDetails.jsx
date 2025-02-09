@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
@@ -11,7 +11,8 @@ import {
 	Box,
 	IconButton,
 } from "@mui/material";
-import { getCourseRegistrationsByEmail } from "../api/registrationAPI";
+import { getCourseRegistrationsByEmail } from "../api/registration";
+import { useAuth } from "../hooks/useAuth";
 import { useCourseByIdData } from "../queries/useCoursesData";
 import { headerText, header } from "../styles/text";
 import { encodeEmail } from "../utils/emailUtils";
@@ -37,6 +38,7 @@ const close = {
 };
 
 const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
+	const { user } = useAuth();
 	const navigate = useNavigate();
 	const [registered, setRegistered] = useState(null);
 

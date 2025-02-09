@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 import { useMediaQuery } from "@mui/material/";
+import { useTheme } from "@mui/material/styles";
 import { instagramURL } from "../data/constants";
 import { terms, privacy } from "../data/footerContent";
 import {
@@ -53,7 +54,8 @@ const modalWrapper = {
 const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 	const [showTerms, setShowTerms] = useState(false);
 	const [showPrivacy, setShowPrivacy] = useState(false);
-	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
 		<>

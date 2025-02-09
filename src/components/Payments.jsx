@@ -1,18 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import {
-	Box,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	Paper,
-	CircularProgress,
-} from "@mui/material";
+import React from "react";
+import { Box } from "@mui/material";
+import { useAuth } from "../hooks/useAuth";
 import { useRegistrationData } from "../queries/useRegistrationData";
 
 const Payments = () => {
+	const user = useAuth();
 	const {
 		data: payments,
 		isPending,

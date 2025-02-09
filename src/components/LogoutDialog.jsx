@@ -9,6 +9,7 @@ import {
 	DialogActions,
 } from "@mui/material";
 import Slide from "@mui/material/Slide";
+import { useAuth } from "../hooks/useAuth";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -16,9 +17,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const LogoutDialog = ({ dialogOpen, setDialogOpen }) => {
 	const navigate = useNavigate();
+	const { logoutUser } = useAuth();
 
 	const handleLogout = () => {
-		logout();
+		logoutUser();
 		setDialogOpen(false);
 		navigate("/");
 	};

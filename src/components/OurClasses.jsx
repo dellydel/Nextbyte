@@ -2,6 +2,7 @@ import React, { forwardRef, useState } from "react";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { Box, Typography, Button } from "@mui/material";
 import { useMediaQuery } from "@mui/material/";
+import { useTheme } from "@mui/material/styles";
 import { ourClasses } from "../data/homeContent";
 import {
 	wrapper,
@@ -16,7 +17,8 @@ import Courses from "./Courses";
 
 const OurClasses = forwardRef((props, ref) => {
 	const [coursesCount, setCoursesCount] = useState("2");
-	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
 		<>

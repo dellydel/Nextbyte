@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
+import { useAuth } from "../hooks/useAuth";
 import { useStudentByEmailData } from "../queries/useStudentsData";
 import UserInfo from "./UserInfo";
 import UserInfoEdit from "./UserInfoEdit";
 
-const Personal = ({ user }) => {
+const Personal = () => {
+	const { user } = useAuth();
 	const [editMode, setEditMode] = useState(false);
 
 	const {

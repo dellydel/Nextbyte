@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
 import { close } from "../styles/modal";
@@ -40,7 +39,7 @@ const UserInformationScreen = ({ setShowUser }) => {
 					</IconButton>
 				</Box>
 
-				<AccountNavigation user={user} />
+				<AccountNavigation />
 			</CardContent>
 		</Card>
 	);

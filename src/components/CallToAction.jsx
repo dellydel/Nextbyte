@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
 import { useMediaQuery } from "@mui/material/";
+import { useTheme } from "@mui/material/styles";
 import { heroText, heroCallToAction } from "../data/homeContent";
 import { modalStyle } from "../styles/modal";
 import Register from "./Register";
@@ -18,7 +19,8 @@ const CallToAction = ({ coursesRef }) => {
 	const random = Math.floor(Math.random() * heroCallToAction.length);
 	const callToAction = heroCallToAction[random];
 	const [showRegister, setShowRegister] = useState(false);
-	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
 		<Box component={"div"} sx={{ mt: { xs: 8, md: 20 } }}>

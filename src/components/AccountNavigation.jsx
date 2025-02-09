@@ -25,17 +25,17 @@ const contentStyle = {
 	boxShadow: 3,
 };
 
-const AccountNavigation = ({ user }) => {
+const AccountNavigation = () => {
 	const [selectedLink, setSelectedLink] = useState("personal");
 
 	const renderContent = () => {
 		switch (selectedLink) {
 			case "courses":
-				return <Enrollments user={user} />;
+				return <Enrollments />;
 			case "payments":
 				return <Payments />;
 			default:
-				return <Personal user={user} />;
+				return <Personal />;
 		}
 	};
 

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { ArrowBack } from "@mui/icons-material";
 import { Paper, Box, Button } from "@mui/material";
-import { getCoursesByRegistrationIds } from "../api/coursesAPI";
-import { getCourseRegistrationsByEmail } from "../api/registrationAPI";
+import { getCoursesByRegistrationIds } from "../api/courses";
+import { getCourseRegistrationsByEmail } from "../api/registration";
+import { useAuth } from "../hooks/useAuth";
 import CourseMaterals from "./CourseMaterials";
 import Enrollment from "./Enrollment";
 
-const Enrollments = ({ user }) => {
+const Enrollments = () => {
 	const [courses, setCourses] = useState(null);
 	const [materialsVisible, setMaterialsVisible] = useState(false);
+	const { user } = useAuth();
 
 	useEffect(() => {
 		const getRegisteredCourses = async (email) => {

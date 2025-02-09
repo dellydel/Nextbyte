@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { Widgets } from "@mui/icons-material";
+import { useState } from "react";
 import {
 	Card,
 	CardContent,
@@ -9,6 +8,7 @@ import {
 	Button,
 	Box,
 } from "@mui/material";
+import { useAuth } from "../hooks/useAuth";
 import { header } from "../styles/text";
 
 const linkStyle = {
@@ -28,7 +28,7 @@ const loginCardStyle = {
 	},
 };
 
-const Login = ({ setShowRegister }) => {
+const Login = ({ setShowRegister, setShowLogin }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [awaitingCode, setAwaitingCode] = useState(false);
@@ -37,6 +37,12 @@ const Login = ({ setShowRegister }) => {
 
 	const [error, setError] = useState(null);
 	const [resetPassword, setResetpassword] = useState(false);
+	const {
+		login,
+		handleConfirmation,
+		forgotPassword,
+		handleConfirmResetPassword,
+	} = useAuth();
 
 	const handleLogin = async () => {
 		setError();

@@ -13,6 +13,8 @@ import {
 	ListItemText,
 } from "@mui/material";
 import { styled, useMediaQuery } from "@mui/material/";
+import { useTheme } from "@mui/material/styles";
+import { useAuth } from "../hooks/useAuth";
 import { modalStyle } from "../styles/modal";
 import { toolbar, logo, navBar, navLinkStyle } from "../styles/navigationBar";
 import Login from "./Login";
@@ -29,16 +31,15 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	const [showUser, setShowUser] = useState(false);
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-	const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
-	//TODO: implement Auth
-	const user = "Not Implemented";
-	const showLogin = false;
+	const { user } = useAuth();
+	const [showLogin, setShowLogin] = useState(false);
 	return (
 		<>
 			<Box component="div" sx={toolbar}>
@@ -117,7 +118,7 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 										alignItems: "center",
 									}}
 								>
-									<b>My Account ({user})</b>
+									<b>My Account ({user.email})</b>
 								</Link>
 
 								<StyledButton
@@ -184,7 +185,10 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 			)}
 			<Modal open={showLogin} onClose={() => setShowLogin(false)}>
 				<Box sx={modalStyle}>
-					<Login setShowRegister={setShowRegister} />
+					<Login
+						setShowRegister={setShowRegister}
+						setShowLogin={setShowLogin}
+					/>
 				</Box>
 			</Modal>
 			<Modal open={showRegister} onClose={() => setShowRegister(false)}>

@@ -1,4 +1,3 @@
-import "@fontsource/dm-sans/latin.css";
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
