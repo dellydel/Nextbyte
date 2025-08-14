@@ -51,7 +51,7 @@ export const welcome = [
 	"Welcome to the beginning of your ",
 	"web development ",
 	"journey!",
-	"Whether you're a complete novice or have some experience, our courses are fully designed to empower beginners like you. We would love to see you in one of our upcomming courses!",
+	"Whether you're a complete novice or have some experience, our courses are fully designed to empower beginners like you. We would love to see you in one of our upcoming courses!",
 ];
 
 export const chooseUsCards = [

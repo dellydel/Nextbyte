@@ -33,7 +33,7 @@ const OurClasses = forwardRef((props, ref) => {
 					ref={ref}
 				>
 					<Typography variant="span" sx={{ ...headerText, color: "white" }}>
-						Upcomming Classes
+						Upcoming Classes
 					</Typography>
 					{!isMobile && (
 						<>
@@ -75,7 +75,7 @@ const OurClasses = forwardRef((props, ref) => {
 					onClick={() => setCoursesCount("all")}
 				>
 					<Typography variant="span" sx={viewAllText}>
-						View all upcomming classes
+						View all upcoming classes
 					</Typography>
 				</Button>
 			</Box>
