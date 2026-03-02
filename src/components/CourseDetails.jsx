@@ -91,19 +91,35 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 				{isCourseError && <span>{courseError.message}</span>}
 				{isCourseSuccess && course && (
 					<>
-						<Box sx={close}>
-							<IconButton
-								color="inherit"
-								aria-label="close"
-								onClick={() => setShowDetails(false)}
-							>
-								<CloseIcon />
-							</IconButton>
-						</Box>
-						<Box variant={"div"} sx={{ ...header, py: 2 }}>
-							<Typography variant="span" sx={headerText}>
-								{course.name}
-							</Typography>
+						<Box
+							sx={{
+								backgroundImage: course?.imageFileName
+									? `linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, 1)), url(images/courses/${course.imageFileName})`
+									: "none",
+								backgroundSize: "cover",
+								backgroundPosition: "center",
+								backgroundRepeat: "no-repeat",
+								mx: -5,
+								mt: -2,
+								px: 3,
+								pt: 0,
+								pb: 2,
+							}}
+						>
+							<Box sx={close}>
+								<IconButton
+									color="inherit"
+									aria-label="close"
+									onClick={() => setShowDetails(false)}
+								>
+									<CloseIcon />
+								</IconButton>
+							</Box>
+							<Box variant={"div"} sx={{ ...header, py: 2, height: 150 }}>
+								<Typography variant="span" sx={headerText}>
+									{course.name}
+								</Typography>
+							</Box>
 						</Box>
 						<Grid
 							container

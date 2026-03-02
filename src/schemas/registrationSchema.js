@@ -25,7 +25,7 @@ const registrationSchema = yup.object().shape({
 		.max(new Date(), "Please enter a date in the past."),
 	password: yup
 		.string()
-		.min(7, "Password should be at least 7 characters.")
+		.min(8, "Password should be at least 8 characters.")
 		.required("Password is required.")
 		.matches(
 			/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[0-9a-zA-Z!@#$%^&*(),.?":{}|<>]{8,}$/,

@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@mui/material";
 
 const container = {
@@ -9,7 +8,9 @@ const container = {
 	mx: { xs: 0, md: "auto" },
 	px: { xs: 5, md: 0 },
 	mt: { xs: 10, md: "140px" },
-	width: { xs: 1, md: 1440 },
+	width: "100%",
+	maxWidth: 1440,
+	boxSizing: "border-box",
 };
 
 const Feature = ({ children }) => {

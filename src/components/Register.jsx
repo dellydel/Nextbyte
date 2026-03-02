@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 import { PopupContext } from "../context/PopupContext";
 import { registrationText } from "../data/registrationContent";
+import { useAuth } from "../hooks/useAuth";
 import {
 	registrationSchema,
 	defaultFormValues,
@@ -34,6 +35,7 @@ const Register = ({ setShowRegister }) => {
 		defaultValues: defaultFormValues,
 	});
 
+	const { signUp } = useAuth();
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
 
 	const onSubmit = async (data, event) => {

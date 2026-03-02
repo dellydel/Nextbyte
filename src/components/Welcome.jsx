@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Modal } from "@mui/material";
 import { welcome } from "../data/homeContent";

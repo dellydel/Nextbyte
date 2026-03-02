@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
 import { useMediaQuery } from "@mui/material/";
 import { useTheme } from "@mui/material/styles";
@@ -30,6 +30,7 @@ const CallToAction = ({ coursesRef }) => {
 					color="white"
 					sx={{
 						fontSize: { xs: "40px", md: "70px" },
+						margin: 0,
 					}}
 				>
 					<b>{callToAction.text[0]}</b>
@@ -48,8 +49,9 @@ const CallToAction = ({ coursesRef }) => {
 				sx={{
 					fontSize: { xs: "15px", md: "18px" },
 					color: "white",
-					width: 1,
+					width: "100%",
 					mb: 4,
+					boxSizing: "border-box",
 				}}
 			>
 				{heroText}

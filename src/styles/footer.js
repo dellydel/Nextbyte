@@ -1,13 +1,14 @@
 export const wrapper = {
 	display: "flex",
-	px: { xs: 4, md: 25 },
+	px: { xs: 4, md: 5, lg: 15 },
 	pt: { xs: 5, md: 8 },
 	mb: 5,
-	width: { xs: 1, md: 1440 },
+	width: 1,
 	alignItems: "flex-start",
 	display: "flex",
 	justifyContent: "space-between",
 	position: "relative",
+	boxSizing: "border-box",
 };
 
 export const companyInfo = {
@@ -97,8 +98,9 @@ export const column = {
 
 export const copyright = {
 	borderTop: "1px solid rgba(255, 255, 255, 0.19)",
-	mx: { xs: 4, md: 25 },
+	mx: { xs: 4, md: 5, lg: 15 },
 	py: 2,
+	boxSizing: "border-box",
 };
 
 export const copyrightText = {

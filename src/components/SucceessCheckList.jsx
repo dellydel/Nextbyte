@@ -9,7 +9,7 @@ const container = {
 	flexDirection: "column",
 	gap: 5,
 	position: "relative",
-	width: { xs: 1, md: "486px" },
+	width: 1,
 };
 
 export const SuccessCheckList = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Card, Typography, Box, Button, Grid, Modal } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
@@ -69,13 +69,24 @@ const Course = ({ course }) => {
 							</Typography>
 						</Grid>
 						<Grid item xs={6} style={{ textAlign: "right" }}>
-							<Button
-								title="show details"
-								variant="contained"
-								onClick={() => setShowDetails(true)}
-							>
-								<ArrowForwardIcon />
-							</Button>
+							{course.registrationOpen && (
+								<Button
+									title="show details"
+									variant="contained"
+									onClick={() => setShowDetails(true)}
+								>
+									<ArrowForwardIcon />
+								</Button>
+							)}
+							{!course.registrationOpen && (
+								<Button
+									title="registration closed"
+									variant="contained"
+									disabled
+								>
+									Registration Closed
+								</Button>
+							)}
 						</Grid>
 					</Grid>
 				</Box>

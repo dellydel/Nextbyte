@@ -13,11 +13,14 @@ export const navLinkStyle = {
 
 export const toolbar = {
 	mx: { xs: 0, md: "auto" },
+	px: { xs: 4, md: 4 },
 	alignItems: "flex-start",
 	display: "flex",
 	justifyContent: "space-between",
 	position: "relative",
-	width: { xs: 1, md: 1200 },
+	width: 1,
+	maxWidth: { xs: 1, md: 1200 },
+	boxSizing: "border-box",
 };
 
 export const logo = {

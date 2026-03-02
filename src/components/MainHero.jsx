@@ -16,7 +16,6 @@ const heroStyle = {
 	justifyContent: "flex-start",
 	textAlign: "center",
 	pt: 5,
-	px: { xs: 4, md: 0 },
 };
 
 const MainHero = ({ testimonialsRef, aboutRef, coursesRef }) => {
@@ -28,7 +27,15 @@ const MainHero = ({ testimonialsRef, aboutRef, coursesRef }) => {
 					aboutRef={aboutRef}
 					coursesRef={coursesRef}
 				/>
-				<Box sx={{ width: { xs: 1, md: 900 }, mb: 5 }}>
+				<Box
+					sx={{
+						width: "100%",
+						maxWidth: { xs: "100%", md: 900 },
+						mb: 5,
+						px: 4,
+						boxSizing: "border-box",
+					}}
+				>
 					<CallToAction coursesRef={coursesRef} />
 				</Box>
 			</Box>

@@ -32,7 +32,7 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);

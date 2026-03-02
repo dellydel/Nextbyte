@@ -55,7 +55,7 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 	const [showTerms, setShowTerms] = useState(false);
 	const [showPrivacy, setShowPrivacy] = useState(false);
 	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const isMobile = useMediaQuery(theme.breakpoints.down(1080));
 
 	return (
 		<>
@@ -90,9 +90,6 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 							<Typography variant="div" sx={menuItem}>
 								info@nextbyteweb.com
 							</Typography>
-							{/* <Typography variant="div" sx={menuItem}>
-								(555) 555-5555
-							</Typography> */}
 						</Box>
 					</Box>
 					<Grid container>
@@ -111,7 +108,85 @@ const Footer = ({ coursesRef, aboutRef, testimonialsRef }) => {
 								/>
 							</Box>
 						</Grid>
-					</Grid>
+					</Grid>										
+					{isMobile && (
+						<>
+							<Box component={"div"} sx={{ mt: 4 }}>
+								<Typography variant="div" sx={header}>
+									Menu
+								</Typography>
+								<Box component={"div"} sx={column}>
+									<Typography variant="div" sx={menuItem}>
+										<MuiLink
+											component={Button}
+											onClick={() =>
+												coursesRef.current.scrollIntoView({
+													block: "center",
+													behavior: "smooth",
+												})
+											}
+											sx={navLinkStyle}
+										>
+											Courses
+										</MuiLink>
+									</Typography>
+									<Typography variant="div" sx={menuItem}>
+										<MuiLink
+											component={Button}
+											onClick={() =>
+												aboutRef.current.scrollIntoView({
+													block: "center",
+													behavior: "smooth",
+												})
+											}
+											sx={navLinkStyle}
+										>
+											About Us
+										</MuiLink>
+									</Typography>
+									<Typography variant="div" sx={menuItem}>
+										<MuiLink
+											component={Button}
+											onClick={() =>
+												testimonialsRef.current.scrollIntoView({
+													block: "start",
+													behavior: "smooth",
+												})
+											}
+											sx={navLinkStyle}
+										>
+											Testimonials
+										</MuiLink>
+									</Typography>
+								</Box>
+							</Box>
+							<Box component={"div"} sx={{ mt: 4 }}>
+								<Typography variant="div" sx={header}>
+									Legal
+								</Typography>
+								<Box component={"div"} sx={column}>
+									<Typography variant="div" sx={menuItem}>
+										<MuiLink
+											component={Button}
+											onClick={() => setShowTerms(true)}
+											sx={navLinkStyle}
+										>
+											Terms and Conditions
+										</MuiLink>
+									</Typography>
+									<Typography variant="div" sx={menuItem}>
+										<MuiLink
+											component={Button}
+											onClick={() => setShowPrivacy(true)}
+											sx={navLinkStyle}
+										>
+											Privacy Policy
+										</MuiLink>
+									</Typography>
+								</Box>
+							</Box>
+						</>
+					)}
 				</Box>
 				{!isMobile && (
 					<Box component={"div"} sx={footerNavigation}>
