@@ -1,9 +1,12 @@
 export const wrapper = {
 	display: "flex",
-	px: { xs: 4, md: 25 },
-	pt: { xs: 5, md: "250px" },
+	flexDirection: { xs: "column", lg: "row" },
+	px: { xs: 4, md: 5, lg: 15 },
+	pt: { xs: 5, lg: 25 },
 	mb: 5,
-	width: { xs: 1, md: 1440 },
+	width: 1,
+	maxWidth: { xs: 1, lg: 1440 },
+	boxSizing: "border-box",
 };
 
 export const instructors = {
@@ -11,11 +14,12 @@ export const instructors = {
 	alignSelf: "stretch",
 	display: "flex",
 	flex: "0 0 auto",
-	gap: 1,
+	gap: 0.5,
 	position: "relative",
-	width: 1,
+	justifyContent: { xs: "center", lg: "flex-start" },
 	color: "white",
-	mt: 5,
+	textAlign: { xs: "center", lg: "left" },
+	mt: { xs: 2, lg: 0 },
 };
 
 export const instructorsBody = {
@@ -30,22 +34,26 @@ export const instructorsBody = {
 
 export const instructorsHeader = {
 	color: "#ffffff",
-	flex: 1,
 	fontSize: 20,
 	fontWeight: 600,
 	letterSpacing: "-0.8px",
 	lineHeight: "normal",
 	marginTop: "-1px",
 	position: "relative",
+	display: "flex",
+	alignItems: "center",
+	gap: 0.5,
 };
 
 export const viewAll = {
-	width: 1440,
+	width: 1,
+	maxWidth: { xs: 1, lg: 1440 },
 	height: 85,
 	textTransform: "none",
 	borderWidth: 3,
 	borderRadius: 2,
-	mx: { xs: 0, md: 25 },
+	mx: { xs: 4, md: 5, lg: 15 },
+	mt: 3,
 };
 
 export const viewAllText = {

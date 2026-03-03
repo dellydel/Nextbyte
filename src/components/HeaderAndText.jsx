@@ -7,7 +7,7 @@ const wrapper = {
 	flexWrap: "wrap",
 	flexDirection: { xs: "column", md: "row" },
 	alignItems: "center",
-	px: { xs: 4, md: 25 },
+	px: { xs: 4, md: 5, lg: 15 },
 	mt: { xs: 6, md: 15 },
 	mb: 5,
 };

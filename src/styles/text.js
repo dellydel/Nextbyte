@@ -7,7 +7,8 @@ export const container = {
 	pt: { xs: 0, md: 3 },
 	pb: 0,
 	position: "relative",
-	width: { xs: 1, md: 486 },
+	width: 1,
+	boxSizing: "border-box",
 };
 
 export const header = {
@@ -18,6 +19,7 @@ export const header = {
 	letterSpacing: "-1.92px",
 	lineHeight: "normal",
 	position: "relative",
+	mb: 2,
 };
 
 export const headerHighlight = {

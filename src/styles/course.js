@@ -7,7 +7,7 @@ export const cardStyle = {
 	justifyContent: "flex-start",
 	overflow: "hidden",
 	position: "relative",
-	m: { xs: 4, md: 2 },
+	m: { xs: 2, md: 2 },
 	height: 800,
 };
 
@@ -28,7 +28,6 @@ export const wrapper = {
 	gap: 3,
 	padding: 3,
 	position: "relative",
-	width: 1,
 };
 
 export const chipStyle = { backgroundColor: "#2b2d423b", p: 1 };

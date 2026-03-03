@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 import { PopupContext } from "../context/PopupContext";
 import { registrationText } from "../data/registrationContent";
+import { useAuth } from "../hooks/useAuth";
 import {
 	registrationSchema,
 	defaultFormValues,
@@ -34,6 +35,7 @@ const Register = ({ setShowRegister }) => {
 		defaultValues: defaultFormValues,
 	});
 
+	const { signUp } = useAuth();
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
 
 	const onSubmit = async (data, event) => {
@@ -80,7 +82,7 @@ const Register = ({ setShowRegister }) => {
 					reset();
 					setSnackbarState({
 						type: "success",
-						message: res.data,
+						message: res.data.message,
 						isOpen: true,
 					});
 					setShowRegister(false);
@@ -88,7 +90,7 @@ const Register = ({ setShowRegister }) => {
 				.catch((err) => {
 					setSnackbarState({
 						type: "error",
-						message: err.message,
+						message: err.response?.data || err.message || "An error occurred",
 						isOpen: true,
 					});
 				});

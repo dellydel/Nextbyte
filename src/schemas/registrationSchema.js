@@ -25,7 +25,7 @@ const registrationSchema = yup.object().shape({
 		.max(new Date(), "Please enter a date in the past."),
 	password: yup
 		.string()
-		.min(7, "Password should be at least 7 characters.")
+		.min(8, "Password should be at least 8 characters.")
 		.required("Password is required.")
 		.matches(
 			/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[0-9a-zA-Z!@#$%^&*(),.?":{}|<>]{8,}$/,
@@ -76,4 +76,20 @@ const defaultFormValues = {
 	password: "",
 	confirmPassword: "",
 };
+
+// const defaultFormValues = {
+// 	firstName: "Test",
+// 	lastName: "User",
+// 	phoneNumber: "5554547898",
+// 	email: "dlvhall@gmail.com",
+// 	street: "123 Happy Ln",
+// 	city: "Murphy",
+// 	state: "TX",
+// 	zip: "75094",
+// 	country: "USA",
+// 	dateOfBirth: "1/1/1977",
+// 	password: "TestTest12!",
+// 	confirmPassword: "TestTest12!",
+// };
+
 export { registrationSchema, defaultFormValues, registrationSchemaEdit };

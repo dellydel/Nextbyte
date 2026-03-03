@@ -1,4 +1,3 @@
-import React from "react";
 import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import VerifiedUserOutlined from "@mui/icons-material/VerifiedUserOutlined";
@@ -19,11 +18,13 @@ const cardStyle = {
 	display: "flex",
 	flexDirection: "column",
 	gap: 3,
-	justifyContent: "center",
+	justifyContent: "flex-start",
 	overflow: "hidden",
 	padding: { xs: 5, md: 3 },
 	position: "relative",
 	mx: { xs: 4, md: 0 },
+	height: { xs: "auto", md: 250 },
+	minHeight: { xs: 200, md: 250 },
 };
 const header = {
 	alignSelf: "stretch",
@@ -59,7 +60,7 @@ const textDiv = {
 
 const ChooseUsCards = () => {
 	return (
-		<Grid container spacing={{ xs: 4, md: 2 }} justifyContent="center">
+		<Grid container spacing={3} justifyContent="center">
 			{chooseUsCards.map((card) => {
 				return (
 					<Grid item xs={12} md={4} key={card.id}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Card, Typography, Box, Button, Grid, Modal } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";

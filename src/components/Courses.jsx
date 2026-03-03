@@ -4,8 +4,9 @@ import { useCoursesData } from "../queries/useCoursesData";
 import Course from "./Course";
 
 const gridContainer = {
-	px: { xs: 0, md: 25 },
-	width: { xs: 1, md: 1440 },
+	px: { xs: 4, md: 5, lg: 15 },
+	width: 1,
+	maxWidth: { xs: 1, md: 1440 },
 };
 const Courses = ({ count }) => {
 	const {

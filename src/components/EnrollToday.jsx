@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Typography, Button, Modal } from "@mui/material";
 import { enrollToday } from "../data/homeContent";
 import {

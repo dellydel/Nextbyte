@@ -5,9 +5,11 @@ export const wrapper = {
 	gap: 2,
 	justifyContent: "center",
 	position: "relative",
-	width: { xs: 1, md: 1440 },
-	px: { xs: 4, md: 25 },
+	width: 1,
+	maxWidth: { xs: 1, md: 1440 },
+	px: { xs: 4, md: 5, lg: 15 },
 	py: { xs: 7, md: "150px" },
+	boxSizing: "border-box",
 };
 
 export const subHeader = {

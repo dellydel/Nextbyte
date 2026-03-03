@@ -6,14 +6,14 @@ import CourseMaterial from "./CourseMaterial";
 const pageLayout = {
 	display: "flex",
 	justifyContent: "space-between",
-	height: 510,
+	minHeight: 100,
 	overflowY: "auto",
 	mt: 2,
 };
 
 const CourseMaterals = () => {
 	const {
-		data: courseMaterials,
+		data: courseMaterials = [],
 		isPending: isCourseMaterialsPending,
 		isError: isCourseMaterialsError,
 		isSuccess: isCourseMaterialsSuccess,
@@ -40,7 +40,7 @@ const CourseMaterals = () => {
 		<>
 			{isCourseMaterialsPending && <span>Loading course details...</span>}
 			{isCourseMaterialsError && <span>{courseMaterialsError.message}</span>}
-			{isCourseMaterialsSuccess && courseMaterials && (
+			{isCourseMaterialsSuccess && courseMaterials.length > 0 && (
 				<Box sx={pageLayout}>
 					<Box sx={{ width: "50%" }}>
 						<Box
@@ -50,15 +50,17 @@ const CourseMaterals = () => {
 								color: "grey",
 							}}
 						>
-							<span>
-								<b>Course Materials</b>
-							</span>
 							{documents && documents.length > 0 && (
-								<List>
-									{documents.map((document, index) => (
-										<CourseMaterial key={index} file={document} />
-									))}
-								</List>
+								<>
+									<span>
+										<b>Course Materials</b>
+									</span>
+									<List>
+										{documents.map((document, index) => (
+											<CourseMaterial key={index} file={document} />
+										))}
+									</List>
+								</>
 							)}
 						</Box>
 					</Box>
@@ -70,15 +72,17 @@ const CourseMaterals = () => {
 								color: "grey",
 							}}
 						>
-							<span>
-								<b>Course Recordings</b>
-							</span>
 							{videos && videos.length > 0 && (
-								<List>
-									{videos.map((video, index) => (
-										<CourseMaterial key={index} file={video} />
-									))}
-								</List>
+								<>
+									<span>
+										<b>Course Recordings</b>
+									</span>
+									<List>
+										{videos.map((video, index) => (
+											<CourseMaterial key={index} file={video} />
+										))}
+									</List>
+								</>
 							)}
 						</Box>
 					</Box>

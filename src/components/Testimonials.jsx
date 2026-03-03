@@ -17,7 +17,7 @@ const Testimonials = forwardRef((props, ref) => {
 				}
 				bodyContent={testimonialText}
 			/>
-			<Box sx={{ mx: { xs: 4, md: 25 }, mb: { xs: 8, md: 15 } }}>
+			<Box sx={{ mx: { xs: 4, md: 5, lg: 15 }, mb: { xs: 8, md: 15 } }}>
 				<Grid container spacing={{ xs: 4, md: 2 }} justifyContent="center">
 					{testimonials.map((testimonial) => {
 						return (

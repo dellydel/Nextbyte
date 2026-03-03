@@ -47,8 +47,16 @@ const Home = () => {
 	const hasQueryString = session_id !== null;
 	const [showModal, setShowModal] = useState(hasQueryString);
 
+	const centeredContainer = {
+		maxWidth: 1440,
+		mx: "auto",
+		width: "100%",
+		px: { xs: 0, md: 0 },
+		boxSizing: "border-box",
+	};
+
 	return (
-		<Box>
+		<Box sx={{ width: "100%" }}>
 			{hydrated && (
 				<MainHero
 					testimonialsRef={testimonialsRef}
@@ -56,19 +64,31 @@ const Home = () => {
 					coursesRef={coursesRef}
 				/>
 			)}
-			<Features ref={aboutRef} />
-			<WhyNextByte />
-			<Box sx={darkBg}>
-				<OurClasses ref={coursesRef} />
+			<Box sx={centeredContainer}>
+				<Features ref={aboutRef} />
 			</Box>
-			<Testimonials ref={testimonialsRef} />
-			<Box sx={laptopBg}>{hydrated && <EnrollToday />}</Box>
+			<Box sx={centeredContainer}>
+				<WhyNextByte />
+			</Box>
+			<Box sx={darkBg}>
+				<Box sx={centeredContainer}>
+					<OurClasses ref={coursesRef} />
+				</Box>
+			</Box>
+			<Box sx={centeredContainer}>
+				<Testimonials ref={testimonialsRef} />
+			</Box>
+			<Box sx={laptopBg}>
+				<Box sx={centeredContainer}>{hydrated && <EnrollToday />}</Box>
+			</Box>
 			<Box sx={footerBg}>
-				<Footer
-					coursesRef={coursesRef}
-					aboutRef={aboutRef}
-					testimonialsRef={testimonialsRef}
-				/>
+				<Box sx={centeredContainer}>
+					<Footer
+						coursesRef={coursesRef}
+						aboutRef={aboutRef}
+						testimonialsRef={testimonialsRef}
+					/>
+				</Box>
 			</Box>
 			<Modal open={showModal} onClose={() => setShowModal(false)}>
 				<Box sx={modalStyle}>

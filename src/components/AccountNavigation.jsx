@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Grid, Link } from "@mui/material";
 import Enrollments from "./Enrollments";
 import Payments from "./Payments";
@@ -27,6 +27,7 @@ const contentStyle = {
 
 const AccountNavigation = () => {
 	const [selectedLink, setSelectedLink] = useState("personal");
+	const [paymentsDisabled, setPaymentsDisabled] = useState(true);
 
 	const renderContent = () => {
 		switch (selectedLink) {
@@ -74,11 +75,15 @@ const AccountNavigation = () => {
 							<Link
 								sx={{
 									...linkStyle,
-									color:
-										selectedLink === "payments" ? "secondary.main" : "black",
+									color: paymentsDisabled
+										? "grey"
+										: selectedLink === "payments"
+										? "secondary.main"
+										: "black",
 								}}
 								component={"button"}
 								onClick={() => setSelectedLink("payments")}
+								disabled
 							>
 								Payments
 							</Link>

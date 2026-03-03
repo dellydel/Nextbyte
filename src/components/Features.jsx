@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import Box from "@mui/material/Box";
 import Feature from "./Feature";
 import SuccessFeature from "./SuccessFeature";

@@ -9,3 +9,15 @@ export const getCourseRegistrationsByEmail = async (email) => {
 		throw error;
 	}
 };
+
+export const registerForCourse = async (email, courseId) => {
+	try {
+		await api.post("registration", { email, courseId });
+	} catch (error) {
+		console.error(
+			`Error registering email ${email} for course ${courseId}:`,
+			error,
+		);
+		throw error;
+	}
+};
