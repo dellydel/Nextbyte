@@ -82,7 +82,7 @@ const Register = ({ setShowRegister }) => {
 					reset();
 					setSnackbarState({
 						type: "success",
-						message: res.data,
+						message: res.data.message,
 						isOpen: true,
 					});
 					setShowRegister(false);
@@ -90,7 +90,7 @@ const Register = ({ setShowRegister }) => {
 				.catch((err) => {
 					setSnackbarState({
 						type: "error",
-						message: err.message,
+						message: err.response?.data || err.message || "An error occurred",
 						isOpen: true,
 					});
 				});

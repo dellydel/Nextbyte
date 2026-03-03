@@ -1,14 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { api } from "../api/configs";
 
 const fetchCourses = async () => {
-	return axios.get(
-		`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
-	);
+	return api.get(`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`);
 };
 
 const fetchCourseById = async (courseId) => {
-	return axios.get(
+	return api.get(
 		`${
 			import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL
 		}/courses?courseId=${courseId}`,
@@ -16,14 +14,14 @@ const fetchCourseById = async (courseId) => {
 };
 
 const fetchCoursesById = async (courseIds) => {
-	return axios.post(
+	return api.post(
 		`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
 		courseIds,
 	);
 };
 
 const fetchCoursesByRegistrationId = async (registrationIds) => {
-	return axios.post(
+	return api.post(
 		`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
 		registrationIds,
 	);
@@ -53,7 +51,7 @@ export const useCoursesByIdData = ({ courseIds }) => {
 		queryKey: ["courses", courseIds],
 		queryFn: () => fetchCoursesById(courseIds),
 		select: (data) => data.data.map((course) => course),
-		enabled: courseIds?.length,
+		enabled: courseIds?.length > 0,
 	});
 };
 
@@ -62,6 +60,6 @@ export const useCoursesByRegistrationIdData = ({ registrationIds }) => {
 		queryKey: ["courses", registrationIds],
 		queryFn: () => fetchCoursesByRegistrationId(registrationIds),
 		select: (data) => data.data.map((course) => course),
-		enabled: registrationIds?.length,
+		enabled: registrationIds?.length > 0,
 	});
 };

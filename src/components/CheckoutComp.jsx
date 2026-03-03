@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, IconButton } from "@mui/material";

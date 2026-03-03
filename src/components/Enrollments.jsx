@@ -1,35 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
 import { Paper, Box, Button } from "@mui/material";
-import { getCoursesByRegistrationIds } from "../api/courses";
-import { getCourseRegistrationsByEmail } from "../api/registration";
 import { useAuth } from "../hooks/useAuth";
+import { useCoursesByIdData } from "../queries/useCoursesData";
+import { useRegistrationData } from "../queries/useRegistrationData";
 import CourseMaterals from "./CourseMaterials";
 import Enrollment from "./Enrollment";
 
 const Enrollments = () => {
-	const [courses, setCourses] = useState(null);
 	const [materialsVisible, setMaterialsVisible] = useState(false);
 	const { user } = useAuth();
 
-	useEffect(() => {
-		const getRegisteredCourses = async (email) => {
-			if (email === null) return [];
-			const encodedEmail = encodeURIComponent(email);
-			const registrationProductIds =
-				await getCourseRegistrationsByEmail(encodedEmail);
-			if (registrationProductIds?.length > 0) {
-				const courses = await getCoursesByRegistrationIds(
-					registrationProductIds,
-				);
-				setCourses(courses);
-			}
-		};
-		getRegisteredCourses(user);
-	}, [user]);
+	const { data: registrations = [] } = useRegistrationData(user?.email);
+	const { data: courses = [] } = useCoursesByIdData(
+		registrations.map((registration) => registration.courseId),
+	);
 
 	return (
-		<div>
+		<Box sx={{ p: 3 }}>
 			{courses && courses.length === 0 && (
 				<h3>You have not registered for any upcoming courses.</h3>
 			)}
@@ -59,7 +47,7 @@ const Enrollments = () => {
 					<CourseMaterals setMaterialsVisible={setMaterialsVisible} />
 				</Paper>
 			)}
-		</div>
+		</Box>
 	);
 };
 

@@ -28,6 +28,6 @@ export const useStudentByEmailData = (email) => {
 	return useQuery({
 		queryKey: ["student", email],
 		queryFn: () => getStudentByEmail(email),
-		select: (data) => data.data,
+		select: (data) => data.data[0],
 	});
 };

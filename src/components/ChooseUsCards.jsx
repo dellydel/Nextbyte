@@ -1,4 +1,3 @@
-import React from "react";
 import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import VerifiedUserOutlined from "@mui/icons-material/VerifiedUserOutlined";

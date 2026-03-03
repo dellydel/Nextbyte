@@ -37,18 +37,20 @@ const Login = ({ setShowRegister, setShowLogin }) => {
 
 	const [error, setError] = useState(null);
 	const [resetPassword, setResetpassword] = useState(false);
-	const {
-		login,
-		handleConfirmation,
-		forgotPassword,
-		handleConfirmResetPassword,
-	} = useAuth();
+	const { loginUser, handleConfirmation, setUser } = useAuth();
 
 	const handleLogin = async () => {
 		setError();
-		const result = await login(email, password);
+		const result = await loginUser(email, password);
+		console.log(result);
 		switch (result.type) {
 			case "success":
+				setUser({
+					access_token: result.data.accessToken,
+					id_token: result.data.idToken,
+					refresh_token: result.data.refreshToken,
+					email: email,
+				});
 				setShowLogin(false);
 				break;
 			case "nextSteps":
@@ -73,37 +75,6 @@ const Login = ({ setShowRegister, setShowLogin }) => {
 		} catch (error) {
 			console.log(error);
 			setError("An error has occured when confirming code.");
-		}
-	};
-
-	const handleConfirmPasswordReset = async () => {
-		setError();
-		const result = await handleConfirmResetPassword({
-			username: email,
-			confirmationCode: code,
-			newPassword: password,
-		});
-		if (result.error) {
-			setError(result.error.message);
-		} else {
-			setAwaitingCode(false);
-			setAwaitingNewPassword(false);
-		}
-	};
-
-	const handleForgotPassword = async () => {
-		setError();
-		const result = await forgotPassword(email);
-		if (result.error) {
-			if (result.error.name === "EmptyResetPasswordUsername") {
-				setError("Email address is required.");
-			}
-		} else if (result.codeSent) {
-			setResetpassword(false);
-			setAwaitingNewPassword(true);
-		} else if (result.complete) {
-			setShowLogin(false);
-			router.push("/user");
 		}
 	};
 

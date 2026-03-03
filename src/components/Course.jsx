@@ -69,24 +69,13 @@ const Course = ({ course }) => {
 							</Typography>
 						</Grid>
 						<Grid item xs={6} style={{ textAlign: "right" }}>
-							{course.registrationOpen && (
-								<Button
-									title="show details"
-									variant="contained"
-									onClick={() => setShowDetails(true)}
-								>
-									<ArrowForwardIcon />
-								</Button>
-							)}
-							{!course.registrationOpen && (
-								<Button
-									title="registration closed"
-									variant="contained"
-									disabled
-								>
-									Registration Closed
-								</Button>
-							)}
+							<Button
+								title="show details"
+								variant="contained"
+								onClick={() => setShowDetails(true)}
+							>
+								<ArrowForwardIcon />
+							</Button>
 						</Grid>
 					</Grid>
 				</Box>

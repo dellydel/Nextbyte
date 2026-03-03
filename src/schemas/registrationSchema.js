@@ -76,4 +76,20 @@ const defaultFormValues = {
 	password: "",
 	confirmPassword: "",
 };
+
+// const defaultFormValues = {
+// 	firstName: "Test",
+// 	lastName: "User",
+// 	phoneNumber: "5554547898",
+// 	email: "dlvhall@gmail.com",
+// 	street: "123 Happy Ln",
+// 	city: "Murphy",
+// 	state: "TX",
+// 	zip: "75094",
+// 	country: "USA",
+// 	dateOfBirth: "1/1/1977",
+// 	password: "TestTest12!",
+// 	confirmPassword: "TestTest12!",
+// };
+
 export { registrationSchema, defaultFormValues, registrationSchemaEdit };

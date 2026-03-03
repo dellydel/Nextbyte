@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
 import { useStudentByEmailData } from "../queries/useStudentsData";
@@ -16,7 +16,7 @@ const Personal = () => {
 		isSuccess,
 		error,
 		refetch,
-	} = useStudentByEmailData(user);
+	} = useStudentByEmailData(user.email);
 
 	return (
 		<Box>
