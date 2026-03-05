@@ -13,7 +13,7 @@ const Enrollments = () => {
 
 	const { data: registrations = [] } = useRegistrationData(user?.email);
 	const { data: courses = [] } = useCoursesByIdData(
-		registrations.map((registration) => registration.courseId),
+		registrations.map((registration) => registration.course_id),
 	);
 
 	return (
