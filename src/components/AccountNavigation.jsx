@@ -7,7 +7,6 @@ import Personal from "./Personal";
 const linkStyle = {
 	textDecoration: "none",
 	fontSize: "1.2rem",
-	fontWeight: "bold",
 	marginBottom: "1rem",
 };
 

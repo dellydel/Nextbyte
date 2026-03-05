@@ -12,9 +12,8 @@ const Enrollments = () => {
 	const { user } = useAuth();
 
 	const { data: registrations = [] } = useRegistrationData(user?.email);
-	const { data: courses = [] } = useCoursesByIdData(
-		registrations.map((registration) => registration.course_id),
-	);
+	const courseIds = registrations.map((registration) => registration.course_id);
+	const { data: courses = [] } = useCoursesByIdData({ courseIds });
 
 	return (
 		<Box sx={{ p: 3 }}>
