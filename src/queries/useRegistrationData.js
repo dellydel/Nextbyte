@@ -14,6 +14,7 @@ export const useRegistrationData = (email) => {
 	return useQuery({
 		queryKey: ["registrations"],
 		queryFn: () => fetchRegistrations(email),
+		enabled: email !== undefined,
 		select: (data) => data.data.map((registration) => registration),
 	});
 };

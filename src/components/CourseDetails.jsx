@@ -1,6 +1,4 @@
-import { useEffect, useContext } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import {
 	Typography,
@@ -10,6 +8,7 @@ import {
 	CardContent,
 	Box,
 	IconButton,
+	Alert,
 } from "@mui/material";
 import { api } from "../api/configs";
 import { PopupContext } from "../context/PopupContext";
@@ -42,16 +41,7 @@ const close = {
 
 const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 	const { user } = useAuth();
-	const navigate = useNavigate();
-	const [registered, setRegistered] = useState(false);
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
-
-	if (!courseId || courseId === "undefined") {
-		useEffect(() => {
-			navigate("/error?type=not_found");
-		}, []);
-		return null;
-	}
 
 	const {
 		data: course,
@@ -61,16 +51,16 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 		error: courseError,
 	} = useCourseByIdData(courseId);
 
-	const { data: registrations = [] } = useRegistrationData(user?.email);
-	const { data: registeredCourses = [] } = useCoursesByIdData({
+	const { data: registrations = [], isPending: isRegistrationsPending } =
+		useRegistrationData(user?.email);
+	const {
+		data: registeredCourses = [],
+		isPending: isRegisteredCoursesPending,
+	} = useCoursesByIdData({
 		courseIds: registrations.map((registration) => registration.course_id),
 	});
 
-	useEffect(() => {
-		if (registeredCourses.some((c) => c.id === courseId)) {
-			setRegistered(true);
-		}
-	}, [registeredCourses, courseId]);
+	const registered = registeredCourses.some((course) => course.id === courseId);
 
 	const toCheckout = () => {
 		setShowCheckout(true);
@@ -182,47 +172,70 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 										</ul>
 									</span>
 								</Grid>
-								{!registered && (
+								{(!registered || !user) && (
 									<Grid xs={12} item style={{ display: "flex" }}>
 										<span>
-											<b>Price: {course.price}</b>
+											<b>Price: ${course.price}</b>
 										</span>
 									</Grid>
 								)}
-								{!registered && (
+								{!registered &&
+									user &&
+									!isRegistrationsPending &&
+									!isRegisteredCoursesPending && (
+										<Grid xs={12} item sx={{ mt: "10px" }}>
+											{course.registrationOpen && (
+												<Button
+													sx={{
+														mt: "150px",
+													}}
+													variant="contained"
+													onClick={
+														course.price === "0"
+															? completeRegistration
+															: toCheckout
+													}
+												>
+													Register for Course
+												</Button>
+											)}
+											{!course.registrationOpen && (
+												<Button
+													style={{
+														mt: "150px",
+													}}
+													variant="contained"
+													disabled
+												>
+													Registration Closed
+												</Button>
+											)}
+										</Grid>
+									)}
+								{!user && (
 									<Grid xs={12} item sx={{ mt: "10px" }}>
-										{course.registrationOpen && (
-											<Button
-												sx={{
-													mt: "150px",
-												}}
-												variant="contained"
-												onClick={
-													course.price === "0"
-														? completeRegistration
-														: toCheckout
-												}
-											>
-												Register for Course
-											</Button>
-										)}
-										{!course.registrationOpen && (
-											<Button
-												style={{
-													mt: "150px",
-												}}
-												variant="contained"
-												disabled
-											>
-												Registration Closed
-											</Button>
-										)}
+										<Button
+											style={{
+												mt: "150px",
+											}}
+											variant="contained"
+											disabled
+										>
+											Register for course
+										</Button>
+										<Alert severity="info" sx={{ mt: 2, width: "fit-content" }}>
+											Please login or create an account to register for this
+											course
+										</Alert>
 									</Grid>
 								)}
 							</Grid>
 						</>
 					)}
-					{registered && <CourseMaterials />}
+					{registered &&
+						user &&
+						!isRegistrationsPending &&
+						!isRegisteredCoursesPending && <CourseMaterials />}
 				</CardContent>
 			</Card>
 		</>
