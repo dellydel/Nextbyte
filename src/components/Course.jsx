@@ -50,7 +50,7 @@ const Course = ({ course }) => {
 							<b>Pricing</b>
 						</Typography>
 						<Typography variant="h5">
-							<b>{course?.price}</b>
+							<b>${course?.price}</b>
 						</Typography>
 					</Box>
 					<Divider sx={{ width: 1 }} />
@@ -80,7 +80,13 @@ const Course = ({ course }) => {
 					</Grid>
 				</Box>
 			</Card>
-			<Modal open={showDetails} onClose={() => setShowDetails(false)}>
+			<Modal
+				open={showDetails}
+				onClose={() => {
+					setShowDetails(false);
+					setShowCheckout(false);
+				}}
+			>
 				<Box sx={modalStyle}>
 					{!showCheckout && (
 						<CourseDetails
