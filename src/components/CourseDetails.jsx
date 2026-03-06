@@ -10,6 +10,7 @@ import {
 	CardContent,
 	Box,
 	IconButton,
+	Alert,
 } from "@mui/material";
 import { api } from "../api/configs";
 import { PopupContext } from "../context/PopupContext";
@@ -43,7 +44,6 @@ const close = {
 const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 	const { user } = useAuth();
 	const navigate = useNavigate();
-	const [registered, setRegistered] = useState(false);
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
 
 	if (!courseId || courseId === "undefined") {
@@ -61,16 +61,18 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 		error: courseError,
 	} = useCourseByIdData(courseId);
 
-	const { data: registrations = [] } = useRegistrationData(user?.email);
-	const { data: registeredCourses = [] } = useCoursesByIdData({
+	const { data: registrations = [], isPending: isRegistrationsPending } =
+		useRegistrationData(user?.email);
+	const {
+		data: registeredCourses = [],
+		isPending: isRegisteredCoursesPending,
+	} = useCoursesByIdData({
 		courseIds: registrations.map((registration) => registration.course_id),
 	});
 
-	useEffect(() => {
-		if (registeredCourses.some((c) => c.id === courseId)) {
-			setRegistered(true);
-		}
-	}, [registeredCourses, courseId]);
+	const registered = registeredCourses.some(
+		(registration) => registration.id === courseId,
+	);
 
 	const toCheckout = () => {
 		setShowCheckout(true);
@@ -182,31 +184,52 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 										</ul>
 									</span>
 								</Grid>
-								{!registered && (
-									<Grid xs={12} item style={{ display: "flex" }}>
-										<span>
-											<b>Price: {course.price}</b>
-										</span>
-									</Grid>
-								)}
-								{!registered && (
-									<Grid xs={12} item sx={{ mt: "10px" }}>
-										{course.registrationOpen && (
-											<Button
-												sx={{
-													mt: "150px",
-												}}
-												variant="contained"
-												onClick={
-													course.price === "0"
-														? completeRegistration
-														: toCheckout
-												}
-											>
-												Register for Course
-											</Button>
-										)}
-										{!course.registrationOpen && (
+								{!registered &&
+									!isRegistrationsPending &&
+									!isRegisteredCoursesPending && (
+										<Grid xs={12} item style={{ display: "flex" }}>
+											<span>
+												<b>Price: {course.price}</b>
+											</span>
+										</Grid>
+									)}
+								{!registered &&
+									user &&
+									!isRegistrationsPending &&
+									!isRegisteredCoursesPending && (
+										<Grid xs={12} item sx={{ mt: "10px" }}>
+											{course.registrationOpen && (
+												<Button
+													sx={{
+														mt: "150px",
+													}}
+													variant="contained"
+													onClick={
+														course.price === "0"
+															? completeRegistration
+															: toCheckout
+													}
+												>
+													Register for Course
+												</Button>
+											)}
+											{!course.registrationOpen && (
+												<Button
+													style={{
+														mt: "150px",
+													}}
+													variant="contained"
+													disabled
+												>
+													Registration Closed
+												</Button>
+											)}
+										</Grid>
+									)}
+								{!user &&
+									!isRegistrationsPending &&
+									!isRegisteredCoursesPending && (
+										<>
 											<Button
 												style={{
 													mt: "150px",
@@ -214,15 +237,21 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 												variant="contained"
 												disabled
 											>
-												Registration Closed
+												Register for course
 											</Button>
-										)}
-									</Grid>
-								)}
+											<Alert severity="info" sx={{ ml: 2 }}>
+												Please login or create an account to register for this
+												course
+											</Alert>
+										</>
+									)}
 							</Grid>
 						</>
 					)}
-					{registered && <CourseMaterials />}
+					{registered &&
+						user &&
+						!isRegistrationsPending &&
+						!isRegisteredCoursesPending && <CourseMaterials />}
 				</CardContent>
 			</Card>
 		</>
