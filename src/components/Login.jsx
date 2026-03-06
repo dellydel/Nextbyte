@@ -42,7 +42,6 @@ const Login = ({ setShowRegister, setShowLogin }) => {
 	const handleLogin = async () => {
 		setError();
 		const result = await loginUser(email, password);
-		console.log(result);
 		switch (result.type) {
 			case "success":
 				setUser({
