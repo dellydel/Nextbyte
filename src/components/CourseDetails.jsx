@@ -1,6 +1,4 @@
-import { useEffect, useContext } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import {
 	Typography,
@@ -43,15 +41,7 @@ const close = {
 
 const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 	const { user } = useAuth();
-	const navigate = useNavigate();
 	const { snackbarState, setSnackbarState } = useContext(PopupContext);
-
-	if (!courseId || courseId === "undefined") {
-		useEffect(() => {
-			navigate("/error?type=not_found");
-		}, []);
-		return null;
-	}
 
 	const {
 		data: course,
@@ -70,9 +60,7 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 		courseIds: registrations.map((registration) => registration.course_id),
 	});
 
-	const registered = registeredCourses.some(
-		(registration) => registration.id === courseId,
-	);
+	const registered = registeredCourses.some((course) => course.id === courseId);
 
 	const toCheckout = () => {
 		setShowCheckout(true);
@@ -184,15 +172,13 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 										</ul>
 									</span>
 								</Grid>
-								{!registered &&
-									!isRegistrationsPending &&
-									!isRegisteredCoursesPending && (
-										<Grid xs={12} item style={{ display: "flex" }}>
-											<span>
-												<b>Price: {course.price}</b>
-											</span>
-										</Grid>
-									)}
+								{(!registered || !user) && (
+									<Grid xs={12} item style={{ display: "flex" }}>
+										<span>
+											<b>Price: ${course.price}</b>
+										</span>
+									</Grid>
+								)}
 								{!registered &&
 									user &&
 									!isRegistrationsPending &&
@@ -226,25 +212,23 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 											)}
 										</Grid>
 									)}
-								{!user &&
-									!isRegistrationsPending &&
-									!isRegisteredCoursesPending && (
-										<>
-											<Button
-												style={{
-													mt: "150px",
-												}}
-												variant="contained"
-												disabled
-											>
-												Register for course
-											</Button>
-											<Alert severity="info" sx={{ ml: 2 }}>
-												Please login or create an account to register for this
-												course
-											</Alert>
-										</>
-									)}
+								{!user && (
+									<Grid xs={12} item sx={{ mt: "10px" }}>
+										<Button
+											style={{
+												mt: "150px",
+											}}
+											variant="contained"
+											disabled
+										>
+											Register for course
+										</Button>
+										<Alert severity="info" sx={{ mt: 2, width: "fit-content" }}>
+											Please login or create an account to register for this
+											course
+										</Alert>
+									</Grid>
+								)}
 							</Grid>
 						</>
 					)}

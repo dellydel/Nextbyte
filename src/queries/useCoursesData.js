@@ -2,29 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "../api/configs";
 
 const fetchCourses = async () => {
-	return api.get(`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`);
+	return api.get("/courses");
 };
 
 const fetchCourseById = async (courseId) => {
-	return api.get(
-		`${
-			import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL
-		}/courses?courseId=${courseId}`,
-	);
+	return api.get(`/courses?courseId=${courseId}`);
 };
 
 const fetchCoursesById = async (courseIds) => {
-	return api.post(
-		`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
-		courseIds,
-	);
+	return api.post("/courses", courseIds);
 };
 
 const fetchCoursesByRegistrationId = async (registrationIds) => {
-	return api.post(
-		`${import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL}/courses`,
-		registrationIds,
-	);
+	return api.post("/courses", registrationIds);
 };
 
 export const useCoursesData = () => {
