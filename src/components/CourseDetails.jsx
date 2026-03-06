@@ -51,16 +51,18 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 		error: courseError,
 	} = useCourseByIdData(courseId);
 
-	const { data: registrations = [], isPending: isRegistrationsPending } =
+	const { data: registrations = [], isLoading: isRegistrationsLoading } =
 		useRegistrationData(user?.email);
 	const {
 		data: registeredCourses = [],
-		isPending: isRegisteredCoursesPending,
+		isLoading: isRegisteredCoursesLoading,
 	} = useCoursesByIdData({
 		courseIds: registrations.map((registration) => registration.course_id),
 	});
 
-	const registered = registeredCourses.some((course) => course.id === courseId);
+	const registered = user
+		? registeredCourses.some((course) => course.id === courseId)
+		: false;
 
 	const toCheckout = () => {
 		setShowCheckout(true);
@@ -181,8 +183,8 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 								)}
 								{!registered &&
 									user &&
-									!isRegistrationsPending &&
-									!isRegisteredCoursesPending && (
+									!isRegistrationsLoading &&
+									!isRegisteredCoursesLoading && (
 										<Grid xs={12} item sx={{ mt: "10px" }}>
 											{course.registrationOpen && (
 												<Button
@@ -234,8 +236,8 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 					)}
 					{registered &&
 						user &&
-						!isRegistrationsPending &&
-						!isRegisteredCoursesPending && <CourseMaterials />}
+						!isRegistrationsLoading &&
+						!isRegisteredCoursesLoading && <CourseMaterials />}
 				</CardContent>
 			</Card>
 		</>
