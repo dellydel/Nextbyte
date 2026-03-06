@@ -193,7 +193,7 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 									<Grid xs={12} item sx={{ mt: "10px" }}>
 										{course.registrationOpen && (
 											<Button
-												style={{
+												sx={{
 													mt: "150px",
 												}}
 												variant="contained"

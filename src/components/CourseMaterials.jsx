@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { List, Box } from "@mui/material";
 import { useCourseMaterialsData } from "../queries/useCourseMaterialsData";
 import CourseMaterial from "./CourseMaterial";
@@ -20,21 +20,10 @@ const CourseMaterals = () => {
 		error: courseMaterialsError,
 	} = useCourseMaterialsData();
 
-	const [videos, setVideos] = useState([]);
-	const [documents, setDocuments] = useState([]);
-
-	useEffect(() => {
-		if (courseMaterials) {
-			const videos = courseMaterials.filter((file) =>
-				file.name.endsWith(".mp4"),
-			);
-			setVideos(videos);
-			const documents = courseMaterials.filter(
-				(file) => !file.name.endsWith(".mp4"),
-			);
-			setDocuments(documents);
-		}
-	}, [courseMaterials]);
+	const videos = courseMaterials.filter((file) => file.name.endsWith(".mp4"));
+	const documents = courseMaterials.filter(
+		(file) => !file.name.endsWith(".mp4"),
+	);
 
 	return (
 		<>
