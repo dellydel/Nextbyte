@@ -60,9 +60,10 @@ const CourseDetails = ({ courseId, setShowDetails, setShowCheckout }) => {
 		courseIds: registrations.map((registration) => registration.course_id),
 	});
 
-	const registered = user
-		? registeredCourses.some((course) => course.id === courseId)
-		: false;
+	const registered = useMemo(() => {
+    if (!user || !registeredCourses) return false;
+    return registeredCourses.some((c) => String(c.id) === String(courseId));
+}, [user, registeredCourses, courseId]);
 
 	const toCheckout = () => {
 		setShowCheckout(true);
