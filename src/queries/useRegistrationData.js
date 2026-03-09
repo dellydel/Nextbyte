@@ -1,20 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { api } from "../api/configs";
 
 const fetchRegistrations = async (email) => {
 	const encodedEmail = encodeURIComponent(email);
-	return axios.get(
-		`${
-			import.meta.env.VITE_PUBLIC_API_GATEWAY_BASE_URL
-		}/registration?email=${encodedEmail}`,
-	);
+	return api.get(`/registration?email=${encodedEmail}`);
 };
 
 export const useRegistrationData = (email) => {
 	return useQuery({
-		queryKey: ["registrations"],
+		queryKey: ["registrations", email],
 		queryFn: () => fetchRegistrations(email),
-		enabled: email !== undefined,
-		select: (data) => data.data.map((registration) => registration),
+		enabled: !!email,
+		select: (data) => data.data,
 	});
 };

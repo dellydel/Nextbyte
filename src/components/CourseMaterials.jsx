@@ -14,7 +14,7 @@ const pageLayout = {
 const CourseMaterals = () => {
 	const {
 		data: courseMaterials = [],
-		isPending: isCourseMaterialsPending,
+		isLoading: isCourseMaterialsLoading,
 		isError: isCourseMaterialsError,
 		isSuccess: isCourseMaterialsSuccess,
 		error: courseMaterialsError,
@@ -27,7 +27,7 @@ const CourseMaterals = () => {
 
 	return (
 		<>
-			{isCourseMaterialsPending && <span>Loading course details...</span>}
+			{isCourseMaterialsLoading && <span>Loading course details...</span>}
 			{isCourseMaterialsError && <span>{courseMaterialsError.message}</span>}
 			{isCourseMaterialsSuccess && courseMaterials.length > 0 && (
 				<Box sx={pageLayout}>
@@ -39,17 +39,13 @@ const CourseMaterals = () => {
 								color: "grey",
 							}}
 						>
+							<b>Course Materials</b>
 							{documents && documents.length > 0 && (
-								<>
-									<span>
-										<b>Course Materials</b>
-									</span>
-									<List>
-										{documents.map((document, index) => (
-											<CourseMaterial key={index} file={document} />
-										))}
-									</List>
-								</>
+								<List>
+									{documents.map((document, index) => (
+										<CourseMaterial key={index} file={document} />
+									))}
+								</List>
 							)}
 						</Box>
 					</Box>
@@ -61,17 +57,13 @@ const CourseMaterals = () => {
 								color: "grey",
 							}}
 						>
+							<b>Course Recordings</b>
 							{videos && videos.length > 0 && (
-								<>
-									<span>
-										<b>Course Recordings</b>
-									</span>
-									<List>
-										{videos.map((video, index) => (
-											<CourseMaterial key={index} file={video} />
-										))}
-									</List>
-								</>
+								<List>
+									{videos.map((video, index) => (
+										<CourseMaterial key={index} file={video} />
+									))}
+								</List>
 							)}
 						</Box>
 					</Box>
