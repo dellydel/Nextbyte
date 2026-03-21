@@ -1,4 +1,5 @@
 import { Download } from "@mui/icons-material";
+import { Visibility } from "@mui/icons-material";
 import { Button, ListItem, ListItemText, Paper } from "@mui/material";
 
 const CourseMaterial = ({ file }) => {
@@ -27,7 +28,7 @@ const CourseMaterial = ({ file }) => {
 			<ListItem>
 				<ListItemText primary={formatFileName(file)} />
 				<Button variant="contained" color="primary" onClick={handleOpen}>
-					<Download />
+					{file.name.endsWith(".mp4") ? <Download /> : <Visibility />}
 				</Button>
 			</ListItem>
 		</Paper>
