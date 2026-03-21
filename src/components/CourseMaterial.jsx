@@ -1,4 +1,3 @@
-import React from "react";
 import { Download } from "@mui/icons-material";
 import { Button, ListItem, ListItemText, Paper } from "@mui/material";
 
@@ -12,6 +11,11 @@ const CourseMaterial = ({ file }) => {
 			: file.name;
 	};
 
+	const handleOpen = () => {
+		sessionStorage.setItem("secureDocUrl", file.url);
+		window.open("/secure-document", "_blank");
+	};
+
 	return (
 		<Paper
 			sx={{
@@ -22,13 +26,7 @@ const CourseMaterial = ({ file }) => {
 		>
 			<ListItem>
 				<ListItemText primary={formatFileName(file)} />
-				<Button
-					variant="contained"
-					color="primary"
-					href={`${file.url}`}
-					download
-					target="_blank"
-				>
+				<Button variant="contained" color="primary" onClick={handleOpen}>
 					<Download />
 				</Button>
 			</ListItem>
