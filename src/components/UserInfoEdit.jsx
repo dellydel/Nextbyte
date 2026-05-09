@@ -139,8 +139,8 @@ const UserInfoEdit = ({ student, setEditMode, refetch }) => {
 						<Button type="submit" variant="contained" color="primary">
 							Submit
 						</Button>
-						<Button sx={{ ml: 1 }} onClick={() => reset()} variant="outlined">
-							Reset
+						<Button sx={{ ml: 1 }} onClick={() => setEditMode(false)} variant="outlined">
+							Cancel
 						</Button>
 					</Box>
 				</Grid>

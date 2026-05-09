@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import {
 	Box,
@@ -39,13 +39,14 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 	};
 
 	const { user } = useAuth();
+	const navigate = useNavigate();
 	const [showLogin, setShowLogin] = useState(false);
 	return (
 		<>
 			<Box component="div" sx={toolbar}>
 				<Link
 					component={NavLink}
-					href="/"
+					to="/"
 					style={{
 						padding: "8px 0",
 						color: "white",
@@ -159,10 +160,10 @@ const NavigationBar = ({ testimonialsRef, aboutRef, coursesRef }) => {
 						<List>
 							{user !== null ? (
 								<>
-									<ListItem onClick={() => setShowUser(true)}>
+									<ListItem onClick={() => { toggleMenu(); navigate("/account"); }}>
 										<ListItemText
 											sx={{ color: "secondary.main" }}
-											primary={`My Account (${user})`}
+											primary={`My Account (${user.email})`}
 										/>
 									</ListItem>
 									<ListItem onClick={() => setDialogOpen(true)}>

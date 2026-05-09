@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
-import { Paper, Box, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
 import { useCoursesByIdData } from "../queries/useCoursesData";
 import { useRegistrationData } from "../queries/useRegistrationData";
@@ -31,7 +31,7 @@ const Enrollments = () => {
 					/>
 				))}
 			{materialsVisible && (
-				<Paper sx={{ p: 3, m: 3 }}>
+				<Box sx={{ p: 3 }}>
 					<Box>
 						<Button
 							onClick={() => setMaterialsVisible(false)}
@@ -44,7 +44,7 @@ const Enrollments = () => {
 						</Button>
 					</Box>
 					<CourseMaterals setMaterialsVisible={setMaterialsVisible} />
-				</Paper>
+				</Box>
 			)}
 		</Box>
 	);

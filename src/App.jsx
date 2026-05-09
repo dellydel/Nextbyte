@@ -5,6 +5,7 @@ import PopupMessage from "./components/PopupMessage";
 import { PopupProvider } from "./context/PopupContext";
 import { AuthProvider } from "./hooks/useAuth";
 import Home from "./pages/Home";
+import Account from "./pages/Account";
 import SecureDocument from "./pages/SecureDocument";
 import TanstackProvider from "./providers/TanstackProvider";
 import theme from "./theme";
@@ -24,6 +25,7 @@ const App = () => {
 							<PopupMessage />
 							<Routes>
 								<Route path="/" element={<Home />} />
+								<Route path="/account" element={<Account />} />
 								<Route path="/secure-document" element={<SecureDocument />} />
 							</Routes>
 						</PopupProvider>
