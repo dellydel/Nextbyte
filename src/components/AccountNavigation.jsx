@@ -9,6 +9,8 @@ const contentStyle = {
 	mt: 2,
 	borderRadius: 3,
 	boxShadow: 3,
+	maxHeight: "580px",
+	overflowY: "auto",
 };
 
 const AccountNavigation = () => {
@@ -37,7 +39,9 @@ const AccountNavigation = () => {
 				<Tab label="My Courses" />
 				<Tab label="Payments" disabled />
 			</Tabs>
-			<Box sx={contentStyle}>{renderContent()}</Box>
+			<Box sx={contentStyle}>
+				<Box>{renderContent()}</Box>
+			</Box>
 		</>
 	);
 };

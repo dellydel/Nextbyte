@@ -13,11 +13,12 @@ const Enrollments = () => {
 
 	const { data: registrations = [] } = useRegistrationData(user?.email);
 	const courseIds = registrations.map((registration) => registration.course_id);
-	const { data: courses = [] } = useCoursesByIdData({ courseIds });
+	const { data: courses = [], isLoading: isCoursesLoading } =
+		useCoursesByIdData({ courseIds });
 
 	return (
-		<Box sx={{ p: 3 }}>
-			{courses && courses.length === 0 && (
+		<Box sx={{ p: 2 }}>
+			{!isCoursesLoading && courses.length === 0 && (
 				<h3>You have not registered for any upcoming courses.</h3>
 			)}
 			{!materialsVisible &&
@@ -32,17 +33,15 @@ const Enrollments = () => {
 				))}
 			{materialsVisible && (
 				<Box sx={{ p: 3 }}>
-					<Box>
-						<Button
-							onClick={() => setMaterialsVisible(false)}
-							variant="contained"
-							color="inherit"
-							aria-label="back"
-						>
-							<ArrowBack />
-							&nbsp; Courses
-						</Button>
-					</Box>
+					<Button
+						onClick={() => setMaterialsVisible(false)}
+						variant="contained"
+						color="inherit"
+						aria-label="back"
+					>
+						<ArrowBack />
+						&nbsp; Courses
+					</Button>
 					<CourseMaterals setMaterialsVisible={setMaterialsVisible} />
 				</Box>
 			)}

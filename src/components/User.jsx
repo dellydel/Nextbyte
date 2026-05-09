@@ -5,10 +5,11 @@ import AccountNavigation from "./AccountNavigation";
 
 export const wrapper = {
 	padding: 3,
-	pb: 6,
+	pb: 5,
 	borderRadius: 3,
 	boxShadow: 3,
 	height: 800,
+	overflow: "hidden",
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "start",
@@ -20,6 +21,8 @@ const UserInformationScreen = ({ setShowUser }) => {
 			<CardContent
 				sx={{
 					width: "1000px",
+					height: "100%",
+					boxSizing: "border-box",
 				}}
 			>
 				<Box

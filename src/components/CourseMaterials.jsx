@@ -7,7 +7,6 @@ const pageLayout = {
 	display: "flex",
 	justifyContent: "space-between",
 	minHeight: 100,
-	overflowY: "auto",
 	mt: 2,
 };
 
