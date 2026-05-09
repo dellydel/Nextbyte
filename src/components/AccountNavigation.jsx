@@ -37,7 +37,7 @@ const AccountNavigation = () => {
 			>
 				<Tab label="Personal" />
 				<Tab label="My Courses" />
-				<Tab label="Payments" disabled />
+				{/* <Tab label="Payments" disabled /> */}
 			</Tabs>
 			<Box sx={contentStyle}>
 				<Box>{renderContent()}</Box>

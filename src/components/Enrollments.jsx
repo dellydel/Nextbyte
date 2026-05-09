@@ -13,12 +13,13 @@ const Enrollments = () => {
 
 	const { data: registrations = [] } = useRegistrationData(user?.email);
 	const courseIds = registrations.map((registration) => registration.course_id);
-	const { data: courses = [], isLoading: isCoursesLoading } =
+	const { data: courses = null, isLoading: isCoursesLoading } =
 		useCoursesByIdData({ courseIds });
 
 	return (
 		<Box sx={{ p: 2 }}>
-			{!isCoursesLoading && courses.length === 0 && (
+			{isCoursesLoading && <Box sx={{ p: 3 }}>Loading...</Box>}
+			{!isCoursesLoading && courses && courses.length === 0 && (
 				<h3>You have not registered for any upcoming courses.</h3>
 			)}
 			{!materialsVisible &&
