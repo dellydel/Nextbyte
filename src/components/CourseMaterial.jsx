@@ -4,12 +4,11 @@ import { Button, ListItem, ListItemText, Paper } from "@mui/material";
 
 const CourseMaterial = ({ file }) => {
 	const formatFileName = (file) => {
-		if (file.name.length > 30) {
-			file.name = file.name.substring(0, 30) + "...";
+		let name = file.name;
+		if (name.length > 30) {
+			name = name.substring(0, 30) + "...";
 		}
-		return file.name.endsWith(".mp4")
-			? file.name.split(".").shift()
-			: file.name;
+		return file.name.endsWith(".mp4") ? name.split(".").shift() : name;
 	};
 
 	const handleOpen = () => {
