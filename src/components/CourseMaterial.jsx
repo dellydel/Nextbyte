@@ -13,8 +13,12 @@ const CourseMaterial = ({ file }) => {
 	};
 
 	const handleOpen = () => {
-		sessionStorage.setItem("secureDocUrl", file.url);
-		window.open("/secure-document", "_blank");
+		if (file.name.endsWith(".mp4")) {
+			window.open(file.url, "_blank");
+		} else {
+			sessionStorage.setItem("secureDocUrl", file.url);
+			window.open("/secure-document", "_blank");
+		}
 	};
 
 	return (
